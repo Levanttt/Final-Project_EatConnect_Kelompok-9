@@ -17,6 +17,7 @@ body {
   padding: 1rem 3rem;
   border-bottom: 2px solid #175964;
   background: linear-gradient(90deg, #175964 0%, #2c5a8c 50%, #1e3a5f 100%);
+  animation: borderAppear 1.5s ease forwards;
 }
 
 .logo {
@@ -53,6 +54,7 @@ body {
   flex: 1;
   margin-right: 15rem;
   color: #fff;
+  animation: fadeSlideInLeft 1.2s ease forwards;
 }
 
 .form-box h2 {
@@ -112,6 +114,7 @@ body {
   flex: 1;
   display: flex;
   justify-content: flex-end;
+  animation: fadeSlideInRight 1.2s ease forwards;
 }
 
 .image-box img {
@@ -128,5 +131,33 @@ body {
 
   .image-box img {
     max-width: 100%;
+  }
+}
+
+@keyframes fadeSlideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeSlideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  @keyframes borderAppear {
+    to {
+      border-bottom: 2px solid #175964;
+    }
   }
 }

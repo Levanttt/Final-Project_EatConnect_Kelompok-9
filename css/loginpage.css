@@ -22,7 +22,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 5%; 
+  padding: 1rem 5%;
   position: sticky;
   top: 0;
   background: linear-gradient(
@@ -31,7 +31,7 @@ body {
     #2c5a8c 30%,
     #1e3a5f 70%,
     #2c5a8c 100%
-  ); 
+  );
   z-index: 100;
 }
 
@@ -68,49 +68,54 @@ body {
   flex: 1;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
+  padding-top: 10px;
+  animation: fadeSlideLeft 1.2s ease-out forwards;
 }
 
 .left img {
   width: 100%;
-  max-width: 480px;
+  max-width: 700px;
   height: auto;
+  transform: translateY(-80px);
 }
 
 .right {
   flex: 1;
-  max-width: 450px;
-  padding: 35px 30px;
+  max-width: 550px;
+  min-width: 300px;
+  padding: 40px 35px;
   background-color: rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   backdrop-filter: blur(5px);
   color: #fff;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  animation: fadeSlideRight 1.2s ease-out forwards;
 }
 
 .right h1 {
   text-align: center;
-  font-size: 24px; 
+  font-size: 24px;
   font-weight: bold;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
   line-height: 1.4;
 }
 
 .right p {
-  font-size: 14px; 
-  margin-bottom: 20px; 
+  font-size: 14px;
+  margin-bottom: 20px;
   color: #e5e5e5;
-  text-align: center; 
+  text-align: center;
 }
 
 form input[type="email"],
 form input[type="password"] {
   width: 100%;
-  padding: 12px; 
-  margin-bottom: 12px; 
+  padding: 12px;
+  margin-bottom: 12px;
   border: none;
   border-radius: 10px;
-  font-size: 15px;
+  font-size: 17px;
 }
 
 .form-options {
@@ -196,9 +201,31 @@ form input[type="password"] {
     gap: 30px;
     padding: 20px 5%;
   }
-  
+
   .right {
     max-width: 100%;
     padding: 25px 20px;
+  }
+}
+
+@keyframes fadeSlideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeSlideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
