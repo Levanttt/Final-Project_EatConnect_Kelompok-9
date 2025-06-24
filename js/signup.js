@@ -13,10 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
 
-      // Tampilkan popup
       popup.classList.add('active');
 
-      // Redirect ke login.html setelah 2 detik
       setTimeout(function() {
         window.location.href = 'login.html';
       }, 2000);

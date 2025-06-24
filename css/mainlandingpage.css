@@ -66,6 +66,7 @@ body {
   text-decoration: none;
   display: flex;
   align-items: center;
+  margin-right: -2rem;
 }
 
 .nav-links {
@@ -80,6 +81,7 @@ body {
   font-weight: 500;
   transition: opacity 0.3s ease;
   position: relative;
+  margin-right: 1rem;
 }
 
 .nav-links a:hover {
@@ -100,22 +102,19 @@ body {
 .nav-links a:hover::after {
   width: 100%;
 }
-
-.bergabung-btn {
-  background: linear-gradient(45deg, #ff6b35, #ff8c42);
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.user-icon {
+  width: 32px;      
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: box-shadow 0.2s;
 }
 
-.bergabung-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+.account-icon:hover .user-icon {
+  box-shadow: 0 0 0 3px #2c5a8c 100%
+;
 }
+
 
 /* Hero Section */
 .hero {
