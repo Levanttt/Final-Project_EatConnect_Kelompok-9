@@ -103,7 +103,7 @@ body {
   width: 100%;
 }
 .user-icon {
-  width: 32px;      
+  width: 32px;
   height: 32px;
   object-fit: cover;
   border-radius: 50%;
@@ -111,10 +111,8 @@ body {
 }
 
 .account-icon:hover .user-icon {
-  box-shadow: 0 0 0 3px #2c5a8c 100%
-;
+  box-shadow: 0 0 0 3px #2c5a8c 100%;
 }
-
 
 /* Hero Section */
 .hero {
@@ -1086,4 +1084,90 @@ button:focus {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.profile-sidebar {
+  position: absolute;
+  top: 10px;
+  right: 26px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px;
+  width: 240px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 999;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+.profile-sidebar.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.profile-img {
+  width: 40px;
+  height: 40px;
+}
+
+.profile-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2a4365;
+}
+
+.edit-profile {
+  padding: 3px 10px;
+  font-size: 12px;
+  background-color: #2c5f8a;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  align-self: flex-start;
+  margin-top: -5px;
+}
+
+.profile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  background: linear-gradient(to right, #215e8a, #2b7fb6);
+  color: white;
+  font-weight: 500;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.profile-btn:hover {
+  background: linear-gradient(to right, #1e4f77, #266a98);
 }
