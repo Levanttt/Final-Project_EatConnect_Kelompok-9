@@ -1,0 +1,110 @@
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #e7f1f6;
+}
+
+header {
+  background-color: #0d4f8b;
+  color: white;
+  padding: 15px 30px;
+  font-size: 10px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.diary,
+.progress {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 164px;
+}
+
+.diary h2,
+.progress h3 {
+  margin-top: 0;
+}
+
+.diary table {
+  width: 100%;
+  border-collapse: collapse;
+  background: linear-gradient(to right, #d7eaf8, #f0f9ff);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+table th,
+table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background-color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.logout {
+  margin-top: 10px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.progress-cards {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.progress-card {
+  flex: 1;
+  background: linear-gradient(to right, #c9e4f6, #e2f1fb);
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.status {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.status-card {
+  flex: 1 1 22%;
+  background: #f0f9ff;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
