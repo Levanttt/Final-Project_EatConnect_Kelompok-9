@@ -28,71 +28,65 @@
 
     <main>
         <div class="left-section">
-          <div class="diary-card">
-            <h2>My Diary Pola Makan Sehat</h2>
-            <table class="diary-table">
-              <thead>
-                <tr>
-                  <th>Hari</th>
-                  <th>Sarapan</th>
-                  <th>Makan Siang</th>
-                  <th>Makan Malam</th>
-                  <th>Progress</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="day-cell">Senin</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td class="checkbox-cell"><input type="checkbox" /></td>
-                </tr>
-                <tr>
-                  <td class="day-cell">Selasa</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td class="checkbox-cell"><input type="checkbox" /></td>
-                </tr>
-                <tr>
-                  <td class="day-cell">Rabu</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td class="checkbox-cell"><input type="checkbox" /></td>
-                </tr>
-                <tr>
-                  <td class="day-cell">Kamis</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td class="checkbox-cell"><input type="checkbox" /></td>
-                </tr>
-                <tr>
-                  <td class="day-cell">Jum'at</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td class="checkbox-cell"><input type="checkbox" /></td>
-                </tr>
-                <tr>
-                  <td class="day-cell">Sabtu</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td class="checkbox-cell"><input type="checkbox" /></td>
-                </tr>
-                <tr>
-                  <td class="day-cell">Minggu</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td class="checkbox-cell"><input type="checkbox" /></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <div class="diary-tabs">
+  <div class="tab-buttons">
+    <button class="tab-btn active" onclick="showDiary('makan')">Pola Makan Sehat</button>
+    <button class="tab-btn" onclick="showDiary('fisik')">Aktivitas Fisik</button>
+  </div>
+
+  <div class="tab-content" id="diary-makan">
+    <div class="diary-card">
+      <h2>My Diary Pola Makan Sehat</h2>
+      <table class="diary-table">
+        <thead>
+          <tr>
+            <th>Hari</th>
+            <th>Sarapan</th>
+            <th>Makan Siang</th>
+            <th>Makan Malam</th>
+            <th>Progress</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Senin</td><td></td><td></td><td></td><td><input type="checkbox" /></td></tr>
+          <tr><td>Selasa</td><td></td><td></td><td></td><td><input type="checkbox" /></td></tr>
+          <tr><td>Rabu</td><td></td><td></td><td></td><td><input type="checkbox" /></td></tr>
+          <tr><td>Kamis</td><td></td><td></td><td></td><td><input type="checkbox" /></td></tr>
+          <tr><td>Jum'at</td><td></td><td></td><td></td><td><input type="checkbox" /></td></tr>
+          <tr><td>Sabtu</td><td></td><td></td><td></td><td><input type="checkbox" /></td></tr>
+          <tr><td>Minggu</td><td></td><td></td><td></td><td><input type="checkbox" /></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="tab-content" id="diary-fisik" style="display:none;">
+    <div class="diary-card">
+      <h2>My Diary Aktivitas Fisik</h2>
+      <table class="diary-table">
+        <thead>
+          <tr>
+            <th>Hari</th>
+            <th>Olahraga</th>
+            <th>Durasi</th>
+            <th>Tujuan</th>
+            <th>Progress</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Senin</td><td></td><td></td><td></td><td><input type="checkbox" /></td></tr>
+          <tr><td>Selasa</td><td></td><td></td><td></td><td><input type="checkbox" /></td></tr>
+          <tr><td>Rabu</td><td></td><td></td><td></td><td><input type="checkbox" /></td></tr>
+          <tr><td>Kamis</td><td></td><td></td><td></td><td><input type="checkbox" /></td></tr>
+          <tr><td>Jum'at</td><td></td><td></td><td></td><td><input type="checkbox" /></td></tr>
+          <tr><td>Sabtu</td><td></td><td></td><td></td><td><input type="checkbox" /></td></tr>
+          <tr><td>Minggu</td><td></td><td></td><td></td><td><input type="checkbox" /></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
 
           <div class="progress-section">
             <h3>Progress Mingguan</h3>

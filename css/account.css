@@ -1,491 +1,521 @@
 * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Poppins", sans-serif;
-        background: white;
-        min-height: 100vh;
-        padding: 20px;
-      }
-
-      .container {
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      .navbar {
-        background: linear-gradient(135deg, #4a6fa5 0%, #1e3a5f 100%);
-        padding: 15px 0;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        margin: -20px -20px 30px -20px;
-      }
-
-      .navbar-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 30px;
-      }
-
-      .logo {
-        color: white;
-        font-size: 1.5rem;
-        font-weight: bold;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        margin-right: -2rem;
-    }
-
-      .nav-menu {
-        display: flex;
-        list-style: none;
-        gap: 30px;
-        margin: 0;
-        padding: 0;
-      }
-
-      .nav-menu li {
-        position: relative;
-      }
-
-      .nav-menu a {
-        color: white;
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 16px;
-        padding: 10px 15px;
-        border-radius: 20px;
-        transition: all 0.3s ease;
-        position: relative;
-      }
-
-      .nav-menu a:hover {
-        background: rgba(255, 255, 255, 0.1);
-        transform: translateY(-2px);
-      }
-
-      .nav-menu a.active {
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(10px);
-      }
-
-      .nav-right {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-      }
-      .logo {
-        color: white;
-        font-size: 32px;
-        font-weight: 700;
-      }
-
-      .back-button {
-        background: rgba(255, 255, 255, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        color: white;
-        padding: 8px 16px;
-        border-radius: 20px;
-        cursor: pointer;
-        font-size: 14px;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(10px);
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
-
-      .back-button:hover {
-        background: rgba(255, 255, 255, 0.3);
-        transform: translateY(-2px);
-      }
-
-      main {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 30px;
-      }
-
-      .left-section {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-      }
-
-      .diary-card {
-        background: #F8FAFC;
-        border-radius: 20px;
-        padding: 30px;
-        box-shadow: 10px 15px 10px rgba(0, 0, 0, 0.1);
-      }
-
-      .diary-card h2 {
-        color: #2c5aa0;
-        font-size: 24px;
-        font-weight: 600;
-        margin-bottom: 25px;
-      }
-
-      .diary-table {
-        width: 100%;
-        border-collapse: separate;
-        border-spacing: 0;
-        background: white;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-      }
-
-      .diary-table thead {
-        background: linear-gradient(135deg, #4a6fa5 0%, #2c5aa0 100%);
-      }
-
-      .diary-table th {
-    padding: 18px 15px;
-    color: white;
-    font-weight: 600;
-    text-align: center;
-    font-size: 14px;
-    border: none;
-    background: linear-gradient(
-        90deg,
-        #2c5aa0 0%,
-        #4A90A4 100%
-    );
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-      .diary-table td {
-        padding: 15px;
-        text-align: center;
-        border-bottom: 1px solid #CAD4E2;
-        font-size: 14px;
-        color: #2c5aa0;
-      }
+body {
+  font-family: "Poppins", sans-serif;
+  background: white;
+  min-height: 100vh;
+  padding: 20px;
+}
 
-      .diary-table th,
-      .diary-table td {
-        border-right: 1px solid #CAD4E2;
-      }
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
 
-      .diary-table th:last-child,
-      .diary-table td:last-child {
-        border-right: none;
-      }
+.navbar {
+  background: linear-gradient(135deg, #4a6fa5 0%, #1e3a5f 100%);
+  padding: 15px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  margin: -20px -20px 30px -20px;
+}
 
-      .diary-table tbody tr:hover {
-        background-color: #f8f9ff;
-      }
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+}
 
-      .diary-table tbody tr:last-child td {
-        border-bottom: none;
-      }
+.logo {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  margin-right: -2rem;
+}
 
-      .day-cell {
-        font-weight: 600;
-        color: #2c5aa0;
-        text-align: center;
-        padding-left: 20px;
-      }
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
 
-      .checkbox-cell {
-        padding: 10px;
-      }
+.nav-menu li {
+  position: relative;
+}
 
-      .checkbox-cell input[type="checkbox"] {
-        width: 18px;
-        height: 18px;
-        accent-color: #4a6fa5;
-        cursor: pointer;
-      }
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+}
 
-      .progress-section {
-        background: linear-gradient(
-        -135deg,
-        #175964 0%,
-        #2c5a8c 30%,
-        #1e3a5f 70%,
-        #2c5a8c 100%
-      );
-        border-radius: 30px;
-        margin-top: 4rem;
-        padding: 40px;
-        color: white;
-        box-shadow: 10px 15px 10px rgba(0, 0, 0, 0.1);
-      }
+.nav-menu a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
 
-      .progress-section h3 {
-        font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 25px;
-        color: white;
-      }
+.nav-menu a.active {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
 
-      .progress-cards {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 15px;
-      }
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.logo {
+  color: white;
+  font-size: 32px;
+  font-weight: 700;
+}
 
-      .progress-card {
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 15px;
-        padding: 20px;
-        text-align: center;
-        backdrop-filter: blur(10px);
-        transition: all 0.3s ease;
-      }
+.back-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 
-      .progress-card:hover {
-        background: rgba(255, 255, 255, 0.15);
-        transform: translateY(-5px);
-      }
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
 
-      .progress-card .icon {
-        font-size: 30px;
-        margin-bottom: 10px;
-        opacity: 0.8;
-      }
+main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+}
 
-      .progress-card .title {
-        font-size: 12px;
-        margin-bottom: 8px;
-        opacity: 0.9;
-      }
+.left-section {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
 
-      .progress-card .value {
-        font-size: 16px;
-        font-weight: 600;
-        margin-bottom: 5px;
-      }
+.diary-card {
+  background: #f8fafc;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 10px 15px 10px rgba(0, 0, 0, 0.1);
+}
 
-      .progress-card .percentage {
-        font-size: 11px;
-        opacity: 0.7;
-      }
+.diary-card h2 {
+  color: #2c5aa0;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
 
-      .progress-card .status {
-        background: #27ae60;
-        color: white;
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-size: 11px;
-        font-weight: 500;
-        margin-top: 8px;
-        display: inline-block;
-      }
+.diary-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
 
-      .progress-card.inactive .status {
-        background: #95a5a6;
-      }
+.diary-table thead {
+  background: linear-gradient(135deg, #4a6fa5 0%, #2c5aa0 100%);
+}
 
-      .right-section {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-      }
+.diary-table th {
+  padding: 18px 15px;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  font-size: 14px;
+  border: none;
+  background: linear-gradient(90deg, #2c5aa0 0%, #4a90a4 100%);
+}
 
-      .profile-card {
-        background: white;
-        border-radius: 20px;
-        padding: 25px;
-        box-shadow: 10px 15px 10px rgba(0, 0, 0, 0.1);
-      }
+.diary-table td {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #cad4e2;
+  font-size: 14px;
+  color: #2c5aa0;
+}
 
-      .profile-card h3 {
-        color: #2c5aa0;
-        font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 20px;
-        padding-bottom: 10px;
-        border-bottom: 2px solid #2c5aa0;
-      }
+.diary-table th,
+.diary-table td {
+  border-right: 1px solid #cad4e2;
+}
 
-      .profile-info {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-      }
+.diary-table th:last-child,
+.diary-table td:last-child {
+  border-right: none;
+}
 
-      .info-item {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-      }
+.diary-table tbody tr:hover {
+  background-color: #f8f9ff;
+}
 
-      .info-label {
-        font-size: 12px;
-        color: #666;
-        font-weight: 500;
-      }
+.diary-table tbody tr:last-child td {
+  border-bottom: none;
+}
 
-      .info-value {
-        font-size: 14px;
-        color: #333;
-        font-weight: 600;
-      }
+.day-cell {
+  font-weight: 600;
+  color: #2c5aa0;
+  text-align: center;
+  padding-left: 20px;
+}
 
-      .settings-card {
-        background: white;
-        border-radius: 20px;
-        padding: 25px;
-        box-shadow: 10px 15px 10px rgba(0, 0, 0, 0.1);
-      }
+.checkbox-cell {
+  padding: 10px;
+}
 
-      .settings-card h3 {
-        color: #2c5aa0;
-        font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 20px;
-        padding-bottom: 10px;
-        border-bottom: 2px solid #2c5aa0;
-      }
+.checkbox-cell input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #4a6fa5;
+  cursor: pointer;
+}
 
-      .edit-button {
-        background: #f8f9fa;
-        border: 1px solid #dee2e6;
-        color: #6c757d;
-        padding: 6px 12px;
-        border-radius: 20px;
-        font-size: 12px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
+.progress-section {
+  background: linear-gradient(
+    -135deg,
+    #175964 0%,
+    #2c5a8c 30%,
+    #1e3a5f 70%,
+    #2c5a8c 100%
+  );
+  border-radius: 30px;
+  margin-top: 4rem;
+  padding: 40px;
+  color: white;
+  box-shadow: 10px 15px 10px rgba(0, 0, 0, 0.1);
+}
 
-      .edit-button:hover {
-        background: #e9ecef;
-        color: #495057;
-      }
+.progress-section h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: white;
+}
 
-      .logout-button {
-        background: #ff4757;
-        color: white;
-        border: none;
-        padding: 12px 0;
-        border-radius: 25px;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-        width: 100%;
-        margin-top: 15px;
-        transition: all 0.3s ease;
-      }
+.progress-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
 
-      .logout-button:hover {
-        background: #ff3742;
-        transform: translateY(-2px);
-      }
+.progress-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
 
-      .status-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-      }
+.progress-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-5px);
+}
 
-      .status-card {
-        background: white;
-        border-radius: 15px;
-        padding: 20px;
-        text-align: center;
-        box-shadow: 10px 15px 10px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-      }
+.progress-card .icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
 
-      .status-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-      }
+.progress-card .title {
+  font-size: 12px;
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
 
-      .status-card .icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin: 0 auto 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 18px;
-        color: white;
-      }
+.progress-card .value {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
 
-      .status-card.normal .icon {
-        background: #27ae60;
-      }
+.progress-card .percentage {
+  font-size: 11px;
+  opacity: 0.7;
+}
 
-      .status-card.excellent .icon {
-        background: #3498db;
-      }
+.progress-card .status {
+  background: #27ae60;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 8px;
+  display: inline-block;
+}
 
-      .status-card.good .icon {
-        background: #2ecc71;
-      }
+.progress-card.inactive .status {
+  background: #95a5a6;
+}
 
-      .status-card.tips .icon {
-        background: #e74c3c;
-      }
+.right-section {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
 
-      .status-card .title {
-        font-size: 12px;
-        color: #666;
-        margin-bottom: 5px;
-      }
+.profile-card {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 10px 15px 10px rgba(0, 0, 0, 0.1);
+}
 
-      .status-card .value {
-        font-size: 13px;
-        font-weight: 600;
-        color: #333;
-      }
+.profile-card h3 {
+  color: #2c5aa0;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #2c5aa0;
+}
 
-      .status-card.tips .value {
-        font-size: 11px;
-        line-height: 1.4;
-      }
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 
-      .status-badge {
-        background: #27ae60;
-        color: white;
-        padding: 4px 12px;
-        border-radius: 15px;
-        font-size: 11px;
-        font-weight: 500;
-        margin-top: 8px;
-        display: inline-block;
-      }
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 
-      .status-badge.excellent {
-        background: #3498db;
-      }
+.info-label {
+  font-size: 12px;
+  color: #666;
+  font-weight: 500;
+}
 
-      @media (max-width: 1200px) {
-        main {
-          grid-template-columns: 1fr;
-        }
-        
-        .progress-cards {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
+.info-value {
+  font-size: 14px;
+  color: #333;
+  font-weight: 600;
+}
 
-      @media (max-width: 768px) {
-        .progress-cards {
-          grid-template-columns: 1fr;
-        }
-        
-        .status-grid {
-          grid-template-columns: 1fr;
-        }
-        
-        body {
-          padding: 15px;
-        }
-      }
+.settings-card {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 10px 15px 10px rgba(0, 0, 0, 0.1);
+}
+
+.settings-card h3 {
+  color: #2c5aa0;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #2c5aa0;
+}
+
+.edit-button {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  color: #6c757d;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edit-button:hover {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.logout-button {
+  background: #ff4757;
+  color: white;
+  border: none;
+  padding: 12px 0;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+}
+
+.logout-button:hover {
+  background: #ff3742;
+  transform: translateY(-2px);
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.status-card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 10px 15px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.status-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.status-card .icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: white;
+}
+
+.status-card.normal .icon {
+  background: #27ae60;
+}
+
+.status-card.excellent .icon {
+  background: #3498db;
+}
+
+.status-card.good .icon {
+  background: #2ecc71;
+}
+
+.status-card.tips .icon {
+  background: #e74c3c;
+}
+
+.status-card .title {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.status-card .value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+}
+
+.status-card.tips .value {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.status-badge {
+  background: #27ae60;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 8px;
+  display: inline-block;
+}
+
+.status-badge.excellent {
+  background: #3498db;
+}
+
+@media (max-width: 1200px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+
+  .progress-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .progress-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .status-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body {
+    padding: 15px;
+  }
+}
+
+.diary-tabs {
+  background: #f8fafc;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: #e0e7ff;
+  color: #2c5aa0;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tab-btn.active {
+  background: #2c5aa0;
+  color: white;
+}
+
+.tab-btn:hover {
+  background: #4a6fa5;
+  color: white;
+}
