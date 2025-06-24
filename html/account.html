@@ -13,135 +13,188 @@
     />
   </head>
   <body>
-    <header>
-      <h1>EatConnect</h1>
-    </header>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="#" class="logo">EatConnect</a>
+        
+        <div class="nav-right">
+          <button class="back-button" onclick="goBack()">
+            <span>←</span>
+            <span>Kembali</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
     <main>
-      <section class="left-section">
-        <div class="diary">
-          <h2>My Diary Pola Makan Sehat</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Hari</th>
-                <th>Sarapan</th>
-                <th>Makan Siang</th>
-                <th>Makan Malam</th>
-                <th>Progress</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Senin</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><input type="checkbox" /></td>
-              </tr>
-              <tr>
-                <td>Selasa</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><input type="checkbox" /></td>
-              </tr>
-              <tr>
-                <td>Rabu</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><input type="checkbox" /></td>
-              </tr>
-              <tr>
-                <td>Kamis</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><input type="checkbox" /></td>
-              </tr>
-              <tr>
-                <td>Jum’at</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><input type="checkbox" /></td>
-              </tr>
-              <tr>
-                <td>Sabtu</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><input type="checkbox" /></td>
-              </tr>
-              <tr>
-                <td>Minggu</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><input type="checkbox" /></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="progress">
-          <h3>Progress Mingguan</h3>
-          <div class="progress-cards">
-            <div class="progress-card">
-              Kepatuhan Minggu 1<br /><strong>7/7 Hari</strong><br /><span
-                >Sangat Baik</span
-              >
-            </div>
-            <div class="progress-card">
-              Kepatuhan Minggu 2<br /><strong>-/- Hari</strong><br /><span
-                >-</span
-              >
-            </div>
-            <div class="progress-card">
-              Kepatuhan Minggu 3<br /><strong>-/- Hari</strong><br /><span
-                >-</span
-              >
-            </div>
-            <div class="progress-card">
-              Kepatuhan Minggu 4<br /><strong>-/- Hari</strong><br /><span
-                >-</span
-              >
+        <div class="left-section">
+          <div class="diary-card">
+            <h2>My Diary Pola Makan Sehat</h2>
+            <table class="diary-table">
+              <thead>
+                <tr>
+                  <th>Hari</th>
+                  <th>Sarapan</th>
+                  <th>Makan Siang</th>
+                  <th>Makan Malam</th>
+                  <th>Progress</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="day-cell">Senin</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="checkbox-cell"><input type="checkbox" /></td>
+                </tr>
+                <tr>
+                  <td class="day-cell">Selasa</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="checkbox-cell"><input type="checkbox" /></td>
+                </tr>
+                <tr>
+                  <td class="day-cell">Rabu</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="checkbox-cell"><input type="checkbox" /></td>
+                </tr>
+                <tr>
+                  <td class="day-cell">Kamis</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="checkbox-cell"><input type="checkbox" /></td>
+                </tr>
+                <tr>
+                  <td class="day-cell">Jum'at</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="checkbox-cell"><input type="checkbox" /></td>
+                </tr>
+                <tr>
+                  <td class="day-cell">Sabtu</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="checkbox-cell"><input type="checkbox" /></td>
+                </tr>
+                <tr>
+                  <td class="day-cell">Minggu</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="checkbox-cell"><input type="checkbox" /></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="progress-section">
+            <h3>Progress Mingguan</h3>
+            <div class="progress-cards">
+              <div class="progress-card">
+                <div class="icon">🍽️</div>
+                <div class="title">Kepatuhan Minggu 1</div>
+                <div class="value">6/7 Hari</div>
+                <div class="percentage">(85%)</div>
+                <div class="status">Sangat Baik</div>
+              </div>
+              <div class="progress-card inactive">
+                <div class="icon">🍽️</div>
+                <div class="title">Kepatuhan Minggu 2</div>
+                <div class="value">-/- Hari</div>
+                <div class="percentage">(0%)</div>
+                <div class="status">-</div>
+              </div>
+              <div class="progress-card inactive">
+                <div class="icon">🍽️</div>
+                <div class="title">Kepatuhan Minggu 3</div>
+                <div class="value">-/- Hari</div>
+                <div class="percentage">(0%)</div>
+                <div class="status">-</div>
+              </div>
+              <div class="progress-card inactive">
+                <div class="icon">🍽️</div>
+                <div class="title">Kepatuhan Minggu 4</div>
+                <div class="value">-/- Hari</div>
+                <div class="percentage">(0%)</div>
+                <div class="status">-</div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section class="right-section">
-        <div class="card">
-          <h3>Profile Saya</h3>
-          <p><strong>Nama Lengkap</strong><br />Ahmad Alkarim</p>
-          <p><strong>Email</strong><br />ahmedkarim12@gmail.com</p>
-          <p><strong>Nomor Telepon</strong><br />0851-8997-2230</p>
-          <p><strong>Tanggal Bergabung</strong><br />21 Juni 2025</p>
-        </div>
-        <div class="card">
-          <h3>Pengaturan</h3>
-          <p><strong>Bahasa</strong><br />Bahasa Indonesia</p>
-          <p><strong>Ubah Kata Sandi</strong><br /><button>Ubah</button></p>
-          <button class="logout">Keluar Akun</button>
         </div>
 
-        <div class="status">
-          <div class="status-card">
-            Berat Badan<br /><strong>Normal</strong>
+      <div class="right-section">
+          <div class="profile-card">
+            <h3>Profile Saya</h3>
+            <div class="profile-info">
+              <div class="info-item">
+                <div class="info-label">Nama Lengkap</div>
+                <div class="info-value">Ahmad Al Karim</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Email</div>
+                <div class="info-value">Ahmadkarim22@gmail.com</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Nomor Telepon</div>
+                <div class="info-value">0851-2987-2230 <button class="edit-button">Edit</button></div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Tanggal Bergabung</div>
+                <div class="info-value">21 Juni 2025</div>
+              </div>
+            </div>
           </div>
-          <div class="status-card">
-            Tinggi Badan<br /><strong>Sangat Baik</strong>
+
+        <div class="settings-card">
+            <h3>Pengaturan</h3>
+            <div class="profile-info">
+              <div class="info-item">
+                <div class="info-label">Bahasa</div>
+                <div class="info-value">Bahasa Indonesia</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Ubah Kata Sandi</div>
+                <div class="info-value">••••••••••• <button class="edit-button">Edit</button></div>
+              </div>
+            </div>
+            <button class="logout-button">Keluar Akun</button>
           </div>
-          <div class="status-card">
-            Kalori Terkontrol<br /><strong>Sangat Baik</strong>
-          </div>
-          <div class="status-card">
-            Tips Kesehatan<br /><strong
-              >Tetap Jaga Jam Tidur dan Hindari Stres</strong
-            >
+
+        <div class="status-grid">
+            <div class="status-card normal">
+              <div class="icon">⚖️</div>
+              <div class="title">Berat Badan</div>
+              <div class="value">-------</div>
+              <div class="status-badge">Normal</div>
+            </div>
+            <div class="status-card excellent">
+              <div class="icon">📏</div>
+              <div class="title">Tinggi Badan</div>
+              <div class="value">-------</div>
+              <div class="status-badge excellent">Sangat Baik</div>
+            </div>
+            <div class="status-card good">
+              <div class="icon">🔥</div>
+              <div class="title">Kalori Terbakar</div>
+              <div class="value">-------</div>
+              <div class="status-badge excellent">Sangat Baik</div>
+            </div>
+            <div class="status-card tips">
+              <div class="icon">💡</div>
+              <div class="title">Tips Kesehatan</div>
+              <div class="value">Tetap Jaga Jam Tidur dan Hindari Stress</div>
+            </div>
           </div>
         </div>
-      </section>
-    </main>
+      </main>
+    </div>
+    <script src="../js/account.js"></script>
   </body>
 </html>
