@@ -16,7 +16,13 @@ body {
   align-items: center;
   padding: 1rem 3rem;
   border-bottom: 2px solid #175964;
-  background: linear-gradient(90deg, #175964 0%, #2c5a8c 50%, #1e3a5f 100%);
+  background: linear-gradient(
+    135deg,
+    #175964 0%,
+    #2c5a8c 30%,
+    #1e3a5f 70%,
+    #2c5a8c 100%
+  ); 
   animation: borderAppear 1.5s ease forwards;
 }
 
@@ -26,15 +32,52 @@ body {
   color: #fff;
 }
 
-.nav a {
-  color: #fff;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 6%; 
+  position: sticky;
+  top: 0;
+  background: linear-gradient(
+    135deg,
+    #175964 0%,
+    #2c5a8c 30%,
+    #1e3a5f 70%,
+    #2c5a8c 100%
+  ); 
+  z-index: 100;
+}
+
+.navbar .logo {
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 35px;
+  margin-right: 3rem;
+}
+
+.navbar ul li a {
   text-decoration: none;
-  margin-left: 2rem;
+  color: #fff;
   font-weight: 500;
 }
 
-.nav a:hover {
-  opacity: 0.8;
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #ff6b35;
+  transition: width 0.3s ease;
 }
 
 .register-section {
@@ -118,8 +161,9 @@ body {
 }
 
 .image-box img {
-  width: 100%;
-  max-width: 600px;
+  margin-right: -5rem;
+  width: 135%;
+  max-width: 1000px;
 }
 
 @media (max-width: 768px) {
