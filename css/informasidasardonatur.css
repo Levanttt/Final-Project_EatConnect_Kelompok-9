@@ -1,0 +1,210 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #e6eff3;
+  color: #333;
+}
+
+.navbar {
+  background: #2c5aa0;
+  padding: 15px 30px;
+}
+
+.logo {
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.progress-container {
+  max-width: 600px;
+  margin: 30px auto;
+  position: relative;
+}
+
+.progress-line {
+  position: absolute;
+  top: calc(38% - 3px);
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 2px;
+}
+
+.progress-line::before {
+  height: 100%;
+}
+
+.progress-fill {
+  width: 33%;
+  height: 100%;
+  background: #2c5aa0;
+  border-radius: 2px;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.step {
+  text-align: center;
+  flex: 1;
+}
+
+.circle {
+  width: 56px;
+  height: 56px;
+  background: #b0b0b0;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin: 0 auto 5px auto;
+  font-size: 20px;
+}
+
+.step.active .circle {
+  background: #2c5aa0;
+}
+
+.label {
+  font-size: 14px;
+  color: #999;
+}
+
+.step {
+  padding: 0 10px;
+}
+
+.step.active .label {
+  color: #2c5aa0;
+  font-weight: 600;
+}
+
+.form-container {
+  background: #fff;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h1 {
+  font-size: 22px;
+  color: #2c5aa0;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.form-container p {
+  font-size: 13px;
+  color: #555;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.card h2 {
+  font-size: 15px;
+  color: #2c5aa0;
+  margin-bottom: 12px;
+}
+
+.card label {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  display: block;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.agreement {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* jarak antar baris */
+}
+.agree-item {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* jarak kotak dengan teks */
+  font-size: 13px;
+  color: #555;
+}
+
+.agree-item a {
+  color: #2c5aa0;
+  text-decoration: underline;
+}
+
+.agree-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+.agreement a {
+  color: #2c5aa0;
+  text-decoration: underline;
+}
+
+.agreement label {
+  display: inline-flex;
+  align-items: center; /* atau center kalau mau lebih rata */
+  gap: 8px; /* jarak antara kotak dan teks */
+  margin-bottom: 10px;
+}
+
+.btn-lanjut {
+  background: linear-gradient(90deg, #ff7a00, #ff9500);
+  color: #fff;
+  border: none;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 25px;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-lanjut:hover {
+  background: linear-gradient(90deg, #ff8c1a, #ffa31a);
+}

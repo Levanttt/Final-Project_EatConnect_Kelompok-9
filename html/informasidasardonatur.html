@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar Sebagai Donatur - EatConnect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/informasidasardonatur.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">EatConnect</div>
+    </nav>
+
+    <div class="progress-container">
+      <div class="progress-line">
+        <div class="progress-fill"></div>
+      </div>
+      <div class="progress-steps">
+        <div class="step active">
+          <div class="circle">1</div>
+          <div class="label">Informasi Dasar</div>
+        </div>
+        <div class="step">
+          <div class="circle">2</div>
+          <div class="label">Verifikasi</div>
+        </div>
+        <div class="step">
+          <div class="circle">3</div>
+          <div class="label">Selesai</div>
+        </div>
+      </div>
+    </div>
+
+    <main class="form-container">
+      <h1>Daftar Sebagai Donatur</h1>
+      <p>
+        Bergabunglah dengan komunitas peduli untuk berbagi makanan berlebih dan
+        membantu mengurangi food waste di Indonesia
+      </p>
+
+      <form id="donaturForm">
+        <div class="card">
+          <h2>Informasi Restoran/Usaha</h2>
+          <label>Nama Restoran/Usaha *</label>
+          <input
+            type="text"
+            placeholder="Nama restoran atau usaha anda"
+            required
+          />
+
+          <label>Jenis Usaha *</label>
+          <select required>
+            <option value="">Pilih jenis usaha</option>
+            <option>Restoran</option>
+            <option>Kafe</option>
+            <option>Lainnya</option>
+          </select>
+
+          <label>Alamat Lengkap *</label>
+          <input
+            type="text"
+            placeholder="Alamat lengkap restoran atau usaha anda"
+            required
+          />
+        </div>
+
+        <div class="card">
+          <h2>Informasi Donasi</h2>
+          <div class="grid-2">
+            <div>
+              <label>Jumlah Porsi *</label>
+              <input
+                type="number"
+                placeholder="Masukkan jumlah porsi"
+                required
+              />
+            </div>
+            <div>
+              <label>Jadwal Pengambilan *</label>
+              <input
+                type="text"
+                placeholder="Contoh estimasi: 17:00 - 19:00"
+                required
+              />
+            </div>
+          </div>
+
+          <label>Jenis Makanan yang akan didonasikan *</label>
+          <textarea
+            placeholder="Deskripsikan jenis makanan (Nasi kotak, lauk pauk, dll)"
+            required
+          ></textarea>
+
+          <label>Upload Bukti Donasi *</label>
+          <input type="file" required />
+        </div>
+
+        <div class="agreement">
+          <div class="agree-item">
+            <input type="checkbox" required />
+            <span>
+              Saya setuju dengan
+              <a href="#">Syarat dan Ketentuan</a> serta
+              <a href="#">Kebijakan Privasi</a> EatConnect
+            </span>
+          </div>
+          <div class="agree-item">
+            <input type="checkbox" />
+            <span>
+              Saya ingin menerima newsletter dan update terbaru dari EatConnect
+            </span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-lanjut">Lanjutkan</button>
+      </form>
+    </main>
+  </body>
+</html>
