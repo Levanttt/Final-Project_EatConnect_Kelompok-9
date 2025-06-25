@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #c9ebf0; /* Biru muda seperti wireframe */
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #1e3a5f;
+  padding: 16px 32px;
+}
+
+.logo {
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+/* Container */
+.finish-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+/* Card Box */
+.card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 700px;
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Check Icon */
+.icon-check {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, #ff8c42, #ff6b35);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-check span {
+  font-size: 36px;
+  color: white;
+  font-weight: bold;
+}
+
+/* Heading & Text */
+.card h1 {
+  font-size: 20px;
+  color: #1e3a5f;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.card p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto 32px;
+}
+
+/* Button */
+.btn-back {
+  display: inline-block;
+  background: linear-gradient(#ff8c42, #ff6b35);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 6px 16px rgba(255, 107, 53, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.btn-back:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 40px 30px;
+    max-width: 90%;
+  }
+
+  .card p {
+    font-size: 14px;
+  }
+}

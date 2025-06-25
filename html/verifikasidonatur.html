@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verifikasi Donatur - EatConnect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/infodanverifikasi.css" />
+  </head>
+
+  <script>
+  function goBack() {
+    window.history.back();
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("verifikasi-form");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // Cegah reload
+
+      // Validasi input native HTML
+      if (!form.checkValidity()) {
+        form.reportValidity(); // Tampilkan pesan error default browser
+        return;
+      }
+
+      // Jika valid, redirect ke halaman selesai
+      window.location.href = "selesaidonatur.html";
+    });
+  });
+</script>
+
+  <body>
+    <body class="step-2">
+    <!-- Header -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="mainlandingpage.html" class="logo">EatConnect</a>
+        <div class="nav-right">
+          <button class="back-button" onclick="goBack()">
+            <span>←</span>
+            <span>Kembali</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Title Section -->
+      <div class="title-section">
+        <h1>Daftar Sebagai Donatur</h1>
+        <p>
+          Bergabunglah dengan komunitas peduli untuk berbagi makanan berlebih
+          dan membantu mengurangi food waste di Indonesia
+        </p>
+      </div>
+
+      <!-- Progress Steps -->
+      <div class="progress-container">
+        <div class="progress-steps">
+          <div class="step completed">
+            <div class="step-circle">1</div>
+            <div class="step-label">Informasi Dasar</div>
+          </div>
+          <div class="step active">
+            <div class="step-circle">2</div>
+            <div class="step-label">Verifikasi</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">3</div>
+            <div class="step-label">Selesai</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Container -->
+      <div class="form-container">
+        <form id="verifikasi-form">
+          <div class="form-section">
+            <h2>Verifikasi Data Diri</h2>
+
+            <div class="input-group">
+              <label for="nama-lengkap"
+                >Nama Lengkap <span class="required">*</span></label
+              >
+              <input
+                type="text"
+                id="nama-lengkap"
+                name="nama-lengkap"
+                placeholder="Masukkan nama lengkap anda"
+                required
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="nik">NIK <span class="required">*</span></label>
+              <input
+                type="text"
+                id="nik"
+                name="nik"
+                placeholder="Masukkan NIK anda"
+                required
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="email">Email <span class="required">*</span></label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="example@gmail.com"
+                required
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="telepon"
+                >Nomor Telepon <span class="required">*</span></label
+              >
+              <input
+                type="tel"
+                id="telepon"
+                name="telepon"
+                placeholder="+62 8xxx xxxx xxx"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="submit-btn">Lanjutkan</button>
+        </form>
+      </div>
+    </main>
+
+    <script>
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+  </body>
+</html>

@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Daftar Sebagai Donatur - EatConnect</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/informasidasardonatur.css">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/infodanverifikasi.css" />
+  </head>
+  <body>
+    <body class="step-1">
     <!-- Header -->
     <nav class="navbar">
       <div class="navbar-container">
         <a href="mainlandingpage.html" class="logo">EatConnect</a>
-        
+
         <div class="nav-right">
           <button class="back-button" onclick="goBack()">
             <span>←</span>
@@ -26,114 +30,173 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Title Section -->
-        <div class="title-section">
-            <h1>Daftar Sebagai Donatur</h1>
-            <p>Bergabunglah dengan komunitas peduli untuk berbagi makanan berlebih dan membantu mengurangi food waste di Indonesia</p>
-        </div>
+      <!-- Title Section -->
+      <div class="title-section">
+        <h1>Daftar Sebagai Donatur</h1>
+        <p>
+          Bergabunglah dengan komunitas peduli untuk berbagi makanan berlebih
+          dan membantu mengurangi food waste di Indonesia
+        </p>
+      </div>
 
-        <!-- Progress Steps -->
-        <div class="progress-container">
-            <div class="progress-steps">
-                <div class="step active">
-                    <div class="step-circle">1</div>
-                    <div class="step-label">Informasi Dasar</div>
-                </div>
-                <div class="step">
-                    <div class="step-circle">2</div>
-                    <div class="step-label">Verifikasi</div>
-                </div>
-                <div class="step">
-                    <div class="step-circle">3</div>
-                    <div class="step-label">Selesai</div>
-                </div>
+      <!-- Progress Steps -->
+      <div class="progress-container">
+        <div class="progress-steps">
+          <div class="step active">
+            <div class="step-circle">1</div>
+            <div class="step-label">Informasi Dasar</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">2</div>
+            <div class="step-label">Verifikasi</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">3</div>
+            <div class="step-label">Selesai</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Container -->
+      <div class="form-container">
+        <form id="donatur-form" onsubmit="handleNext(event)">
+          <!-- Informasi Restoran/Usaha -->
+          <div class="form-section">
+            <h2>Informasi Restoran/Usaha</h2>
+
+            <div class="input-group">
+              <label for="nama-restoran"
+                >Nama Restoran/Usaha <span class="required">*</span></label
+              >
+              <input
+                type="text"
+                id="nama-restoran"
+                name="nama-restoran"
+                placeholder="Nama restoran atau usaha anda"
+                required
+              />
             </div>
-        </div>
 
-        <!-- Form Container -->
-        <div class="form-container">
-            <form id="donatur-form">
-                <!-- Informasi Restoran/Usaha -->
-                <div class="form-section">
-                    <h2>Informasi Restoran/Usaha</h2>
-                    
-                    <div class="input-group">
-                        <label for="nama-restoran">Nama Restoran/Usaha <span class="required">*</span></label>
-                        <input type="text" id="nama-restoran" name="nama-restoran" placeholder="Nama restoran atau usaha anda" required>
-                    </div>
+            <div class="input-group">
+              <label for="jenis-usaha"
+                >Jenis Usaha <span class="required">*</span></label
+              >
+              <select id="jenis-usaha" name="jenis-usaha" required>
+                <option value="">Pilih jenis usaha</option>
+                <option value="restoran">Restoran</option>
+                <option value="kafe">Kafe</option>
+                <option value="warung">Warung</option>
+                <option value="katering">Katering</option>
+                <option value="lainnya">Lainnya</option>
+              </select>
+            </div>
 
-                    <div class="input-group">
-                        <label for="jenis-usaha">Jenis Usaha <span class="required">*</span></label>
-                        <select id="jenis-usaha" name="jenis-usaha" required>
-                            <option value="">Pilih jenis usaha</option>
-                            <option value="restoran">Restoran</option>
-                            <option value="kafe">Kafe</option>
-                            <option value="warung">Warung</option>
-                            <option value="katering">Katering</option>
-                            <option value="lainnya">Lainnya</option>
-                        </select>
-                    </div>
+            <div class="input-group">
+              <label for="alamat"
+                >Alamat lengkap <span class="required">*</span></label
+              >
+              <input
+                type="text"
+                id="alamat"
+                name="alamat"
+                placeholder="Alamat lengkap restoran atau usaha anda"
+                required
+              />
+            </div>
+          </div>
 
-                    <div class="input-group">
-                        <label for="alamat">Alamat lengkap <span class="required">*</span></label>
-                        <input type="text" id="alamat" name="alamat" placeholder="Alamat lengkap restoran atau usaha anda" required>
-                    </div>
+          <!-- Informasi Donasi -->
+          <div class="form-section">
+            <h2>Informasi Donasi</h2>
+
+            <div class="input-row">
+              <div class="input-group">
+                <label for="jumlah-porsi"
+                  >Jumlah Porsi <span class="required">*</span></label
+                >
+                <input
+                  type="number"
+                  id="jumlah-porsi"
+                  name="jumlah-porsi"
+                  placeholder="Masukkan jumlah porsi yang ingin didonasikan"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="jadwal"
+                  >Jadwal Pengambilan <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  id="jadwal"
+                  name="jadwal"
+                  placeholder="Contoh estimasi: 17:00 - 19:00"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="jenis-makanan"
+                >Jenis Makanan yang akan didonasikan
+                <span class="required">*</span></label
+              >
+              <textarea
+                id="jenis-makanan"
+                name="jenis-makanan"
+                placeholder="Deskripsikan Jenis makanan yang akan didonasikan (Nasi Kotak, Lauk pauk, dsb)"
+                rows="4"
+                required
+              ></textarea>
+            </div>
+
+            <div class="input-group">
+              <label for="bukti-donasi"
+                >Upload Bukti Donasi <span class="required">*</span></label
+              >
+              <div class="file-upload">
+                <input
+                  type="file"
+                  id="bukti-donasi"
+                  name="bukti-donasi"
+                  accept="image/*,.pdf"
+                  required
+                />
+                <div class="file-upload-display">
+                  <button type="button" class="file-upload-btn">
+                    Choose File
+                  </button>
+                  <span class="file-upload-text">No File Selected</span>
                 </div>
+              </div>
+            </div>
+          </div>
 
-                <!-- Informasi Donasi -->
-                <div class="form-section">
-                    <h2>Informasi Donasi</h2>
-                    
-                    <div class="input-row">
-                        <div class="input-group">
-                            <label for="jumlah-porsi">Jumlah Porsi <span class="required">*</span></label>
-                            <input type="number" id="jumlah-porsi" name="jumlah-porsi" placeholder="Masukkan jumlah porsi yang ingin didonasikan" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="jadwal">Jadwal Pengambilan <span class="required">*</span></label>
-                            <input type="text" id="jadwal" name="jadwal" placeholder="Contoh estimasi: 17:00 - 19:00" required>
-                        </div>
-                    </div>
+          <!-- Agreement Section -->
+          <div class="agreement-section">
+            <div class="checkbox-group">
+              <input type="checkbox" id="terms" name="terms" required />
+              <label for="terms">
+                Saya setuju dengan
+                <a href="#" class="link">Syarat dan Ketentuan</a> serta
+                <a href="#" class="link">Kebijakan Privasi</a> EatConnect
+              </label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="newsletter" name="newsletter" />
+              <label for="newsletter">
+                Saya ingin menerima <a href="#" class="link">newsletter</a> dan
+                update terbaru dari EatConnect
+              </label>
+            </div>
+          </div>
 
-                    <div class="input-group">
-                        <label for="jenis-makanan">Jenis Makanan yang akan didonasikan <span class="required">*</span></label>
-                        <textarea id="jenis-makanan" name="jenis-makanan" placeholder="Deskripsikan Jenis makanan yang akan didonasikan (Nasi Kotak, Lauk pauk, dsb)" rows="4" required></textarea>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="bukti-donasi">Upload Bukti Donasi <span class="required">*</span></label>
-                        <div class="file-upload">
-                            <input type="file" id="bukti-donasi" name="bukti-donasi" accept="image/*,.pdf" required>
-                            <div class="file-upload-display">
-                                <button type="button" class="file-upload-btn">Choose File</button>
-                                <span class="file-upload-text">No File Selected</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Agreement Section -->
-                <div class="agreement-section">
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="terms" name="terms" required>
-                        <label for="terms">
-                            Saya setuju dengan <a href="#" class="link">Syarat dan Ketentuan</a> serta <a href="#" class="link">Kebijakan Privasi</a> EatConnect
-                        </label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="newsletter" name="newsletter">
-                        <label for="newsletter">
-                            Saya ingin menerima <a href="#" class="link">newsletter</a> dan update terbaru dari EatConnect
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Submit Button -->
-                <button type="submit" class="submit-btn">Lanjutkan</button>
-            </form>
-        </div>
+          <!-- Submit Button -->
+          <button type="submit" class="submit-btn">Lanjutkan</button>
+        </form>
+      </div>
     </main>
 
     <script src="../js/donatur.js"></script>
-</body>
+  </body>
 </html>
