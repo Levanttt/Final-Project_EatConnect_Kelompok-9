@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar Sebagai Penerima</title>
+    <link rel="stylesheet" href="../css/penerima.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="#" class="logo">EatConnect</a>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <div class="title-section">
+        <h1>Daftar Sebagai Penerima</h1>
+        <p>Daftarkan lembaga sosial Anda untuk menerima bantuan makanan</p>
+      </div>
+
+      <div class="progress-container">
+        <div class="progress-steps">
+          <div class="step active">
+            <div class="step-circle">1</div>
+            <div class="step-label">Informasi Dasar</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">2</div>
+            <div class="step-label">Verifikasi</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">3</div>
+            <div class="step-label">Selesai</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-container">
+        <form id="penerima-form">
+          <div class="form-section">
+            <h2>Informasi Dasar</h2>
+
+            <div class="input-group">
+              <label for="nama"
+                >Nama Tempat / Lembaga <span class="required">*</span></label
+              >
+              <input
+                type="text"
+                id="nama"
+                name="nama"
+                placeholder="Masukkan nama tempat/lembaga anda"
+                required
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="jenis"
+                >Jenis Tempat <span class="required">*</span></label
+              >
+              <select id="jenis" name="jenis" required>
+                <option value="">-- Pilih jenis tempat --</option>
+                <option value="panti">Panti Asuhan</option>
+                <option value="komunitas">Komunitas</option>
+                <option value="lainnya">Lainnya</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label for="penanggung"
+                >Nama Penanggung Jawab <span class="required">*</span></label
+              >
+              <input
+                type="text"
+                id="penanggung"
+                name="penanggung"
+                placeholder="Masukkan nama penanggung jawab"
+                required
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="telepon"
+                >Nomor Telepon <span class="required">*</span></label
+              >
+              <input
+                type="tel"
+                id="telepon"
+                name="telepon"
+                placeholder="Masukkan nomor telepon"
+                required
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="alamat"
+                >Alamat Lengkap <span class="required">*</span></label
+              >
+              <input
+                type="text"
+                id="alamat"
+                name="alamat"
+                placeholder="Masukkan alamat lengkap anda"
+                required
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="penghuni"
+                >Jumlah Penghuni <span class="required">*</span></label
+              >
+              <select id="penghuni" name="penghuni" required>
+                <option value="">-- Pilih jumlah penghuni --</option>
+                <option value="1-10">1 - 10 orang</option>
+                <option value="11-30">11 - 30 orang</option>
+                <option value=">30">Lebih dari 30 orang</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2>Kebutuhan & Logistik</h2>
+
+            <div class="input-group">
+              <label
+                >Apakah tempat Anda bersedia menerima makanan siap saji dengan
+                jenis yang beragam?</label
+              >
+              <select required>
+                <option value="">-- Pilih jawaban --</option>
+                <option value="ya">Ya</option>
+                <option value="tidak">Tidak</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label
+                >Kapan waktu terbaik bagi Anda untuk menerima makanan?</label
+              >
+              <select required>
+                <option value="">-- Pilih waktu --</option>
+                <option value="pagi">Pagi</option>
+                <option value="siang">Siang</option>
+                <option value="malam">Malam</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label
+                >Seberapa sering Anda ingin menerima bantuan makanan?</label
+              >
+              <select required>
+                <option value="">-- Pilih frekuensi --</option>
+                <option value="harian">Harian</option>
+                <option value="mingguan">Mingguan</option>
+                <option value="bulanan">Bulanan</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label
+                >Apakah tempat Anda memiliki fasilitas penyimpanan makanan
+                seperti kulkas? <span class="required">*</span></label
+              >
+              <select required>
+                <option value="">-- Pilih jawaban --</option>
+                <option value="ya">Ya</option>
+                <option value="tidak">Tidak</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label
+                >Apakah ada kebutuhan khusus terkait makanan yang perlu kami
+                ketahui?</label
+              >
+              <input
+                type="text"
+                placeholder="Jika ada keterangan khusus seperti alergi / larangan pokok, dll"
+              />
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">Lanjutkan</button>
+        </form>
+      </div>
+    </main>
+    <script>
+      document
+        .getElementById("penerima-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault(); // Mencegah form langsung submit
+
+          const form = e.target;
+
+          if (form.checkValidity()) {
+            // Jika semua input valid, arahkan ke halaman verifikasi
+            window.location.href = "verifikasipenerima.html";
+          } else {
+            // Jika ada yang kosong, munculkan validasi HTML5
+            form.reportValidity();
+          }
+        });
+    </script>
+  </body>
+</html>

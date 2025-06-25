@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verifikasi Penerima</title>
+    <link rel="stylesheet" href="../css/verifikasipenerima.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="#" class="logo">EatConnect</a>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <div class="title-section">
+        <h1>Daftar Sebagai Penerima</h1>
+        <p>Daftarkan lembaga sosial Anda untuk menerima bantuan makanan</p>
+      </div>
+
+      <div class="progress-container">
+        <div class="progress-steps">
+          <div class="step completed">
+            <div class="step-circle">1</div>
+            <div class="step-label">Informasi Dasar</div>
+          </div>
+          <div class="step active">
+            <div class="step-circle">2</div>
+            <div class="step-label">Verifikasi</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">3</div>
+            <div class="step-label">Selesai</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-container">
+        <form id="verifikasi-form">
+          <div class="form-section">
+            <h2>Upload Dokumen Pendukung</h2>
+
+            <div class="input-group">
+              <label for="dokumen"
+                >Upload Surat Izin Pendirian / Akta Pendirian
+                <span class="required">*</span></label
+              >
+              <input type="file" id="dokumen" name="dokumen" required />
+            </div>
+
+            <div class="input-group">
+              <label for="fotoLokasi"
+                >Upload Foto Lokasi <span class="required">*</span></label
+              >
+              <input type="file" id="fotoLokasi" name="fotoLokasi" required />
+            </div>
+
+            <div class="input-group checkbox-group">
+              <label>
+                <input type="checkbox" required />
+                Saya menyatakan data yang saya masukkan adalah
+                <strong>benar</strong>
+              </label>
+            </div>
+
+            <div class="input-group checkbox-group">
+              <label>
+                <input type="checkbox" required />
+                Saya setuju dengan <a href="#">Syarat & Ketentuan</a> serta
+                <a href="#">Kebijakan Privasi</a>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">Lanjutkan</button>
+        </form>
+      </div>
+    </main>
+    <script>
+      const form = document.getElementById("verifikasi-form");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault(); // mencegah submit default
+
+        if (form.checkValidity()) {
+          window.location.href = "selesaipenerima.html"; // ganti sesuai nama file halaman selesai
+        } else {
+          form.reportValidity(); // munculkan peringatan validasi
+        }
+      });
+    </script>
+  </body>
+</html>

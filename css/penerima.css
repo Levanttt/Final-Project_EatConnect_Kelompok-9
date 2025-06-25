@@ -1,0 +1,249 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #e8e8e8;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* === Navbar === */
+.navbar {
+  background: linear-gradient(135deg, #4a6fa5 0%, #1e3a5f 100%);
+  padding: 16px 32px;
+}
+
+.logo {
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* === Main === */
+.main-content {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* === Title Section === */
+.title-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.title-section h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.title-section p {
+  font-size: 15px;
+  color: #555;
+  margin-top: 8px;
+}
+
+/* === Progress Bar === */
+.progress-container {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 0 20px;
+}
+
+.progress-steps::before {
+  content: "";
+  position: absolute;
+  top: 25px;
+  left: 65px;
+  right: 65px;
+  height: 4px;
+  background: #dcdcdc;
+  z-index: 1;
+  border-radius: 2px;
+}
+
+.progress-steps::after {
+  content: "";
+  position: absolute;
+  top: 25px;
+  left: 65px;
+  height: 4px;
+  background: #1e3a5f;
+  z-index: 1;
+  border-radius: 2px;
+  width: 25%; /* default untuk halaman ke-2 */
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.step-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #d0d0d0;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.step-label {
+  font-size: 13px;
+  color: #555;
+  text-align: center;
+  white-space: nowrap;
+  padding: 0 8px;
+}
+
+.step.active .step-circle,
+.step.completed .step-circle {
+  background: #1e3a5f;
+}
+
+.step.active .step-label,
+.step.completed .step-label {
+  color: #1e3a5f;
+  font-weight: 600;
+}
+
+/* === Form Container === */
+.form-container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+}
+
+.form-section {
+  margin-bottom: 25px;
+}
+
+.form-section h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e3a5f;
+  margin-bottom: 20px;
+}
+
+/* === Input Group === */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1e3a5f;
+  margin-bottom: 6px;
+}
+
+.required {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+input[type="tel"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #1e3a5f;
+  box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.1);
+}
+
+/* === Button === */
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(#ff8c42, #ff6b35);
+  color: white;
+  border: none;
+  padding: 14px 0;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(255, 122, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 122, 0, 0.4);
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 20px;
+  }
+
+  .step-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .step-label {
+    font-size: 11px;
+  }
+
+  .form-container {
+    padding: 20px;
+  }
+
+  .progress-steps::before {
+    left: 35px;
+    right: 35px;
+  }
+}
