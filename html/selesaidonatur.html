@@ -11,30 +11,32 @@
     />
   </head>
   <body>
-    <!-- Header -->
-    <nav class="navbar">
-      <div class="navbar-container">
-        <span class="logo">EatConnect</span>
-      </div>
-    </nav>
+  <!-- Navbar -->
+<nav class="navbar">
+  <div class="navbar-container">
+    <a href="mainlandingpage.html" class="logo">EatConnect</a>
+  </div>
+</nav>
 
-    <!-- Selesai Container -->
-    <div class="finish-container">
-      <div class="card">
-        <div class="icon-check">
-          <span>✔</span>
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="content-wrapper">
+        <div class="success-icon">
+          <span class="checkmark">✓</span>
         </div>
-        <h1>Terima Kasih atas Donasi Anda</h1>
-        <p>
-          Tim kami akan segera menuju lokasi Anda untuk mengambil makanan yang
-          telah didonasikan. Setelah makanan diterima oleh pihak yang
-          membutuhkan, kami akan mengirimkan bukti penerimaan melalui nomor
-          telepon yang Anda daftarkan.
+        
+        <h2 class="title">Terima Kasih atas Donasi Anda</h2>
+        
+        <p class="description">
+          Tim kami akan segera menuju lokasi Anda untuk mengambil makanan yang telah didonasikan. Setelah makanan diterima oleh pihak yang membutuhkan, kami akan mengirimkan bukti penerimaan melalui nomor telepon yang Anda daftarkan.
         </p>
-        <a href="mainlandingpage.html" class="btn-back"
-          >Kembali Ke Halaman Utama</a
-        >
+        
+        <button class="btn-primary" id="backToHome">
+          Kembali Ke Halaman Utama
+        </button>
       </div>
-    </div>
+    </main>
+
+    <script src="../js/donaturselesai.js"></script>
   </body>
 </html>

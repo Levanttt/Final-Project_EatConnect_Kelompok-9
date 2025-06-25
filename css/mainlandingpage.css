@@ -9,7 +9,6 @@ body {
   line-height: 1.6;
 }
 
-/* Header Styles */
 .header {
   background: linear-gradient(
     135deg,
@@ -1170,4 +1169,8 @@ button:focus {
 
 .profile-btn:hover {
   background: linear-gradient(to right, #1e4f77, #266a98);
+}
+
+html {
+  scroll-behavior: smooth;
 }
