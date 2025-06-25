@@ -11,9 +11,17 @@
     />
   </head>
   <body>
+    <!-- Header -->
     <nav class="navbar">
       <div class="navbar-container">
-        <a href="#" class="logo">EatConnect</a>
+        <a href="mainlandingpage.html" class="logo">EatConnect</a>
+
+        <div class="nav-right">
+          <button class="back-button" onclick="goBack()">
+            <span>←</span>
+            <span>Kembali</span>
+          </button>
+        </div>
       </div>
     </nav>
 
@@ -111,25 +119,6 @@
         </form>
       </div>
     </main>
-    <script>
-      document
-        .getElementById("relawan-form")
-        .addEventListener("submit", function (e) {
-          e.preventDefault(); // ← cegah reload halaman
-
-          const nama = document.getElementById("nama").value.trim();
-          const nik = document.getElementById("nik").value.trim();
-          const email = document.getElementById("email").value.trim();
-          const telepon = document.getElementById("telepon").value.trim();
-          const alamat = document.getElementById("alamat").value.trim();
-
-          if (!nama || !nik || !email || !telepon || !alamat) {
-            alert("Harap isi semua kolom yang wajib diisi!");
-          } else {
-            // arahkan ke halaman selanjutnya jika semua valid
-            window.location.href = "ketersedianrelawan.html"; // pastikan file ini benar
-          }
-        });
-    </script>
+    <script src="../js/relawan.js"></script>
   </body>
 </html>

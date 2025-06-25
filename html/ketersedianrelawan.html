@@ -11,9 +11,17 @@
     />
   </head>
   <body>
+    <!-- Header -->
     <nav class="navbar">
       <div class="navbar-container">
-        <a href="#" class="logo">EatConnect</a>
+        <a href="mainlandingpage.html" class="logo">EatConnect</a>
+
+        <div class="nav-right">
+          <button class="back-button" onclick="goBack()">
+            <span>←</span>
+            <span>Kembali</span>
+          </button>
+        </div>
       </div>
     </nav>
 
@@ -89,23 +97,6 @@
         </form>
       </div>
     </main>
-    <script>
-      document
-        .getElementById("ketersediaan-form")
-        .addEventListener("submit", function (e) {
-          e.preventDefault(); // mencegah reload default form
-
-          const hari = document.getElementById("hari").value.trim();
-          const jam = document.getElementById("jam").value.trim();
-          const kendaraan = document.getElementById("kendaraan").value.trim();
-
-          if (!hari || !jam || !kendaraan) {
-            alert("Harap isi semua kolom yang wajib diisi!");
-          } else {
-            // arahkan ke halaman selesai
-            window.location.href = "selesairelawan.html"; // pastikan file selesai.html tersedia di folder yang sama
-          }
-        });
-    </script>
+    <script src="../js/ketersediaanrelawan.js"></script>
   </body>
 </html>
