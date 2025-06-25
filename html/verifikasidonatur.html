@@ -12,30 +12,6 @@
     />
     <link rel="stylesheet" href="../css/infodanverifikasi.css" />
   </head>
-
-  <script>
-  function goBack() {
-    window.history.back();
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("verifikasi-form");
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault(); // Cegah reload
-
-      // Validasi input native HTML
-      if (!form.checkValidity()) {
-        form.reportValidity(); // Tampilkan pesan error default browser
-        return;
-      }
-
-      // Jika valid, redirect ke halaman selesai
-      window.location.href = "selesaidonatur.html";
-    });
-  });
-</script>
-
   <body>
     <body class="step-2">
     <!-- Header -->

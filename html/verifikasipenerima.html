@@ -10,10 +10,16 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <!-- Header -->
     <nav class="navbar">
       <div class="navbar-container">
-        <a href="#" class="logo">EatConnect</a>
+        <a href="mainlandingpage.html" class="logo">EatConnect</a>
+        <div class="nav-right">
+          <button class="back-button" onclick="goBack()">
+            <span>←</span>
+            <span>Kembali</span>
+          </button>
+        </div>
       </div>
     </nav>
 
@@ -81,18 +87,6 @@
         </form>
       </div>
     </main>
-    <script>
-      const form = document.getElementById("verifikasi-form");
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault(); // mencegah submit default
-
-        if (form.checkValidity()) {
-          window.location.href = "selesaipenerima.html"; // ganti sesuai nama file halaman selesai
-        } else {
-          form.reportValidity(); // munculkan peringatan validasi
-        }
-      });
-    </script>
+    <script src="../js/verifikasipenerima.js"></script>
   </body>
 </html>

@@ -13,7 +13,14 @@
   <body>
     <nav class="navbar">
       <div class="navbar-container">
-        <a href="#" class="logo">EatConnect</a>
+        <a href="mainlandingpage.html" class="logo">EatConnect</a>
+
+        <div class="nav-right">
+          <button class="back-button" onclick="goBack()">
+            <span>←</span>
+            <span>Kembali</span>
+          </button>
+        </div>
       </div>
     </nav>
 
@@ -65,7 +72,8 @@
               <select id="jenis" name="jenis" required>
                 <option value="">-- Pilih jenis tempat --</option>
                 <option value="panti">Panti Asuhan</option>
-                <option value="komunitas">Komunitas</option>
+                <option value="panti">Panti Jompo</option>
+                <option value="komunitas">Pondok Pesantren</option>
                 <option value="lainnya">Lainnya</option>
               </select>
             </div>
@@ -189,22 +197,6 @@
         </form>
       </div>
     </main>
-    <script>
-      document
-        .getElementById("penerima-form")
-        .addEventListener("submit", function (e) {
-          e.preventDefault(); // Mencegah form langsung submit
-
-          const form = e.target;
-
-          if (form.checkValidity()) {
-            // Jika semua input valid, arahkan ke halaman verifikasi
-            window.location.href = "verifikasipenerima.html";
-          } else {
-            // Jika ada yang kosong, munculkan validasi HTML5
-            form.reportValidity();
-          }
-        });
-    </script>
+    <script src="../js/penerima.js"></script>
   </body>
 </html>

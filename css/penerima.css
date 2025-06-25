@@ -14,14 +14,64 @@ body {
 /* === Navbar === */
 .navbar {
   background: linear-gradient(135deg, #4a6fa5 0%, #1e3a5f 100%);
-  padding: 16px 32px;
+  padding: 15px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  margin: -20px -20px 30px -20px;
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.logo {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  margin-left: 2rem;
+}
+
+.nav-menu a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.back-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
 }
 
 .logo {
   color: white;
   font-size: 20px;
   font-weight: 700;
-  text-decoration: none;
+  letter-spacing: 1px;
 }
 
 /* === Main === */
@@ -34,24 +84,29 @@ body {
 /* === Title Section === */
 .title-section {
   text-align: center;
-  margin-bottom: 40px;
+  margin: 40px 0;
+  margin-top: -1rem;
 }
 
 .title-section h1 {
-  font-size: 28px;
+  font-size: 36px;
   font-weight: 700;
-  color: #2c3e50;
+  color: #2c5aa0;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
 }
 
 .title-section p {
-  font-size: 15px;
-  color: #555;
-  margin-top: 8px;
+  font-size: 16px;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
 }
 
 /* === Progress Bar === */
 .progress-container {
-  margin-bottom: 40px;
+  margin: 50px 0;
   position: relative;
 }
 
@@ -59,20 +114,20 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
   position: relative;
-  padding: 0 20px;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
+/* Progress Line */
 .progress-steps::before {
   content: "";
   position: absolute;
   top: 25px;
-  left: 65px;
-  right: 65px;
+  left: 25px;
+  right: 25px;
   height: 4px;
-  background: #dcdcdc;
+  background: #d0d0d0;
   z-index: 1;
   border-radius: 2px;
 }
@@ -81,19 +136,25 @@ body {
   content: "";
   position: absolute;
   top: 25px;
-  left: 65px;
+  left: 45px;
+  width: 25%;
   height: 4px;
-  background: #1e3a5f;
-  z-index: 1;
+  background: linear-gradient(90deg, #4a6fa5, #2c5aa0);
+  z-index: 2;
   border-radius: 2px;
-  width: 25%; /* default untuk halaman ke-2 */
+  transition: width 0.3s ease;
+}
+
+body.step-1 .progress-steps::after {
+  width: calc(30% - 25px); 
 }
 
 .step {
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 2;
+  position: relative;
+  z-index: 3;
 }
 
 .step-circle {
@@ -108,24 +169,35 @@ body {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 8px;
+  transition: all 0.3s ease;
+}
+
+.step.active .step-circle {
+  background: linear-gradient(135deg, #4a6fa5, #2c5aa0);
+  box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
+}
+
+.step.completed .step-circle {
+  background: linear-gradient(135deg, #4a6fa5, #2c5aa0);
+  color: white;
+  box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
+}
+
+.step.completed .step-label {
+  color: #4a6fa5;
+  font-weight: 600;
 }
 
 .step-label {
-  font-size: 13px;
-  color: #555;
+  font-size: 14px;
+  color: #999;
+  font-weight: 500;
   text-align: center;
-  white-space: nowrap;
-  padding: 0 8px;
+  min-width: 100px;
 }
 
-.step.active .step-circle,
-.step.completed .step-circle {
-  background: #1e3a5f;
-}
-
-.step.active .step-label,
-.step.completed .step-label {
-  color: #1e3a5f;
+.step.active .step-label {
+  color: #4a6fa5;
   font-weight: 600;
 }
 

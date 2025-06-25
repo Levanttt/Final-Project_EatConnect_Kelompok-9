@@ -74,28 +74,31 @@ body {
   padding: 40px 20px;
 }
 
-/* === Title Section === */
 .title-section {
   text-align: center;
-  margin-bottom: 40px;
+  margin: 40px 0;
+  margin-top: -2rem;
 }
 
 .title-section h1 {
-  font-size: 28px;
+  font-size: 36px;
   font-weight: 700;
-  color: #2c3e50;
+  color: #4a6fa5;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
 }
 
 .title-section p {
-  font-size: 15px;
-  color: #555;
-  margin-top: 8px;
+  font-size: 16px;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
 }
 
-/* === Progress Bar === */
+/* Progress Steps */
 .progress-container {
-  position: relative;
-  margin-bottom: 40px;
+  margin: 50px 0;  position: relative;
 }
 
 .progress-steps {
@@ -103,40 +106,46 @@ body {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  padding: 0 20px;
+  max-width: 500px;
+  margin: 0 auto;
 }
-
+/* Progress Line */
 .progress-steps::before {
   content: "";
   position: absolute;
   top: 25px;
-  left: calc(16.66% + 25px);
-  right: calc(16.66% + 25px);
+  left: 25px;
+  right: 25px;
   height: 4px;
-  background: #dcdcdc;
-  z-index: 0;
+  background: #d0d0d0;
+  z-index: 1;
   border-radius: 2px;
 }
 
+/* Default untuk halaman verifikasi (step 2) */
 .progress-steps::after {
   content: "";
   position: absolute;
   top: 25px;
-  left: calc(16.66% + 25px);
-  width: calc((100% - 2 * (16.66% + 25px)) * 0.33); /* Untuk step 1 aktif */
+  left: 45px;
+  width: 25%;
   height: 4px;
-  background: #1e3a5f;
-  z-index: 1;
+  background: linear-gradient(90deg, #4a6fa5, #2c5aa0);
+  z-index: 2;
   border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+body.step-1 .progress-steps::after {
+  width: calc(30% - 25px); 
 }
 
 .step {
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 2;
   position: relative;
-  flex: 1;
+  z-index: 3;
 }
 
 .step-circle {
@@ -151,23 +160,35 @@ body {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 8px;
-  z-index: 2;
+  transition: all 0.3s ease;
 }
 
 .step.active .step-circle {
-  background: #1e3a5f;
+  background: linear-gradient(135deg, #4a6fa5, #2c5aa0);
+  box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
+}
+
+.step.completed .step-circle {
+  background: linear-gradient(135deg, #4a6fa5, #2c5aa0);
+  color: white;
+  box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
+}
+
+.step.completed .step-label {
+  color: #4a6fa5;
+  font-weight: 600;
 }
 
 .step-label {
-  font-size: 13px;
-  color: #555;
+  font-size: 14px;
+  color: #999;
+  font-weight: 500;
   text-align: center;
-  white-space: nowrap;
-  padding: 0 8px;
+  min-width: 100px;
 }
 
 .step.active .step-label {
-  color: #1e3a5f;
+  color: #4a6fa5;
   font-weight: 600;
 }
 
