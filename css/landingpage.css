@@ -103,6 +103,13 @@ body {
   width: 100%;
 }
 
+.navbar a:focus,
+.navbar a:active {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
 .bergabung-btn {
   background: linear-gradient(45deg, #ff6b35, #ff8c42);
   color: white;
