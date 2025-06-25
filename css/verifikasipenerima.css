@@ -136,9 +136,9 @@ body {
   transition: width 0.3s ease;
 }
 
-/* Override untuk halaman step-1 (informasi dasar) */
+
 body.step-1 .progress-steps::after {
-  width: calc(30% - 25px); /* Ujung garis di tengah antara step 1 dan 2 */
+  width: calc(30% - 25px); /
 }
 
 .step {
