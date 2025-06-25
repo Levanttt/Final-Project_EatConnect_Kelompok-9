@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ketersediaan & Kendaraan</title>
+    <link rel="stylesheet" href="../css/ketersediaanrelawan.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="#" class="logo">EatConnect</a>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <div class="title-section">
+        <h1>Daftar Sebagai Relawan</h1>
+        <p>Bergabung sebagai penghubung antara donatur dan penerima bantuan</p>
+      </div>
+
+      <div class="progress-container">
+        <div class="progress-steps">
+          <div class="step completed">
+            <div class="step-circle">1</div>
+            <div class="step-label">Informasi Dasar</div>
+          </div>
+          <div class="step active">
+            <div class="step-circle">2</div>
+            <div class="step-label">Ketersediaan & Kendaraan</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">3</div>
+            <div class="step-label">Selesai</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-container">
+        <form id="ketersediaan-form">
+          <div class="form-section">
+            <h2>Ketersediaan & Kendaraan</h2>
+
+            <div class="input-group">
+              <label for="hari"
+                >Hari Tersedia <span class="required">*</span></label
+              >
+              <input
+                type="text"
+                id="hari"
+                name="hari"
+                placeholder="Pilih jadwal anda yang tersedia"
+                required
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="jam"
+                >Jam Tersedia <span class="required">*</span></label
+              >
+              <input
+                type="text"
+                id="jam"
+                name="jam"
+                placeholder="Pilih estimasi jam anda tersedia"
+                required
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="kendaraan"
+                >Kendaraan Tersedia <span class="required">*</span></label
+              >
+              <input
+                type="text"
+                id="kendaraan"
+                name="kendaraan"
+                placeholder="Pilih jenis kendaraan yang anda miliki"
+                required
+              />
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">Lanjutkan</button>
+        </form>
+      </div>
+    </main>
+    <script>
+      document
+        .getElementById("ketersediaan-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault(); // mencegah reload default form
+
+          const hari = document.getElementById("hari").value.trim();
+          const jam = document.getElementById("jam").value.trim();
+          const kendaraan = document.getElementById("kendaraan").value.trim();
+
+          if (!hari || !jam || !kendaraan) {
+            alert("Harap isi semua kolom yang wajib diisi!");
+          } else {
+            // arahkan ke halaman selesai
+            window.location.href = "selesairelawan.html"; // pastikan file selesai.html tersedia di folder yang sama
+          }
+        });
+    </script>
+  </body>
+</html>

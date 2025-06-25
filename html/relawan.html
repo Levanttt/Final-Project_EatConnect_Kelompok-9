@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar Sebagai Relawan</title>
+    <link rel="stylesheet" href="../css/relawan.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="#" class="logo">EatConnect</a>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <div class="title-section">
+        <h1>Daftar Sebagai Relawan</h1>
+        <p>Bergabung sebagai penghubung antara donatur dan penerima bantuan</p>
+      </div>
+
+      <div class="progress-container">
+        <div class="progress-steps">
+          <div class="step active">
+            <div class="step-circle">1</div>
+            <div class="step-label">Informasi Dasar</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">2</div>
+            <div class="step-label">Ketersediaan & Kendaraan</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">3</div>
+            <div class="step-label">Selesai</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-container">
+        <form id="relawan-form">
+          <div class="form-section">
+            <h2>Informasi Dasar</h2>
+
+            <div class="input-group">
+              <label for="nama"
+                >Nama Lengkap <span class="required">*</span></label
+              >
+              <input
+                type="text"
+                id="nama"
+                name="nama"
+                placeholder="Masukkan nama lengkap anda"
+                required
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="nik">NIK <span class="required">*</span></label>
+              <input
+                type="text"
+                id="nik"
+                name="nik"
+                placeholder="Masukkan NIK anda"
+                required
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="email">Email <span class="required">*</span></label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="example@gmail.com"
+                required
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="telepon"
+                >Nomor Telepon <span class="required">*</span></label
+              >
+              <input
+                type="tel"
+                id="telepon"
+                name="telepon"
+                placeholder="+62 xxx xxxx xxx"
+                required
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="alamat"
+                >Alamat Lengkap <span class="required">*</span></label
+              >
+              <input
+                type="text"
+                id="alamat"
+                name="alamat"
+                placeholder="Masukkan alamat lengkap anda"
+                required
+              />
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">Lanjutkan</button>
+        </form>
+      </div>
+    </main>
+    <script>
+      document
+        .getElementById("relawan-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault(); // ← cegah reload halaman
+
+          const nama = document.getElementById("nama").value.trim();
+          const nik = document.getElementById("nik").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const telepon = document.getElementById("telepon").value.trim();
+          const alamat = document.getElementById("alamat").value.trim();
+
+          if (!nama || !nik || !email || !telepon || !alamat) {
+            alert("Harap isi semua kolom yang wajib diisi!");
+          } else {
+            // arahkan ke halaman selanjutnya jika semua valid
+            window.location.href = "ketersedianrelawan.html"; // pastikan file ini benar
+          }
+        });
+    </script>
+  </body>
+</html>
