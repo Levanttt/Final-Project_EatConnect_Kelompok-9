@@ -1171,3 +1171,13 @@ button:focus {
 .profile-btn:hover {
   background: linear-gradient(to right, #1e4f77, #266a98);
 }
+.fitur-title-link {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.fitur-title-link:hover {
+  color: #ffad4d; /* warna oranye muda untuk efek hover */
+  text-decoration: underline;
+}

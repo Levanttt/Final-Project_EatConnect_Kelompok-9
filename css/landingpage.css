@@ -1092,3 +1092,13 @@ button:focus {
     transform: translateY(0);
   }
 }
+.fitur-title-link {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.fitur-title-link:hover {
+  color: #ffad4d; /* warna oranye muda untuk efek hover */
+  text-decoration: underline;
+}
