@@ -61,3 +61,13 @@ document.querySelectorAll('a[href="#hero"]').forEach(link => {
   });
 });
 
+document.querySelectorAll('.fitur-edukasi .clickable-card').forEach(card => {
+  card.style.cursor = "pointer";
+  card.addEventListener('click', function() {
+    const url = card.getAttribute('data-url');
+    if (url) {
+      window.location.href = url;
+    }
+  });
+});
+

@@ -1,6 +1,6 @@
- function goBack() {
-            window.history.back();
-        }
+function goBack() {
+    window.location.href = "mainlandingpage.html";
+}
 
         // Slider functionality
         class Slider {
@@ -117,5 +117,50 @@
                 }
             }
             
-            currentSlider = null;
-        });
+    currentSlider = null;
+});
+
+// Video popup logic
+const videoData = [
+  // Urut sesuai urutan .video-card di HTML
+  { src: "https://youtube.com/embed/oaPcRihFodw?si=dxB31xvKdTsPV-oI", title: "Sarapan Diet Untuk Seminggu" },
+  { src: "https://www.youtube.com/embed/7Qp5vcuMIlk", title: "Pedoman Gizi Seimbang" },
+  { src: "https://www.youtube.com/embed/8ZK_S-46KwE", title: "Animasi 5 Gerakan Sehat" },
+  { src: "https://www.youtube.com/embed/9QK8H2gQfzw", title: "12 Inspirasi Menu Sehat Untuk Seminggu" },
+  { src: "https://www.youtube.com/embed/7Qp5vcuMIlk", title: "Cara Membuat Smoothie Bowl" },
+  { src: "https://www.youtube.com/embed/8ZK_S-46KwE", title: "Meal Prep untuk Seminggu" }
+];
+
+document.addEventListener('DOMContentLoaded', function() {
+  const videoCards = document.querySelectorAll('.video-card');
+  const modal = document.getElementById('video-modal');
+  const modalPlayer = document.getElementById('video-modal-player');
+  const modalClose = document.getElementById('video-modal-close');
+
+  videoCards.forEach((card, idx) => {
+    card.style.cursor = "pointer";
+    card.addEventListener('click', function() {
+      const data = videoData[idx];
+      if (data) {
+        let src = data.src;
+        // Tambahkan autoplay=1 dengan benar
+        src += src.includes('?') ? '&autoplay=1' : '?autoplay=1';
+        modalPlayer.innerHTML = `<iframe width="100%" height="100%" src="${src}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+        modal.style.display = "flex";
+      }
+    });
+  });
+
+  modalClose.addEventListener('click', function() {
+    modal.style.display = "none";
+    modalPlayer.innerHTML = "";
+  });
+
+  // Close modal on outside click
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      modal.style.display = "none";
+      modalPlayer.innerHTML = "";
+    }
+  });
+});
