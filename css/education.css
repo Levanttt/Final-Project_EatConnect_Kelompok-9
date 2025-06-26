@@ -226,7 +226,7 @@
             display: flex;
             transition: transform 0.3s ease;
             gap: 30px;
-            margin-right: -1rem;
+            margin-right: -1rem; 
         }
 
         /* Articles Section */
