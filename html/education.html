@@ -1,209 +1,282 @@
-
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EatConnect - Belajar Gizi Lebih Cerdas</title>
-</head>
-<link rel="stylesheet" href="../css/education.css" />
-<body>
+  </head>
+  <link rel="stylesheet" href="../css/education.css" />
+  <body>
     <!-- Navbar -->
     <nav class="navbar">
-        <div class="navbar-container">
-            <a href="mainlandingpage.html" class="logo">EatConnect</a>
-            <ul class="nav-menu">
-                <!-- nav-link -->
-            </ul>
-            <div class="nav-right">
-                <button class="back-button" onclick="goBack()">
-                    <span>←</span>
-                    <span>Kembali</span>
-                </button>
-            </div>
+      <div class="navbar-container">
+        <a href="mainlandingpage.html" class="logo">EatConnect</a>
+        <ul class="nav-menu">
+          <!-- nav-link -->
+        </ul>
+        <div class="nav-right">
+          <button class="back-button" onclick="goBack()">
+            <span>←</span>
+            <span>Kembali</span>
+          </button>
         </div>
+      </div>
     </nav>
 
     <!-- Header Section -->
     <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <h1 class="header-title">Belajar Gizi Lebih Cerdas Bersama EatConnect</h1>
-                <p class="header-subtitle">Mari mempelajari mengenai kesehatan bersama</p>
-            </div>
+      <div class="container">
+        <div class="header-content">
+          <h1 class="header-title">
+            Belajar Gizi Lebih Cerdas Bersama EatConnect
+          </h1>
+          <p class="header-subtitle">
+            Mari mempelajari mengenai kesehatan bersama
+          </p>
         </div>
+      </div>
     </header>
 
     <!-- Main Content -->
     <main class="main-content">
-        <div class="container">
-            <!-- Artikel Kesehatan Section -->
-            <section class="articles-section">
-                <div class="section-header">
-                    <h2 class="section-title">
-                        <span class="section-icon">📰</span>
-                        Artikel Kesehatan
-                    </h2>
-                    <div class="nav-buttons">
-                        <button class="nav-btn" id="articles-prev">❮</button>
-                        <button class="nav-btn" id="articles-next">❯</button>
-                    </div>
+      <div class="container">
+        <!-- Artikel Kesehatan Section -->
+        <section class="articles-section">
+          <div class="section-header">
+            <h2 class="section-title">
+              <span class="section-icon">📰</span>
+              Artikel Kesehatan
+            </h2>
+            <div class="nav-buttons">
+              <button class="nav-btn" id="articles-prev">❮</button>
+              <button class="nav-btn" id="articles-next">❯</button>
+            </div>
+          </div>
+          <div class="slider-container">
+            <div class="slider-wrapper" id="articles-slider">
+              <article class="article-card">
+                <div class="article-image">
+                  <img src="../Image/image 9.png" alt="Cegah Stunting" />
                 </div>
-                <div class="slider-container">
-                    <div class="slider-wrapper" id="articles-slider">
-                        <article class="article-card">
-                            <div class="article-image">
-                                <img src="https://via.placeholder.com/400x250/4A90E2/FFFFFF?text=Cegah+Stunting" alt="Cegah Stunting">
-                            </div>
-                            <div class="article-content">
-                                <h3 class="article-title">Cegah Stunting, Kenali Penyebabnya</h3>
-                                <p class="article-description">Stunting merupakan kondisi gagal tumbuh pada anak yang disebabkan kekurangan gizi kronis. Pelajari cara pencegahan yang tepat.</p>
-                                <button class="btn-read-more">Pelajari Selengkapnya</button>
-                            </div>
-                        </article>
-
-                        <article class="article-card">
-                            <div class="article-image">
-                                <img src="https://via.placeholder.com/400x250/4A90E2/FFFFFF?text=Langkah+Kecil" alt="Langkah Kecil">
-                            </div>
-                            <div class="article-content">
-                                <h3 class="article-title">Langkah Kecil, Berdampak Besar: Berbagi Harapan di Jalanan</h3>
-                                <p class="article-description">Memulai aksi nyata dari hal-hal kecil untuk membantu sesama yang membutuhkan bantuan nutrisi sehat.</p>
-                                <button class="btn-read-more">Pelajari Selengkapnya</button>
-                            </div>
-                        </article>
-
-                        <article class="article-card">
-                            <div class="article-image">
-                                <img src="https://via.placeholder.com/400x250/4A90E2/FFFFFF?text=Asupan+Gizi" alt="Rekomendasi Asupan">
-                            </div>
-                            <div class="article-content">
-                                <h3 class="article-title">Rekomendasi Asupan Gizi & Nutrisi Seimbang untuk Bantu Tumbuh Kembang Anak 1 Tahun ke Atas</h3>
-                                <p class="article-description">Panduan lengkap untuk memberikan nutrisi terbaik bagi anak dalam masa pertumbuhan yang optimal.</p>
-                                <button class="btn-read-more">Pelajari Selengkapnya</button>
-                            </div>
-                        </article>
-
-                        <article class="article-card">
-                            <div class="article-image">
-                                <img src="https://via.placeholder.com/400x250/32CD32/FFFFFF?text=Makanan+Sehat" alt="Makanan Sehat">
-                            </div>
-                            <div class="article-content">
-                                <h3 class="article-title">5 Makanan Super untuk Meningkatkan Imunitas Tubuh</h3>
-                                <p class="article-description">Temukan makanan-makanan yang dapat membantu memperkuat sistem kekebalan tubuh secara alami.</p>
-                                <button class="btn-read-more">Pelajari Selengkapnya</button>
-                            </div>
-                        </article>
-
-                        <article class="article-card">
-                            <div class="article-image">
-                                <img src="https://via.placeholder.com/400x250/FF6347/FFFFFF?text=Diet+Sehat" alt="Diet Sehat">
-                            </div>
-                            <div class="article-content">
-                                <h3 class="article-title">Tips Diet Sehat untuk Remaja</h3>
-                                <p class="article-description">Cara menjaga pola makan sehat bagi remaja untuk mendukung pertumbuhan dan aktivitas harian.</p>
-                                <button class="btn-read-more">Pelajari Selengkapnya</button>
-                            </div>
-                        </article>
-                    </div>
+                <div class="article-content">
+                  <h3 class="article-title">
+                    Cegah Stunting, Kenali Penyebabnya
+                  </h3>
+                  <p class="article-description">
+                    Stunting merupakan kondisi gagal tumbuh pada anak yang
+                    disebabkan kekurangan gizi kronis. Pelajari cara pencegahan
+                    yang tepat.
+                  </p>
+                  <a
+                    href="https://indonesiabaik.id/infografis/cegah-stunting-kenali-penyebabnya"
+                    target="_blank"
+                    class="btn-read-more"
+                    >Pelajari Selengkapnya</a
+                  >
                 </div>
-            </section>
+              </article>
 
-            <!-- Video Section -->
-            <section class="videos-section">
-                <div class="section-header">
-                    <h2 class="section-title">Video Edukasi & Tips Memasak</h2>
-                    <div class="nav-buttons">
-                        <button class="nav-btn" id="videos-prev">❮</button>
-                        <button class="nav-btn" id="videos-next">❯</button>
-                    </div>
+              <article class="article-card">
+                <div class="article-image">
+                  <img src="../Image/image 10.png" alt="Langkah Kecil" />
                 </div>
-                <div class="slider-container">
-                    <div class="slider-wrapper" id="videos-slider">
-                        <div class="video-card">
-                            <div class="video-thumbnail">
-                                <img src="https://via.placeholder.com/350x200/FF6B6B/FFFFFF?text=Sarapan+Diet" alt="Sarapan Diet">
-                                <div class="play-button">▶</div>
-                                <span class="video-duration">7:17</span>
-                            </div>
-                            <h3 class="video-title">Sarapan Diet Untuk Seminggu, No Gula, Minyak, Tepung</h3>
-                        </div>
-
-                        <div class="video-card">
-                            <div class="video-thumbnail">
-                                <img src="https://via.placeholder.com/350x200/4ECDC4/FFFFFF?text=Pedoman+Gizi" alt="Pedoman Gizi">
-                                <div class="play-button">▶</div>
-                                <span class="video-duration">5:47</span>
-                            </div>
-                            <h3 class="video-title">Pedoman Gizi Seimbang</h3>
-                        </div>
-
-                        <div class="video-card">
-                            <div class="video-thumbnail">
-                                <img src="https://via.placeholder.com/350x200/45B7D1/FFFFFF?text=5+Gerakan" alt="5 Gerakan Sehat">
-                                <div class="play-button">▶</div>
-                                <span class="video-duration">3:22</span>
-                            </div>
-                            <h3 class="video-title">Animasi 5 Gerakan Sehat</h3>
-                        </div>
-
-                        <div class="video-card">
-                            <div class="video-thumbnail">
-                                <img src="https://via.placeholder.com/350x200/96CEB4/FFFFFF?text=12+Inspirasi" alt="12 Inspirasi">
-                                <div class="play-button">▶</div>
-                                <span class="video-duration">8:45</span>
-                            </div>
-                            <h3 class="video-title">12 Inspirasi Menu Sehat Untuk Seminggu</h3>
-                        </div>
-
-                        <div class="video-card">
-                            <div class="video-thumbnail">
-                                <img src="https://via.placeholder.com/350x200/FFB6C1/FFFFFF?text=Smoothie+Bowl" alt="Smoothie Bowl">
-                                <div class="play-button">▶</div>
-                                <span class="video-duration">6:30</span>
-                            </div>
-                            <h3 class="video-title">Cara Membuat Smoothie Bowl yang Menyehatkan</h3>
-                        </div>
-
-                        <div class="video-card">
-                            <div class="video-thumbnail">
-                                <img src="https://via.placeholder.com/350x200/DDA0DD/FFFFFF?text=Meal+Prep" alt="Meal Prep">
-                                <div class="play-button">▶</div>
-                                <span class="video-duration">12:15</span>
-                            </div>
-                            <h3 class="video-title">Meal Prep untuk Pemula - Hemat Waktu dan Sehat</h3>
-                        </div>
-                    </div>
+                <div class="article-content">
+                  <h3 class="article-title">
+                    Peduli sesama : Berbagi Kebahagiaan dengan Berbagi Makanan
+                    di jalan
+                  </h3>
+                  <p class="article-description">
+                    Memulai aksi nyata dari hal-hal kecil untuk membantu sesama
+                    yang membutuhkan bantuan nutrisi sehat.
+                  </p>
+                  <a
+                    href="https://www.kompasiana.com/naylafadhlillah9137/67653cdc34777c5a2c0c60a2/peduli-sesama-berbagi-kebahagiaan-dengan-berbagi-makanan-di-jalan"
+                    target="_blank"
+                    class="btn-read-more"
+                    >Pelajari Selengkapnya</a
+                  >
                 </div>
-            </section>
+              </article>
 
-            <!-- Forum Section -->
-            <section class="forum-section">
-                <h2 class="section-title">
-                    <span class="section-icon">💬</span>
-                    Forum Komunitas
-                </h2>
-                <div class="forum-grid">
-                    <div class="forum-card forum-discussion">
-                        <div class="forum-icon">👥</div>
-                        <div class="forum-content">
-                            <h3>Forum Diskusi Terbuka</h3>
-                            <p>Bergabunglah dalam forum komunitas tempat kamu bisa berbagi pengalaman, bertanya, memberi saran, atau sekadar ngobrol santai soal makanan, diet, dan kesehatan. Semua orang bisa ikut diskusi—karena belajar bareng itu lebih asyik!</p>
-                        </div>
-                    </div>
-
-                    <div class="forum-card expert-consultation">
-                        <div class="forum-icon">🩺</div>
-                        <div class="forum-content">
-                            <h3>Tanya Ahli Gizi</h3>
-                            <p class="consultation-quote">"Punya pertanyaan seputar nutrisi? Konsultasikan langsung ke ahlinya!"</p>
-                            <p>Di sini, kamu bisa mengirim pertanyaan dan konsultasi langsung dengan ahli gizi terpercaya. Dapatkan jawaban yang akurat, praktis, dan personal tentang pola makan, kebutuhan nutrisi, hingga tips hidup sehat—gratis dan mudah!</p>
-                        </div>
-                    </div>
+              <article class="article-card">
+                <div class="article-image">
+                  <img src="../Image/asupan.png" alt="Rekomendasi Asupan" />
                 </div>
-            </section>
-        </div>
+                <div class="article-content">
+                  <h3 class="article-title">
+                    Rekomendasi Asupan Gizi & Nutrisi Seimbang untuk Bantu
+                    Tumbuh Kembang Anak 1 Tahun ke Atas
+                  </h3>
+                  <p class="article-description">
+                    Panduan lengkap untuk memberikan nutrisi terbaik bagi anak
+                    dalam masa pertumbuhan yang optimal.
+                  </p>
+                  <a
+                    href="https://www.generasimaju.co.id/artikel/1-tahun/nutrisi/asupan-gizi-nutrisi-seimbang"
+                    target="_blank"
+                    class="btn-read-more"
+                    >Pelajari Selengkapnya</a
+                  >
+                </div>
+              </article>
+
+              <article class="article-card">
+                <div class="article-image">
+                  <img src="../Image/imun.png" alt="Makanan Sehat" />
+                </div>
+                <div class="article-content">
+                  <h3 class="article-title">
+                    10 Makanan Super untuk Meningkatkan Kekebalan Tubuh
+                  </h3>
+                  <p class="article-description">
+                    Temukan makanan-makanan yang dapat membantu memperkuat
+                    sistem kekebalan tubuh secara alami.
+                  </p>
+                  <a
+                    href="https://rsum.bandaacehkota.go.id/10-makanan-super-untuk-membantu-meningkatkan-kekebalan-tubuh/"
+                    target="_blank"
+                    class="btn-read-more"
+                    >Pelajari Selengkapnya</a
+                  >
+                </div>
+              </article>
+
+              <article class="article-card">
+                <div class="article-image">
+                  <img src="../Image/diet.png" alt="Diet Sehat" />
+                </div>
+                <div class="article-content">
+                  <h3 class="article-title">Tips Diet Sehat untuk Remaja</h3>
+                  <p class="article-description">
+                    Panduan Menu Diet Sehat: Nutrisi Seimbang untuk Hidup Lebih
+                    Bugar
+                  </p>
+                  <a
+                    href="https://solusidokter.com/panduan-menu-diet-sehat-nutrisi-seimbang-untuk-hidup-lebih-bugar/?gad_source=1&gad_campaignid=22615461798&gbraid=0AAAAA_0b6SZSeoh-XdXen2vEBpRdNHlR-&gclid=CjwKCAjw3_PCBhA2EiwAkH_j4j4D8oaB2ywIlw_xNgap4xYF4rPO7drUKVobbEQT9vcgE24Xd7AW-hoChnkQAvD_BwE"
+                    target="_blank"
+                    class="btn-read-more"
+                    >Pelajari Selengkapnya</a
+                  >
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Video Section -->
+        <section class="videos-section">
+          <div class="section-header">
+            <h2 class="section-title">Video Edukasi & Tips Memasak</h2>
+            <div class="nav-buttons">
+              <button class="nav-btn" id="videos-prev">❮</button>
+              <button class="nav-btn" id="videos-next">❯</button>
+            </div>
+          </div>
+          <div class="slider-container">
+            <div class="slider-wrapper" id="videos-slider">
+              <div class="video-card">
+                <div class="video-thumbnail">
+                  <img src="../Image/sarapan.png" alt="Sarapan Diet" />
+                  <div class="play-button">▶</div>
+                  <span class="video-duration">3:27</span>
+                </div>
+                <h3 class="video-title">
+                  Sarapan Diet Untuk Seminggu, No Gula, Minyak, Tepung
+                </h3>
+              </div>
+
+              <div class="video-card">
+                <div class="video-thumbnail">
+                  <img src="../Image/pedoman.png" alt="Pedoman Gizi" />
+                  <div class="play-button">▶</div>
+                  <span class="video-duration">8:49</span>
+                </div>
+                <h3 class="video-title">Pedoman Gizi Seimbang</h3>
+              </div>
+
+              <div class="video-card">
+                <div class="video-thumbnail">
+                  <img src="../Image/animasisehat.png" alt="5 Gerakan Sehat" />
+                  <div class="play-button">▶</div>
+                  <span class="video-duration">1:24</span>
+                </div>
+                <h3 class="video-title">Animasi 5 Gerakan Sehat</h3>
+              </div>
+
+              <div class="video-card">
+                <div class="video-thumbnail">
+                  <img src="../Image/tips.png" alt="12 Inspirasi" />
+                  <div class="play-button">▶</div>
+                  <span class="video-duration">8:45</span>
+                </div>
+                <h3 class="video-title">
+                  12 Inspirasi Menu Sehat Untuk Seminggu
+                </h3>
+              </div>
+
+              <div class="video-card">
+                <div class="video-thumbnail">
+                  <img src="../Image/smootie.png" alt="Smoothie Bowl" />
+                  <div class="play-button">▶</div>
+                  <span class="video-duration">3:39</span>
+                </div>
+                <h3 class="video-title">Cara Membuat Smoothie Bowl</h3>
+              </div>
+
+              <div class="video-card">
+                <div class="video-thumbnail">
+                  <img src="../Image/meal.png" alt="Meal Prep" />
+                  <div class="play-button">▶</div>
+                  <span class="video-duration">16:13</span>
+                </div>
+                <h3 class="video-title">
+                  Masak Lebih Cepat & Hemat❗Meal Prep untuk Seminggu
+                </h3>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Forum Section -->
+        <section class="forum-section">
+          <h2 class="section-title">
+            <span class="section-icon">💬</span>
+            Forum Komunitas
+          </h2>
+          <div class="forum-grid">
+            <div class="forum-card forum-discussion">
+              <div class="forum-icon">👥</div>
+              <div class="forum-content">
+                <h3>Forum Diskusi Terbuka</h3>
+                <p>
+                  Bergabunglah dalam forum komunitas tempat kamu bisa berbagi
+                  pengalaman, bertanya, memberi saran, atau sekadar ngobrol
+                  santai soal makanan, diet, dan kesehatan. Semua orang bisa
+                  ikut diskusi—karena belajar bareng itu lebih asyik!
+                </p>
+              </div>
+            </div>
+
+            <div class="forum-card expert-consultation">
+              <div class="forum-icon">🩺</div>
+              <div class="forum-content">
+                <h3>Tanya Ahli Gizi</h3>
+                <p class="consultation-quote">
+                  "Punya pertanyaan seputar nutrisi? Konsultasikan langsung ke
+                  ahlinya!"
+                </p>
+                <p>
+                  Di sini, kamu bisa mengirim pertanyaan dan konsultasi langsung
+                  dengan ahli gizi terpercaya. Dapatkan jawaban yang akurat,
+                  praktis, dan personal tentang pola makan, kebutuhan nutrisi,
+                  hingga tips hidup sehat—gratis dan mudah!
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
     <script src="../js/education.js"></script>
-</body>
+  </body>
 </html>
