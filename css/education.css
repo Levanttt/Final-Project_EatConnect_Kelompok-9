@@ -30,6 +30,7 @@ h6 {
 }
 
 /* Navbar Styles */
+/* === Navbar === */
 .navbar {
   background: linear-gradient(
     135deg,
@@ -43,7 +44,7 @@ h6 {
   position: sticky;
   top: 0;
   z-index: 1000;
-  margin-bottom: 30px;
+  margin: -20px -20px 30px -20px;
 }
 
 .navbar-container {
@@ -57,50 +58,17 @@ h6 {
 
 .logo {
   color: white;
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: bold;
   text-decoration: none;
   display: flex;
   align-items: center;
-}
-
-.nav-menu {
-  display: flex;
-  list-style: none;
-  gap: 30px;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-menu li {
-  position: relative;
-}
-
-.nav-menu a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 16px;
-  padding: 10px 15px;
-  border-radius: 20px;
-  transition: all 0.3s ease;
-  position: relative;
+  margin-left: 2rem;
 }
 
 .nav-menu a:hover {
   background: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px);
-}
-
-.nav-menu a.active {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 15px;
 }
 
 .back-button {
@@ -116,7 +84,7 @@ h6 {
   backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
 }
 
 .back-button:hover {
@@ -124,6 +92,12 @@ h6 {
   transform: translateY(-2px);
 }
 
+.logo {
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
 /* Header */
 .header {
   background: linear-gradient(

@@ -1,21 +1,57 @@
-// Analisis Nutrisi
+function goBack() {
+  window.location.href = "mainlandingpage.html";
+}
 
+// Analisis Nutrisi
 document.querySelector(".check-btn").addEventListener("click", function () {
   const deskripsi = document.getElementById("deskripsiMakanan").value.trim();
 
-  const hasil = {
-    nama: deskripsi || "Nasi Goreng Ayam",
-    kalori: "523 Kkal",
-    nutrisi: {
-      karbo: "55 g",
-      protein: "21 g",
-      lemak: "18 g",
-      gula: "4 g",
-      serat: "2 g",
-      zatBesi: "3.5 mg",
+  const contohHasil = [
+    {
+      nama: "Nasi Goreng Ayam",
+      kalori: "523 Kkal",
+      nutrisi: {
+        karbo: "55 g",
+        protein: "21 g",
+        lemak: "18 g",
+        gula: "4 g",
+        serat: "2 g",
+        zatBesi: "3.5 mg",
+      },
+      catatan: "Disarankan untuk menambah sayuran agar lebih seimbang.",
     },
-    catatan: "Disarankan untuk menambah sayuran agar lebih seimbang.",
-  };
+    {
+      nama: "Salad Sayur dengan Alpukat",
+      kalori: "320 Kkal",
+      nutrisi: {
+        karbo: "20 g",
+        protein: "8 g",
+        lemak: "22 g",
+        gula: "5 g",
+        serat: "7 g",
+        zatBesi: "2.1 mg",
+      },
+      catatan: "Lemak sehat, cocok untuk diet keto ringan.",
+    },
+    {
+      nama: "Mie Instan + Telur",
+      kalori: "450 Kkal",
+      nutrisi: {
+        karbo: "52 g",
+        protein: "12 g",
+        lemak: "16 g",
+        gula: "3 g",
+        serat: "1 g",
+        zatBesi: "1.8 mg",
+      },
+      catatan: "Tinggi sodium, konsumsi tidak lebih dari 1x/minggu.",
+    },
+  ];
+
+  const hasil =
+    deskripsi.length > 0
+      ? { ...contohHasil[0], nama: deskripsi }
+      : contohHasil[Math.floor(Math.random() * contohHasil.length)];
 
   document.querySelector(".food-name").textContent = hasil.nama;
   document.querySelector(".kcal").textContent = hasil.kalori;
@@ -31,6 +67,7 @@ document.querySelector(".check-btn").addEventListener("click", function () {
   document.querySelector(".note-box").innerHTML =
     "<strong>Note :</strong> " + hasil.catatan;
 });
+
 
 // Upload area preview
 const uploadArea = document.querySelector(".upload-area");
@@ -49,28 +86,98 @@ function cekMenuMingguan() {
   const berat = document.getElementById("beratBadan").value.trim();
   const tujuan = document.getElementById("tujuanBB").value;
   const pola = document.getElementById("polaMakan").value;
-  const pantangan = document.getElementById("pantangan").value.trim();
+  const pantangan = document.getElementById("pantangan").value.toLowerCase().trim();
 
-  const menuContoh = {
-    Sarapan: "Oatmeal + buah",
-    Siang: "Nasi merah + ayam rebus + sayur",
-    Malam: "Sup sayur + tempe panggang",
-  };
+  const menuVegetarian = [
+    {
+      sarapan: "Oatmeal + pisang",
+      siang: "Nasi merah + tumis tahu + sayur",
+      malam: "Sup jagung + tempe bakar",
+    },
+    {
+      sarapan: "Roti gandum + alpukat",
+      siang: "Gado-gado + kentang rebus",
+      malam: "Sop bayam + tahu kukus",
+    },
+    {
+      sarapan: "Smoothie buah + granola",
+      siang: "Nasi + capcay sayur",
+      malam: "Tumis buncis + tahu",
+    },
+    {
+      sarapan: "Pancake pisang + madu",
+      siang: "Nasi + terong balado",
+      malam: "Sayur bening + tempe goreng",
+    },
+    {
+      sarapan: "Roti panggang + selai kacang",
+      siang: "Tumis jamur + sayur asem",
+      malam: "Lontong sayur tanpa daging",
+    },
+    {
+      sarapan: "Smoothie bowl + kacang-kacangan",
+      siang: "Nasi uduk + telur rebus",
+      malam: "Tumis brokoli + tahu",
+    },
+    {
+      sarapan: "Bubur kacang hijau",
+      siang: "Nasi + sayur lodeh",
+      malam: "Sup wortel + tempe panggang",
+    },
+  ];
 
-  const tbody = document.getElementById("menuMingguan").querySelectorAll("tr");
-  tbody.forEach((tr) => {
-    tr.children[1].textContent = menuContoh.Sarapan;
-    tr.children[2].textContent = menuContoh.Siang;
-    tr.children[3].textContent = menuContoh.Malam;
+  const menuNonVeg = [
+    {
+      sarapan: "Telur rebus + roti gandum",
+      siang: "Nasi merah + ayam rebus + sayur",
+      malam: "Sup ayam + kentang panggang",
+    },
+    {
+      sarapan: "Omelet + buah",
+      siang: "Ikan bakar + lalapan + nasi",
+      malam: "Tumis ayam + brokoli",
+    },
+    {
+      sarapan: "Smoothie + telur mata sapi",
+      siang: "Nasi + ayam teriyaki",
+      malam: "Sop daging + wortel",
+    },
+    {
+      sarapan: "Roti + selai + susu",
+      siang: "Sate ayam + lontong",
+      malam: "Ikan kukus + sayur bening",
+    },
+    {
+      sarapan: "Sereal + susu",
+      siang: "Ayam panggang + kentang",
+      malam: "Sup ikan + bayam",
+    },
+    {
+      sarapan: "Pisang + telur dadar",
+      siang: "Ikan tuna + salad",
+      malam: "Sup ayam jagung",
+    },
+    {
+      sarapan: "Toast + telur rebus",
+      siang: "Ayam geprek + nasi",
+      malam: "Tumis sayur + ayam kukus",
+    },
+  ];
+
+  const menuMingguan = pola === "Vegetarian" ? menuVegetarian : menuNonVeg;
+
+  const hari = document
+    .getElementById("menuMingguan")
+    .querySelectorAll("tr");
+
+  hari.forEach((tr, i) => {
+    tr.children[1].textContent = menuMingguan[i].sarapan;
+    tr.children[2].textContent = menuMingguan[i].siang;
+    tr.children[3].textContent = menuMingguan[i].malam;
   });
 }
 
-document.querySelectorAll(".orange-btn").forEach((btn) => {
-  if (btn.textContent.trim() === "Cek Aktivitas") {
-    btn.addEventListener("click", cekAktivitasFisik);
-  }
-});
-
+// Cek Aktivitas Fisik
 function cekAktivitasFisik() {
   const tujuan = document.querySelector(
     "#aktivitas-fisik select:nth-of-type(1)"
