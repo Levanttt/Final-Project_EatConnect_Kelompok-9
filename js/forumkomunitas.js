@@ -16,7 +16,7 @@ let chatHistories = {
 
 function showChat(topic) {
   currentTopic = topic;
-  popupTitle.textContent = `Konsultasi dengan ${topic}`;
+  popupTitle.textContent = `Konsultasi ${topic}`;
   popup.style.display = "flex";
   chatInput.value = "";
   autoGrow(chatInput);
