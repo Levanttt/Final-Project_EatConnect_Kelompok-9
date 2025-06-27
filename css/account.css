@@ -49,7 +49,7 @@ body {
   text-decoration: none;
   display: flex;
   align-items: center;
-  margin-left: 2rem;
+  margin-left: 0.5rem;
 }
 
 .nav-menu a:hover {
@@ -71,6 +71,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-right: -0.5rem;
 }
 
 .back-button:hover {
@@ -437,30 +438,6 @@ main {
   background: #3498db;
 }
 
-@media (max-width: 1200px) {
-  main {
-    grid-template-columns: 1fr;
-  }
-
-  .progress-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .progress-cards {
-    grid-template-columns: 1fr;
-  }
-
-  .status-grid {
-    grid-template-columns: 1fr;
-  }
-
-  body {
-    padding: 15px;
-  }
-}
-
 .diary-tabs {
   background: #f8fafc;
   border-radius: 20px;
@@ -494,3 +471,192 @@ main {
   background: #4a6fa5;
   color: white;
 }
+
+/* Responsive Styles */
+/* Untuk layar 4K (≥ 1920px) */
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1800px;
+    padding: 0 40px;
+  }
+  .navbar-container {
+    max-width: 1800px;
+    padding: 0 60px;
+  }
+  .progress-section {
+    padding: 60px;
+    border-radius: 40px;
+  }
+  .profile-card,
+  .settings-card,
+  .diary-card {
+    padding: 40px;
+    border-radius: 30px;
+  }
+  .progress-card {
+    padding: 35px;
+    border-radius: 20px;
+    font-size: 1.2rem;
+  }
+  .logo {
+    font-size: 32px;
+  }
+  .tab-btn {
+    font-size: 1.1rem;
+    padding: 16px;
+  }
+  .diary-table th,
+  .diary-table td {
+    font-size: 1.1rem;
+    padding: 18px 12px;
+  }
+}
+
+/* Untuk layar ultrawide (≥ 2560px) */
+@media (min-width: 2560px) {
+  .container,
+  .navbar-container {
+    max-width: 2300px;
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+  .progress-section {
+    padding: 90px;
+    border-radius: 60px;
+  }
+  .profile-card,
+  .settings-card,
+  .diary-card {
+    padding: 60px;
+    border-radius: 40px;
+  }
+  .progress-card {
+    padding: 50px;
+    border-radius: 30px;
+    font-size: 1.3rem;
+  }
+  .logo {
+    font-size: 40px;
+  }
+  .tab-btn {
+    font-size: 1.2rem;
+    padding: 22px;
+  }
+  .diary-table th,
+  .diary-table td {
+    font-size: 1.2rem;
+    padding: 22px 16px;
+  }
+}
+/* Untuk layar <= 1200px */
+@media (max-width: 1200px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+  .progress-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .left-section,
+  .right-section {
+    gap: 18px;
+  }
+}
+
+/* Untuk layar <= 900px */
+@media (max-width: 900px) {
+  .container {
+    padding: 0 10px;
+  }
+  .progress-section {
+    padding: 25px;
+  }
+  .profile-card,
+  .settings-card {
+    padding: 15px;
+  }
+  .diary-card {
+    padding: 18px;
+  }
+}
+
+/* Untuk layar <= 768px */
+@media (max-width: 768px) {
+  body {
+    padding: 8px;
+  }
+  .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 10px;
+    gap: 10px;
+  }
+  .logo {
+    margin-left: 0;
+    font-size: 18px;
+  }
+  .progress-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .status-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .profile-card,
+  .settings-card,
+  .diary-card {
+    padding: 12px;
+  }
+  .progress-section {
+    padding: 15px;
+  }
+  .tab-buttons {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+/* Untuk layar <= 480px (HP) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 4px;
+  }
+  .navbar {
+    padding: 8px 0;
+    margin: -8px -8px 15px -8px;
+  }
+  .navbar-container {
+    padding: 0 4px;
+  }
+  .logo {
+    font-size: 15px;
+  }
+  .progress-section {
+    padding: 8px;
+    border-radius: 15px;
+  }
+  .progress-card {
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .profile-card,
+  .settings-card,
+  .diary-card {
+    padding: 7px;
+    border-radius: 10px;
+  }
+  .tab-btn {
+    padding: 7px;
+    font-size: 13px;
+    border-radius: 7px;
+  }
+  .diary-table th,
+  .diary-table td {
+    padding: 8px 4px;
+    font-size: 12px;
+  }
+}
+
+
+
+
