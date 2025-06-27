@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Komunitas EatConnect</title>
+    <link rel="stylesheet" href="../css/forumkomunitas.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Komunitas EatConnect</h1>
+    </header>
+
+    <div class="container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <button class="nav-btn active" data-target="all">Beranda</button>
+        <button class="nav-btn" data-target="timeline">Feed</button>
+        <p class="section-label">Konsultasi</p>
+        <button class="nav-btn" data-target="konsultasi">
+          Tanya Ahli Gizi
+        </button>
+        <button class="nav-btn" data-target="konsultasi">
+          Konseling Kesehatan
+        </button>
+      </aside>
+
+      <!-- Konten Utama -->
+      <main class="main-content" id="timeline">
+        <div id="timeline-container">
+          <div class="post-box">
+            <textarea placeholder="Ceritakan yang ingin diceritakan"></textarea>
+            <div class="post-tools">
+              <button class="icon-btn" id="text-post">✎</button>
+              <button class="icon-btn" id="image-post">📷</button>
+              <button class="icon-btn" id="link-post">🔗</button>
+              <button class="post-btn" id="post-submit">Posting</button>
+            </div>
+          </div>
+
+          <h2 class="timeline-title">Timeline</h2>
+
+          <div class="post-card">
+            <p class="post-user">
+              👤 <strong>Alexanderbell</strong>
+              <span class="post-time">39 menit lalu</span>
+            </p>
+            <p class="post-text">
+              Pagi lebih semangat dengan sarapan oatmeal + pisang + susu rendah
+              lemak.
+            </p>
+            <div class="interactions">
+              ❤️ <span>159</span> 💬 <span>20</span> 🔁 <span>8</span>
+            </div>
+          </div>
+
+          <div class="post-card">
+            <p class="post-user">
+              👤 <strong>Angelinaputri</strong>
+              <span class="post-time">1 hari lalu</span>
+            </p>
+            <p class="post-text">
+              Hari ini aku bikin nasi merah + ayam kukus + tumis brokoli. Simple
+              tapi kenyang dan sehat!
+            </p>
+            <div class="interactions">
+              ❤️ <span>105</span> 💬 <span>8</span> 🔁 <span>5</span>
+            </div>
+          </div>
+
+          <div class="post-card">
+            <p class="post-user">
+              👤 <strong>Yusufmardika</strong>
+              <span class="post-time">10 menit lalu</span>
+            </p>
+            <p class="post-text">
+              Makan terburu-buru bisa bikin pencernaan terganggu. Coba makan
+              perlahan selama 20 menit.
+            </p>
+            <div class="interactions">
+              ❤️ <span>76</span> 💬 <span>5</span> 🔁 <span>3</span>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Konsultasi -->
+      <aside class="consultation" id="konsultasi">
+        <h3>Konsultasi</h3>
+        <button class="consult-btn active">Dokter Gizi</button>
+        <button class="consult-btn">Personal Trainer</button>
+
+        <div id="popup-chat" class="popup-inline">
+          <div class="popup-header">
+            <h4 id="popup-title">Konsultasi dengan Dokter Gizi</h4>
+          </div>
+          <div class="chat-content" id="chat-content"></div>
+          <div class="chat-input">
+            <textarea placeholder="Ketik pertanyaan Anda..."></textarea>
+            <button class="send-btn">Kirim</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <script src="../js/forumkomunitas.js"></script>
+  </body>
+</html>

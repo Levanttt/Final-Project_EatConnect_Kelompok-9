@@ -1,0 +1,325 @@
+/* Reset dan Umum */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #a7d0d9;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.header {
+  background-color: #0d4f8b;
+  color: white;
+  padding: 15px 30px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 200px 1fr 300px;
+  gap: 20px;
+  padding: 20px;
+  height: calc(100vh - 70px);
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.nav-btn {
+  background-color: #e6eef0;
+  border: none;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+
+.nav-btn.active {
+  background-color: #0d4f8b;
+  color: white;
+}
+
+.section-label {
+  font-weight: bold;
+  margin: 10px 0 5px;
+  font-size: 14px;
+  color: #0d4f8b;
+}
+
+/* Main Content */
+.main-content {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.post-box {
+  background-color: #bfcde0;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.post-box textarea {
+  width: 100%;
+  height: 100px;
+  border: none;
+  outline: none;
+  resize: none;
+  background: transparent;
+  font-size: 14px;
+  color: black;
+  font-family: "Poppins", sans-serif;
+}
+
+.post-tools {
+  position: absolute;
+  right: 15px;
+  bottom: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.icon-btn,
+.post-btn {
+  background-color: #0d4f8b;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/* Timeline */
+.timeline-title {
+  font-size: 16px;
+  color: #0d4f8b;
+  margin-bottom: 10px;
+}
+
+.post-card {
+  background-color: #e4e8ec;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.post-user {
+  color: #0d4f8b;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.post-time {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-weight: normal;
+  font-size: 12px;
+  color: #444;
+}
+
+.post-text {
+  margin: 5px 0 30px 0;
+  font-size: 14px;
+}
+
+.interactions {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  gap: 15px;
+  font-size: 14px;
+  color: #444;
+  align-items: center;
+}
+
+/* Konsultasi */
+.consultation {
+  background-color: white;
+  padding: 15px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.consultation h3 {
+  font-size: 16px;
+  color: #0d4f8b;
+  margin-bottom: 10px;
+}
+
+.consult-btn {
+  background-color: #c1d2e3;
+  border: none;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #0d4f8b;
+  cursor: pointer;
+}
+
+.consult-btn.active {
+  background: linear-gradient(to right, #1a7fc3, #043a7a);
+  color: white;
+}
+
+/* ========== POPUP CHAT (di panel konsultasi) ========== */
+.popup-inline {
+  display: flex;
+  flex-direction: column;
+  height: 50%; /* hanya setengah container */
+  max-height: 320px;
+  margin-top: auto;
+  border-top: 1px solid #ccc;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Header biru */
+.popup-header {
+  background-color: #0d4f8b;
+  padding: 10px 15px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.popup-header h4 {
+  margin: 0;
+  font-size: 14px;
+}
+
+#popup-chat {
+  display: none; /* disembunyikan dulu */
+}
+
+/* Isi pesan/chat */
+.chat-content {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  background-color: #f4f8fc;
+  font-size: 13px;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Bubble pesan */
+.chat-content p {
+  background: #d9eaf2;
+  padding: 10px 14px;
+  border-radius: 16px;
+  align-self: flex-end;
+  max-width: 80%;
+  word-wrap: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
+  font-size: 13px;
+}
+
+/* Input chat di bawah */
+.chat-input {
+  border-top: 1px solid #ccc;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background-color: white;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.chat-input textarea {
+  flex: 1;
+  height: 40px;
+  min-height: 40px;
+  max-height: 100px;
+  border-radius: 16px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  font-family: "Poppins", sans-serif;
+  resize: none;
+  overflow: hidden;
+  font-size: 13px;
+}
+
+.send-btn {
+  background-color: #f68000;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.chat-bubble {
+  background: #d9eaf2;
+  padding: 10px 14px;
+  border-radius: 16px;
+  align-self: flex-end;
+  max-width: 80%;
+  word-wrap: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
+  font-size: 13px;
+}
+
+.interactions span {
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.interactions span:hover {
+  transform: scale(1.1);
+  color: #0d4f8b;
+}
+
+/* Highlight Container Timeline Saat Klik Feed */
+.highlighted {
+  animation: pulse 0.4s ease-in-out;
+  box-shadow: 0 0 12px rgba(13, 79, 139, 0.3);
+  border-radius: 12px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(13, 79, 139, 0.2);
+  }
+  50% {
+    transform: scale(1.01);
+    box-shadow: 0 0 12px rgba(13, 79, 139, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(13, 79, 139, 0.2);
+  }
+}
