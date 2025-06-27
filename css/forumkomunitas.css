@@ -12,18 +12,107 @@ body {
   overflow: hidden;
 }
 
-.header {
-  background-color: #0d4f8b;
+/* Navbar Styles */
+.navbar {
+  background: linear-gradient(
+    135deg,
+    #175964 0%,
+    #2c5a8c 30%,
+    #1e3a5f 70%,
+    #2c5a8c 100%
+  );
+  padding: 15px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  margin-bottom: 10px; /* Dikurangi dari 30px ke 10px */
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.logo {
   color: white;
-  padding: 15px 30px;
+  font-size: 32px;
+  font-weight: 700;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li {
+  position: relative;
+}
+
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-menu a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.nav-menu a.active {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.back-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
 }
 
 .container {
   display: grid;
   grid-template-columns: 200px 1fr 300px;
   gap: 20px;
-  padding: 20px;
-  height: calc(100vh - 70px);
+  padding: 10px 20px 20px 20px; /* Dikurangi padding top dari 20px ke 10px */
+  height: calc(100vh - 90px); /* Disesuaikan untuk kompensasi margin navbar yang dikurangi */
 }
 
 /* Sidebar */
@@ -34,17 +123,24 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Tambah shadow untuk konsistensi */
 }
 
 .nav-btn {
   background-color: #e6eef0;
   border: none;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 12px 15px; /* Sedikit diperbesar untuk proporsi yang lebih baik */
+  margin-bottom: 8px; /* Dikurangi dari 10px */
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
   text-align: left;
+  transition: all 0.2s ease; /* Tambah transisi */
+}
+
+.nav-btn:hover {
+  background-color: #d0dce0;
+  transform: translateX(2px);
 }
 
 .nav-btn.active {
@@ -54,27 +150,38 @@ body {
 
 .section-label {
   font-weight: bold;
-  margin: 10px 0 5px;
+  margin: 15px 0 8px; /* Disesuaikan spacing */
   font-size: 14px;
   color: #0d4f8b;
 }
 
-/* Main Content */
+/* Main Content - PERBAIKAN UTAMA */
 .main-content {
-  background-color: #f9f9f9;
+  background-color: #ffffff; /* Ubah dari #f9f9f9 ke putih bersih */
   padding: 20px;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Tambah shadow untuk konsistensi */
+  border: none; /* Hapus border yang mungkin menyebabkan garis biru */
+  position: relative;
+}
+
+/* Hapus garis vertikal dari scrollbar dan elemen lainnya */
+.main-content::before,
+.main-content::after {
+  display: none;
 }
 
 .post-box {
-  background-color: #bfcde0;
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 15px;
+  background-color: #f8fafc; /* Ubah ke warna yang lebih soft */
+  border-radius: 12px; /* Sedikit diperbesar radius */
+  padding: 20px; /* Diperbesar padding */
+  margin-bottom: 20px; /* Diperbesar margin */
   position: relative;
+  border: 1px solid #e2e8f0; /* Border soft untuk definition */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Tambah subtle shadow */
 }
 
 .post-box textarea {
@@ -85,14 +192,18 @@ body {
   resize: none;
   background: transparent;
   font-size: 14px;
-  color: black;
+  color: #374151; /* Warna text yang lebih soft */
   font-family: "Poppins", sans-serif;
+}
+
+.post-box textarea::placeholder {
+  color: #9ca3af;
 }
 
 .post-tools {
   position: absolute;
-  right: 15px;
-  bottom: 10px;
+  right: 20px; /* Disesuaikan dengan padding yang baru */
+  bottom: 15px;
   display: flex;
   gap: 10px;
 }
@@ -102,25 +213,47 @@ body {
   background-color: #0d4f8b;
   color: white;
   border: none;
-  padding: 6px 10px;
-  border-radius: 6px;
+  padding: 8px 12px; /* Sedikit diperbesar */
+  border-radius: 8px; /* Sedikit diperbesar radius */
   cursor: pointer;
   font-size: 12px;
+  transition: all 0.2s ease;
 }
 
-/* Timeline */
+.icon-btn:hover,
+.post-btn:hover {
+  background-color: #0a3d6b;
+  transform: translateY(-1px);
+}
+
+/* Timeline - PERBAIKAN GARIS VERTIKAL */
 .timeline-title {
-  font-size: 16px;
+  font-size: 18px; /* Diperbesar */
   color: #0d4f8b;
-  margin-bottom: 10px;
+  margin-bottom: 15px; /* Diperbesar */
+  font-weight: 600;
 }
 
 .post-card {
-  background-color: #e4e8ec;
-  border-radius: 10px;
-  padding: 15px;
+  background-color: #ffffff; /* Ubah ke putih bersih */
+  border-radius: 12px; /* Sedikit diperbesar */
+  padding: 20px; /* Diperbesar padding */
   margin-bottom: 15px;
   position: relative;
+  border: 1px solid #e2e8f0; /* Border soft */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tambah shadow */
+  transition: all 0.2s ease;
+  overflow: hidden; /* Pastikan tidak ada elemen yang overflow */
+}
+
+.post-card::before,
+.post-card::after {
+  display: none; /* Hilangkan pseudo-elements yang mungkin menyebabkan garis */
+}
+
+.post-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
 }
 
 .post-user {
@@ -131,26 +264,28 @@ body {
 
 .post-time {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 20px; /* Disesuaikan dengan padding */
+  right: 20px; /* Disesuaikan dengan padding */
   font-weight: normal;
   font-size: 12px;
-  color: #444;
+  color: #6b7280; /* Warna yang lebih soft */
 }
 
 .post-text {
-  margin: 5px 0 30px 0;
+  margin: 10px 0 40px 0; /* Diperbesar spacing */
   font-size: 14px;
+  color: #374151;
+  line-height: 1.6; /* Tambah line height untuk readability */
 }
 
 .interactions {
   position: absolute;
-  bottom: 15px;
-  right: 15px;
+  bottom: 20px; /* Disesuaikan dengan padding */
+  right: 20px; /* Disesuaikan dengan padding */
   display: flex;
   gap: 15px;
   font-size: 14px;
-  color: #444;
+  color: #6b7280; /* Warna yang lebih soft */
   align-items: center;
 }
 
@@ -162,46 +297,69 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Tambah shadow untuk konsistensi */
 }
 
 .consultation h3 {
   font-size: 16px;
   color: #0d4f8b;
-  margin-bottom: 10px;
+  margin-bottom: 15px; /* Diperbesar */
+  font-weight: 600;
 }
 
 .consult-btn {
-  background-color: #c1d2e3;
-  border: none;
-  padding: 10px;
+  background-color: #f1f5f9; /* Warna yang lebih soft */
+  border: 1px solid #e2e8f0; /* Tambah border */
+  padding: 12px 15px; /* Diperbesar padding */
   margin-bottom: 10px;
   border-radius: 8px;
-  font-weight: bold;
+  font-weight: 600; /* Diperkuat */
   color: #0d4f8b;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.consult-btn:hover {
+  background-color: #e2e8f0;
+  transform: translateX(2px);
 }
 
 .consult-btn.active {
   background: linear-gradient(to right, #1a7fc3, #043a7a);
   color: white;
+  border-color: transparent;
+}
+
+/* Tambahan untuk Personal Trainer bisa aktif juga */
+.consult-btn.personal-trainer.active {
+  background: linear-gradient(to right, #1a7fc3, #043a7a);
+  color: white;
+  border-color: transparent;
+}
+
+/* Hover effect yang lebih baik untuk semua tombol konsultasi */
+.consult-btn:not(.active):hover {
+  background: linear-gradient(to right, rgba(26, 127, 195, 0.1), rgba(4, 58, 122, 0.1));
+  color: #0d4f8b;
+  border-color: #1a7fc3;
 }
 
 /* ========== POPUP CHAT (di panel konsultasi) ========== */
 .popup-inline {
   display: flex;
   flex-direction: column;
-  height: 50%; /* hanya setengah container */
+  height: 50%;
   max-height: 320px;
   margin-top: auto;
-  border-top: 1px solid #ccc;
+  border: 1px solid #e2e8f0; /* Border yang lebih soft */
   border-radius: 16px;
   overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Header biru */
 .popup-header {
   background-color: #0d4f8b;
-  padding: 10px 15px;
+  padding: 12px 15px; /* Sedikit diperbesar */
   color: white;
   font-size: 14px;
   font-weight: 600;
@@ -215,26 +373,24 @@ body {
 }
 
 #popup-chat {
-  display: none; /* disembunyikan dulu */
+  display: none;
 }
 
-/* Isi pesan/chat */
 .chat-content {
   flex: 1;
-  padding: 12px;
+  padding: 15px; /* Diperbesar */
   overflow-y: auto;
-  background-color: #f4f8fc;
+  background-color: #f8fafc; /* Warna yang lebih soft */
   font-size: 13px;
-  color: #333;
+  color: #374151; /* Warna yang lebih soft */
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px; /* Diperbesar */
 }
 
-/* Bubble pesan */
 .chat-content p {
-  background: #d9eaf2;
-  padding: 10px 14px;
+  background: #e0f2fe; /* Warna yang lebih soft */
+  padding: 12px 16px; /* Diperbesar */
   border-radius: 16px;
   align-self: flex-end;
   max-width: 80%;
@@ -242,12 +398,12 @@ body {
   white-space: normal;
   overflow-wrap: break-word;
   font-size: 13px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* Input chat di bawah */
 .chat-input {
-  border-top: 1px solid #ccc;
-  padding: 10px;
+  border-top: 1px solid #e2e8f0; /* Border yang lebih soft */
+  padding: 12px; /* Diperbesar */
   display: flex;
   gap: 10px;
   align-items: center;
@@ -262,27 +418,39 @@ body {
   min-height: 40px;
   max-height: 100px;
   border-radius: 16px;
-  padding: 10px;
-  border: 1px solid #ccc;
+  padding: 10px 15px; /* Diperbesar padding horizontal */
+  border: 1px solid #e2e8f0; /* Border yang lebih soft */
   font-family: "Poppins", sans-serif;
   resize: none;
   overflow: hidden;
   font-size: 13px;
+  transition: border-color 0.2s ease;
+}
+
+.chat-input textarea:focus {
+  outline: none;
+  border-color: #0d4f8b;
 }
 
 .send-btn {
   background-color: #f68000;
   color: white;
   border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
+  padding: 10px 16px; /* Diperbesar */
+  border-radius: 10px; /* Diperbesar radius */
   cursor: pointer;
   font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.send-btn:hover {
+  background-color: #e57000;
+  transform: translateY(-1px);
 }
 
 .chat-bubble {
-  background: #d9eaf2;
-  padding: 10px 14px;
+  background: #e0f2fe; /* Konsisten dengan chat-content p */
+  padding: 12px 16px;
   border-radius: 16px;
   align-self: flex-end;
   max-width: 80%;
@@ -290,16 +458,20 @@ body {
   white-space: normal;
   overflow-wrap: break-word;
   font-size: 13px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .interactions span {
   cursor: pointer;
-  transition: transform 0.1s ease;
+  transition: all 0.2s ease;
+  padding: 2px 4px; /* Tambah padding untuk area klik yang lebih besar */
+  border-radius: 4px;
 }
 
 .interactions span:hover {
   transform: scale(1.1);
   color: #0d4f8b;
+  background-color: rgba(13, 79, 139, 0.1);
 }
 
 /* Highlight Container Timeline Saat Klik Feed */
@@ -321,5 +493,48 @@ body {
   100% {
     transform: scale(1);
     box-shadow: 0 0 0 rgba(13, 79, 139, 0.2);
+  }
+}
+
+/* Scrollbar Styling untuk Main Content - HILANGKAN GARIS VERTIKAL */
+.main-content::-webkit-scrollbar {
+  width: 0px; /* Hilangkan scrollbar sepenuhnya */
+  background: transparent;
+}
+
+.main-content::-webkit-scrollbar-track {
+  display: none;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+.main-content::-webkit-scrollbar-thumb:hover {
+  display: none;
+}
+
+/* Alternative: jika ingin scrollbar tersembunyi tapi tetap bisa scroll */
+.main-content {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer dan Edge */
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .container {
+    grid-template-columns: 180px 1fr 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+  }
+  
+  .sidebar,
+  .consultation {
+    display: none;
   }
 }
