@@ -108,6 +108,7 @@ body {
   object-fit: cover;
   border-radius: 50%;
   transition: box-shadow 0.2s;
+  margin-left: 1cm;
 }
 
 .account-icon:hover .user-icon {

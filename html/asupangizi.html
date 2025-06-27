@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EatConnect</title>
+    <link rel="stylesheet" href="../css/asupangizi.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="mainlandingpage.html" class="logo">EatConnect</a>
+        <ul class="nav-menu">
+          <!-- nav-link -->
+        </ul>
+        <div class="nav-right">
+          <button class="back-button" onclick="goBack()">
+            <span>←</span>
+            <span>Kembali</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-text">
+        <h2>Pantau Asupan Gizi & Pola Makan Lebih Cerdas Bersama EatConnect</h2>
+      </div>
+
+      <div class="feature-cards">
+        <a href="#analisis-nutrisi" class="card">
+          <img src="../Image/analisiskandungan.png" alt="AI Gizi" />
+          <h3>Analisis Kandungan Nutrisi Otomatis AI</h3>
+          <p>
+            Upload foto makanan atau input bahan makanan, AI akan memeriksa
+            takaran gizi dalam makanan Anda.
+          </p>
+        </a>
+        <a href="#pola-makan" class="card">
+          <img src="../Image/tracker.png" alt="Food Tracker" />
+          <h3>
+            Food Tracker (Smart Diary Makanan)<br />Rekomendasi Pola Makan Sehat
+          </h3>
+          <p>
+            Kalender harian untuk merekam makanan yang dikonsumsi dan
+            rekomendasi pola makan sehat.
+          </p>
+        </a>
+        <a href="#aktivitas-fisik" class="card">
+          <img src="../Image/aktifitasfisik.png" alt="Aktivitas Fisik" />
+          <h3>Rekomendasi Aktivitas Fisik Harian</h3>
+          <p>Olahraga ringan dan ringan untuk mendukung pola makan seimbang.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Analisis Nutrisi -->
+    <section id="analisis-nutrisi" class="section-light">
+      <h2 class="section-title">Analisis Kandungan Nutrisi Berbasis AI</h2>
+      <p class="section-subtitle">
+        Unggah foto makanan atau masukkan daftar bahan untuk menganalisis
+        kandungan nutrisi secara otomatis
+      </p>
+      <div class="container-double">
+        <div class="upload-box">
+          <div
+            class="upload-area"
+            onclick="document.getElementById('fotoUpload').click()"
+            style="cursor: pointer"
+          >
+            <div class="upload-icon">📷</div>
+            <p class="upload-text">Upload Foto</p>
+            <p class="upload-sub">Klik untuk memilih foto makanan disini</p>
+          </div>
+          <input
+            type="file"
+            id="fotoUpload"
+            accept="image/*"
+            style="display: none"
+          />
+          <textarea
+            id="deskripsiMakanan"
+            placeholder="Tulis deskripsi makanan atau daftar bahan (opsional)"
+          ></textarea>
+          <button class="check-btn">Periksa Nutrisi</button>
+        </div>
+
+        <div class="result-box">
+          <h4 class="result-title">Hasil Analisis</h4>
+          <div class="food-name">Nama Makanan</div>
+          <div class="calorie">
+            <span class="kcal">-- Kkal</span>
+            <span class="label">Kalori Total</span>
+          </div>
+          <ul class="nutrient-list">
+            <li>Karbohidrat <span>-- g</span></li>
+            <li>Protein <span>-- g</span></li>
+            <li>Lemak <span>-- g</span></li>
+            <li>Gula <span>-- g</span></li>
+            <li>Serat <span>-- g</span></li>
+            <li>Zat Besi <span>-- g</span></li>
+          </ul>
+          <div class="note-box"><strong>Note :</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rekomendasi Pola Makan Sehat -->
+    <section id="pola-makan" class="section-white">
+      <h2 class="section-title">Rekomendasi Pola Makan Sehat</h2>
+      <p class="section-subtitle">
+        Yuk atur pola makan sehatmu selama 7 hari ke depan!<br />Dapatkan
+        rekomendasi menu sehat sesuai tujuan dan preferensimu
+      </p>
+
+      <div class="container-single">
+        <h3 class="form-title">Target Mingguan</h3>
+        <input
+          id="beratBadan"
+          type="text"
+          placeholder="Masukkan berat badan anda saat ini"
+        />
+        <select id="tujuanBB">
+          <option selected disabled>Turun/naik berat badan</option>
+          <option>Turun</option>
+          <option>Naik</option>
+        </select>
+        <select id="polaMakan">
+          <option selected disabled>Contoh: Vegetarian</option>
+          <option>Vegetarian</option>
+          <option>Non Vegetarian</option>
+        </select>
+        <input
+          id="pantangan"
+          type="text"
+          placeholder="Masukkan pantangan makan"
+        />
+      </div>
+
+      <button class="orange-btn" onclick="cekMenuMingguan()">Cek Menu</button>
+
+      <div class="menu-table">
+        <h3>Rekomendasi Menu Sehat Dalam Seminggu</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Hari</th>
+              <th>Sarapan</th>
+              <th>Makan Siang</th>
+              <th>Makan Malam</th>
+            </tr>
+          </thead>
+          <tbody id="menuMingguan">
+            <tr>
+              <td>Senin</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Selasa</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Rabu</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Kamis</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Jum’at</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Sabtu</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Minggu</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <button class="orange-btn">Save My Diary</button>
+    </section>
+
+    <!-- Rekomendasi Aktivitas Fisik Harian -->
+    <section id="aktivitas-fisik" class="section-light">
+      <h2 class="section-title">Rekomendasi Aktivitas Fisik Harian</h2>
+      <p class="section-subtitle">
+        Bangun rutinitas sehatmu mulai dari sini — tanpa perlu bingung pilih
+        olahraga apa<br />
+        Dapatkan rekomendasi olahraga ringan hingga intens sesuai tujuan dan
+        kondisi tubuhmu
+      </p>
+
+      <div class="container-single">
+        <h3 class="form-title">Target Mingguan</h3>
+        <select id="targetAktivitas">
+          <option selected disabled>Tujuan</option>
+          <option>Menurunkan Berat Badan</option>
+          <option>Membentuk Otot Tubuh</option>
+          <option>Menjaga Kesehatan</option>
+        </select>
+        <input
+          id="kendalaAktivitas"
+          type="text"
+          placeholder="Cth. Cedera dll"
+        />
+        <select id="tingkatAktivitas">
+          <option selected disabled>Tingkat Aktivitas</option>
+          <option>Aktif Olahraga</option>
+          <option>Jarang Olahraga</option>
+          <option>Tidak Pernah Olahraga</option>
+        </select>
+      </div>
+
+      <button class="orange-btn" onclick="cekAktivitasFisik()">
+        Cek Aktivitas
+      </button>
+
+      <div class="aktivitas-table">
+        <h3>Rekomendasi Jadwal Olahraga Mingguan</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Hari</th>
+              <th>Jenis Olahraga</th>
+              <th>Durasi</th>
+              <th>Tujuan</th>
+            </tr>
+          </thead>
+          <tbody id="tabelAktivitas">
+            <tr>
+              <td>Senin</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Selasa</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Rabu</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Kamis</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Jum’at</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Sabtu</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Minggu</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <button class="orange-btn">Save My Diary</button>
+    </section>
+
+    <script src="../js/asupangizi.js"></script>
+    <script src="../js/mydiarymakan.js"></script>
+    <script src="../js/mydiaryaktifitas.js"></script>
+  </body>
+</html>
