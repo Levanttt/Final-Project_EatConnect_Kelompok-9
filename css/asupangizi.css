@@ -29,7 +29,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  margin: -20px -20px 30px -20px;
+  margin: -80px -20px 30px -20px;
 }
 
 .navbar-container {
@@ -43,8 +43,9 @@ body {
 
 .logo {
   color: white;
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -75,13 +76,6 @@ body {
 .back-button:hover {
   background: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
-}
-
-.logo {
-  color: white;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 1px;
 }
 
 .header {
@@ -121,6 +115,13 @@ body {
   flex: 1 1 30%;
   min-width: 320px;
   text-align: center;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
 }
 
 .card img {
@@ -153,7 +154,6 @@ body {
   transform: scale(1.02);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
-
 
 /* Section */
 .section-light {
@@ -396,40 +396,480 @@ th {
   color: white;
 }
 
-/* === Responsif === */
+/* === RESPONSIVE DESIGN === */
+
+/* Large screens (desktops) */
+@media (min-width: 1200px) {
+  .navbar-container {
+    max-width: 1400px;
+    padding: 0 40px;
+  }
+  
+  .hero {
+    padding: 80px 100px;
+  }
+  
+  .section-light,
+  .section-white {
+    padding: 100px 40px;
+  }
+}
+
+/* Medium screens (tablets) */
+@media (max-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
+  
+  .navbar-container {
+    padding: 0 20px;
+  }
+  
+  .logo {
+    font-size: 18px;
+    margin-left: 1rem;
+  }
+  
+  .hero {
+    padding: 50px 40px;
+  }
+  
+  .hero-text h2 {
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+  
+  .section-light,
+  .section-white {
+    padding: 60px 40px;
+  }
+  
+  .section-title {
+    font-size: 28px;
+  }
+  
+  .section-subtitle {
+    font-size: 16px;
+  }
+  
+  .feature-cards {
+    gap: 30px;
+  }
+  
+  .card {
+    flex: 1 1 45%;
+    min-width: 280px;
+  }
+  
+  .container-double {
+    gap: 30px;
+  }
+  
+  .upload-box,
+  .result-box {
+    max-width: 450px;
+  }
+  
+  .container-single,
+  .container-aktivitas {
+    max-width: 700px;
+    padding: 25px;
+  }
+  
+  .menu-table,
+  .aktivitas-table {
+    max-width: 800px;
+    padding: 20px;
+  }
+}
+
+/* Small screens (mobile landscape) */
 @media (max-width: 768px) {
-  .hero,
+  body {
+    font-size: 16px;
+  }
+  
+  .navbar {
+    padding: 12px 0;
+    margin: -15px -15px 25px -15px;
+  }
+  
+  .navbar-container {
+    padding: 0 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .logo {
+    font-size: 16px;
+    margin-left: 0;
+  }
+  
+  .back-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .header {
+    padding: 12px 20px;
+    font-size: 18px;
+  }
+  
+  .hero {
+    padding: 40px 20px;
+  }
+  
+  .hero-text h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+    line-height: 1.4;
+  }
+  
   .section-light,
   .section-white {
     padding: 40px 20px;
   }
-
-  .hero-text h2,
+  
   .section-title {
     font-size: 24px;
+    margin-bottom: 8px;
   }
-
+  
+  .section-subtitle {
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
+  
   .feature-cards {
     flex-direction: column;
     align-items: center;
+    gap: 20px;
   }
-
+  
   .card {
     min-width: 100%;
+    max-width: 100%;
+    padding: 25px;
   }
-
+  
+  .card h3 {
+    font-size: 18px;
+  }
+  
+  .card p {
+    font-size: 15px;
+  }
+  
   .container-double {
     flex-direction: column;
     align-items: center;
+    gap: 25px;
+  }
+  
+  .upload-box,
+  .result-box {
+    max-width: 100%;
+    padding: 25px;
+  }
+  
+  .upload-area {
+    padding: 30px 15px;
+  }
+  
+  .upload-icon {
+    font-size: 32px;
+  }
+  
+  .upload-text {
+    font-size: 16px;
+  }
+  
+  .upload-sub {
+    font-size: 14px;
+  }
+  
+  .upload-box textarea {
+    height: 80px;
+    font-size: 15px;
+  }
+  
+  .check-btn {
+    font-size: 16px;
+    padding: 14px;
+  }
+  
+  .food-name {
+    font-size: 20px;
+    padding: 12px;
+  }
+  
+  .calorie {
+    padding: 10px 14px;
+  }
+  
+  .kcal {
+    font-size: 16px;
+  }
+  
+  .label {
+    font-size: 15px;
+  }
+  
+  .nutrient-list li {
+    padding: 10px 12px;
+    font-size: 15px;
+  }
+  
+  .note-box {
+    padding: 12px;
+    font-size: 15px;
+  }
+  
+  .container-single,
+  .container-aktivitas {
+    max-width: 100%;
+    margin: 0 auto 20px;
+    padding: 20px;
+    gap: 15px;
+  }
+  
+  .container-single input,
+  .container-single select,
+  .container-aktivitas input,
+  .container-aktivitas select {
+    padding: 10px;
+    font-size: 15px;
+  }
+  
+  .form-title,
+  .form-title-row {
+    font-size: 16px;
+  }
+  
+  .orange-btn {
+    padding: 12px 25px;
+    font-size: 15px;
+    margin: 15px auto;
+  }
+  
+  .menu-table,
+  .aktivitas-table {
+    max-width: 100%;
+    padding: 15px;
+    overflow-x: auto;
+  }
+  
+  .menu-table h3,
+  .aktivitas-table h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  
+  table {
+    min-width: 500px;
+  }
+  
+  th,
+  td {
+    padding: 8px;
+    font-size: 14px;
   }
 }
 
-.card {
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.2s ease;
+/* Extra small screens (mobile portrait) */
+@media (max-width: 480px) {
+  body {
+    font-size: 15px;
+  }
+  
+  .navbar {
+    margin: -10px -10px 20px -10px;
+  }
+  
+  .navbar-container {
+    padding: 0 10px;
+  }
+  
+  .logo {
+    font-size: 15px;
+  }
+  
+  .back-button {
+    padding: 5px 10px;
+    font-size: 11px;
+    gap: 5px;
+  }
+  
+  .header {
+    padding: 10px 15px;
+    font-size: 16px;
+  }
+  
+  .hero {
+    padding: 30px 15px;
+  }
+  
+  .hero-text h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  
+  .section-light,
+  .section-white {
+    padding: 30px 15px;
+  }
+  
+  .section-title {
+    font-size: 22px;
+  }
+  
+  .section-subtitle {
+    font-size: 14px;
+  }
+  
+  .card {
+    padding: 20px;
+  }
+  
+  .card h3 {
+    font-size: 17px;
+  }
+  
+  .card p {
+    font-size: 14px;
+  }
+  
+  .upload-box,
+  .result-box {
+    padding: 20px;
+  }
+  
+  .upload-area {
+    padding: 25px 10px;
+  }
+  
+  .upload-icon {
+    font-size: 28px;
+  }
+  
+  .upload-text {
+    font-size: 15px;
+  }
+  
+  .upload-sub {
+    font-size: 13px;
+  }
+  
+  .upload-box textarea {
+    height: 70px;
+    font-size: 14px;
+    padding: 10px;
+  }
+  
+  .check-btn {
+    font-size: 15px;
+    padding: 12px;
+  }
+  
+  .food-name {
+    font-size: 18px;
+    padding: 10px;
+  }
+  
+  .calorie {
+    padding: 8px 12px;
+  }
+  
+  .kcal {
+    font-size: 15px;
+  }
+  
+  .label {
+    font-size: 14px;
+  }
+  
+  .nutrient-list li {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+  
+  .note-box {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .container-single,
+  .container-aktivitas {
+    padding: 15px;
+    gap: 12px;
+  }
+  
+  .container-single input,
+  .container-single select,
+  .container-aktivitas input,
+  .container-aktivitas select {
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  .form-title,
+  .form-title-row {
+    font-size: 15px;
+  }
+  
+  .orange-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    margin: 12px auto;
+  }
+  
+  .menu-table,
+  .aktivitas-table {
+    padding: 12px;
+  }
+  
+  .menu-table h3,
+  .aktivitas-table h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  table {
+    min-width: 450px;
+  }
+  
+  th,
+  td {
+    padding: 6px;
+    font-size: 13px;
+  }
 }
 
-.card:hover {
-  transform: scale(1.03);
+/* Landscape orientation adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+  .hero {
+    padding: 30px 40px;
+  }
+  
+  .hero-text h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .section-light,
+  .section-white {
+    padding: 40px;
+  }
+}
+
+/* High resolution screens */
+@media (min-resolution: 2dppx) {
+  .upload-icon {
+    transform: scale(0.9);
+  }
+  
+  .card img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
 }

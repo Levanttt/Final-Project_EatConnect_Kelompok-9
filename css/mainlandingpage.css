@@ -653,6 +653,11 @@ body {
 .fitur-image {
   flex: 0 0 200px;
   align-self: stretch;
+  height: 169px;
+}
+
+.fitur-item.image-left .fitur-image {
+  height: 165px;
 }
 
 .fitur-image img {
