@@ -87,6 +87,12 @@ function cekMenuMingguan() {
   const tujuan = document.getElementById("tujuanBB").value;
   const pola = document.getElementById("polaMakan").value;
   const pantangan = document.getElementById("pantangan").value.toLowerCase().trim();
+  
+  // Validasi input
+  if (!berat || !tujuan || !pola) {
+    showNotification("Silakan isi semua data berat badan, tujuan, dan pola makan!", 'error');
+    return;
+  }
 
   const menuVegetarian = [
     {
@@ -175,86 +181,140 @@ function cekMenuMingguan() {
     tr.children[2].textContent = menuMingguan[i].siang;
     tr.children[3].textContent = menuMingguan[i].malam;
   });
+  // Notifikasi sukses
+  showNotification("Menu mingguan berhasil ditampilkan!", 'success');
 }
 
-// Cek Aktivitas Fisik
-function cekAktivitasFisik() {
-  const tujuan = document.querySelector(
-    "#aktivitas-fisik select:nth-of-type(1)"
-  ).value;
-  const kondisi = document
-    .querySelector("#aktivitas-fisik input[type='text']")
-    .value.trim();
-  const tingkat = document.querySelector(
-    "#aktivitas-fisik select:nth-of-type(2)"
-  ).value;
-
-  const jadwalOlahraga = {
-    "Menurunkan Berat Badan": {
-      jenis: [
-        "Jogging",
-        "HIIT",
-        "Yoga",
-        "Bersepeda",
-        "Senam Aerobik",
-        "Lompat Tali",
-        "Renang",
-      ],
-      durasi: "30-45 menit",
-    },
-    "Membentuk Otot Tubuh": {
-      jenis: [
-        "Angkat Beban",
-        "Push Up",
-        "Plank",
-        "Pull Up",
-        "Bodyweight Training",
-        "Squat",
-        "Resistance Band",
-      ],
-      durasi: "40-60 menit",
-    },
-    "Menjaga Kesehatan": {
-      jenis: [
-        "Jalan Kaki",
-        "Stretching",
-        "Yoga Ringan",
-        "Senam Pagi",
-        "Tai Chi",
-        "Naik Turun Tangga",
-        "Bersepeda Santai",
-      ],
-      durasi: "20-30 menit",
-    },
-  };
-
-  const data = jadwalOlahraga[tujuan];
-
-  const tbody = document.querySelector(".aktivitas-table tbody");
-  const hari = [
-    "Senin",
-    "Selasa",
-    "Rabu",
-    "Kamis",
-    "Jum’at",
-    "Sabtu",
-    "Minggu",
-  ];
-
-  if (data) {
-    tbody.innerHTML = "";
-    for (let i = 0; i < 7; i++) {
-      const tr = document.createElement("tr");
-      const tdHari = `<td>${hari[i]}</td>`;
-      const tdJenis = `<td>${data.jenis[i]}</td>`;
-      const tdDurasi = `<td>${data.durasi}</td>`;
-      const tdTujuan = `<td>${tujuan}${
-        kondisi ? " (" + kondisi + ")" : ""
-      }</td>`;
-      tr.innerHTML = tdHari + tdJenis + tdDurasi + tdTujuan;
-      tbody.appendChild(tr);
+// Tambahin fungsi notification
+function showNotification(message, type = 'warning') {
+    // Hapus notification lama jika ada
+    const existingNotif = document.getElementById('modernNotification');
+    if (existingNotif) {
+        existingNotif.remove();
     }
-  } else {
-    alert("Silakan pilih semua opsi pada form terlebih dahulu.");
-  }
+
+    // Buat notification baru
+    const notificationHTML = `
+        <div class="notification-overlay" id="modernNotification">
+            <div class="notification-card">
+                <button class="close-btn" onclick="closeNotification()">&times;</button>
+                <div class="notification-icon">${type === 'error' ? '⚠️' : type === 'success' ? '✅' : '❗'}</div>
+                <div class="notification-title">${type === 'error' ? 'Perhatian' : type === 'success' ? 'Berhasil' : 'Informasi'}</div>
+                <div class="notification-message">${message}</div>
+                <button class="notification-btn" onclick="closeNotification()">OK</button>
+            </div>
+        </div>
+    `;
+
+    // Tambahin ke body
+    document.body.insertAdjacentHTML('beforeend', notificationHTML);
+    
+    // Show dengan delay kecil untuk smooth animation
+    setTimeout(() => {
+        document.getElementById('modernNotification').classList.add('show');
+    }, 10);
 }
+
+function closeNotification() {
+    const notification = document.getElementById('modernNotification');
+    if (notification) {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }
+}
+
+// Fungsi cekAktivitasFisik 
+function cekAktivitasFisik() {
+    const tujuan = document.querySelector("#aktivitas-fisik select:nth-of-type(1)").value;
+    const kondisi = document.querySelector("#aktivitas-fisik input[type='text']").value.trim();
+    const tingkat = document.querySelector("#aktivitas-fisik select:nth-of-type(2)").value;
+
+    // Validasi form
+    if (!tujuan || tujuan === "Tujuan" || !tingkat || tingkat === "Tingkat Aktivitas") {
+        showNotification("Silakan pilih semua opsi pada form terlebih dahulu.", 'error');
+        return;
+    }
+
+    const jadwalOlahraga = {
+        "Menurunkan Berat Badan": {
+            jenis: ["Jogging", "HIIT", "Yoga", "Bersepeda", "Senam Aerobik", "Lompat Tali", "Renang"],
+            durasi: "30-45 menit",
+        },
+        "Membentuk Otot Tubuh": {
+            jenis: ["Angkat Beban", "Push Up", "Plank", "Pull Up", "Bodyweight Training", "Squat", "Resistance Band"],
+            durasi: "40-60 menit",
+        },
+        "Menjaga Kesehatan": {
+            jenis: ["Jalan Kaki", "Stretching", "Yoga Ringan", "Senam Pagi", "Tai Chi", "Naik Turun Tangga", "Bersepeda Santai"],
+            durasi: "20-30 menit",
+        },
+    };
+
+    const data = jadwalOlahraga[tujuan];
+    const tbody = document.querySelector(".aktivitas-table tbody");
+    const hari = ["Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu", "Minggu"];
+
+    if (data) {
+        tbody.innerHTML = "";
+        for (let i = 0; i < 7; i++) {
+            const tr = document.createElement("tr");
+            const tdHari = `<td>${hari[i]}</td>`;
+            const tdJenis = `<td>${data.jenis[i]}</td>`;
+            const tdDurasi = `<td>${data.durasi}</td>`;
+            const tdTujuan = `<td>${tujuan}${kondisi ? " (" + kondisi + ")" : ""}</td>`;
+            tr.innerHTML = tdHari + tdJenis + tdDurasi + tdTujuan;
+            tbody.appendChild(tr);
+        }
+        
+        // Show success notification
+        showNotification("Jadwal aktivitas fisik berhasil dibuat!", 'success');
+    }
+}
+
+// Event listener untuk close notification dengan ESC
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeNotification();
+    }
+});
+
+// Close notification ketika klik overlay
+document.addEventListener('click', function(e) {
+    if (e.target && e.target.classList.contains('notification-overlay')) {
+        closeNotification();
+    }
+});
+
+// Save My Diary untuk Menu Makan
+document.querySelectorAll('.menu-table + .orange-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    const tbody = document.getElementById('menuMingguan');
+    // Cek apakah ada minimal satu baris yang sudah terisi (selain nama hari)
+    const hasData = Array.from(tbody.rows).some(tr =>
+      Array.from(tr.cells).slice(1).some(td => td.textContent.trim() !== "")
+    );
+    if (!hasData) {
+      showNotification("Belum ada data menu yang bisa disimpan!", 'error');
+    } else {
+      showNotification("Diary makanan berhasil disimpan!", 'success');
+    }
+  });
+});
+
+// Save My Diary untuk Aktivitas Fisik
+document.querySelectorAll('.aktivitas-table + .orange-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    const tbody = document.getElementById('tabelAktivitas');
+    // Cek apakah ada minimal satu baris yang sudah terisi (selain nama hari)
+    const hasData = Array.from(tbody.rows).some(tr =>
+      Array.from(tr.cells).slice(1).some(td => td.textContent.trim() !== "")
+    );
+    if (!hasData) {
+      showNotification("Belum ada data aktivitas yang bisa disimpan!", 'error');
+    } else {
+      showNotification("Diary aktivitas berhasil disimpan!", 'success');
+    }
+  });
+});
