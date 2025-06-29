@@ -42,6 +42,18 @@ document.querySelectorAll(".consult-btn").forEach((btn) => {
   });
 });
 
+document.querySelectorAll(".consult-btn").forEach((btn) => {
+  btn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    // Hapus class active dari semua tombol
+    document.querySelectorAll(".consult-btn").forEach(b => b.classList.remove("active"));
+    // Tambahkan class active ke tombol yang diklik
+    this.classList.add("active");
+    const selected = this.textContent.trim();
+    showChat(selected);
+  });
+});
+
 sendBtn.addEventListener("click", () => {
   const message = chatInput.value.trim();
   if (message) {
@@ -183,3 +195,7 @@ navButtons.forEach((btn) => {
     }
   });
 });
+
+function goBack() {
+  window.history.back();
+}

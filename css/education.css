@@ -166,6 +166,15 @@ h6 {
   font-size: 2.5rem;
 }
 
+.clickable-forum {
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.clickable-forum:hover {
+  box-shadow: 0 8px 24px rgba(44,90,160,0.15);
+  transform: translateY(-4px) scale(1.02);
+}
+
 /* Navigation Buttons */
 .nav-buttons {
   display: flex;
