@@ -690,3 +690,28 @@ main {
 .badge-blue {
   background-color: #3498db !important;
 }
+
+/* === Tambahan untuk kontrol visibilitas progress makan/fisik === */
+.progress-makan,
+.progress-fisik {
+  display: none;
+}
+
+.progress-makan {
+  display: grid;
+}
+
+.progress-makan .progress-card,
+.progress-fisik .progress-card {
+  transition: all 0.3s ease;
+}
+
+.progress-fisik .progress-card .icon {
+  color: #ffc107;
+}
+
+@media (max-width: 768px) {
+  .progress-cards {
+    grid-template-columns: 1fr;
+  }
+}

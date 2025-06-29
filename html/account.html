@@ -165,7 +165,7 @@
                     <td><input type="checkbox" /></td>
                   </tr>
                   <tr>
-                    <td class="day-cell">Minggu</td>
+                    <td class="day">Minggu</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -178,44 +178,75 @@
           </div>
         </div>
 
-        <div class="progress-section">
-          <h3>Progress Mingguan</h3>
-          <div class="progress-cards">
-            <div class="progress-card" data-week="1" data-type="makan">
-              <div class="icon">🍽️</div>
-              <div class="title">Pola Makan - Minggu 1</div>
-              <div class="value">0/7 Hari</div>
-              <div class="percentage">(0%)</div>
-              <div class="status">-</div>
-            </div>
-            <div class="progress-card inactive" data-week="2" data-type="makan">
-              <div class="icon">🍽️</div>
-              <div class="title">Pola Makan - Minggu 2</div>
-              <div class="value">-/- Hari</div>
-              <div class="percentage">(0%)</div>
-              <div class="status">-</div>
-            </div>
-            <div class="progress-card" data-week="21" data-type="fisik">
-              <div class="icon">🏃</div>
-              <div class="title">Aktivitas - Minggu 1</div>
-              <div class="value">0/7 Hari</div>
-              <div class="percentage">(0%)</div>
-              <div class="status">-</div>
-            </div>
-            <div
-              class="progress-card inactive"
-              data-week="22"
-              data-type="fisik"
-            >
-              <div class="icon">🏃</div>
-              <div class="title">Aktivitas - Minggu 2</div>
-              <div class="value">-/- Hari</div>
-              <div class="percentage">(0%)</div>
-              <div class="status">-</div>
-            </div>
-          </div>
-        </div>
-      </div>
+       <!-- Ganti bagian .progress-section kamu sebelumnya dengan ini -->
+<div class="progress-section">
+  <h3 id="progress-title">Progress Mingguan Pola Makan</h3>
+
+  <!-- Progress Pola Makan -->
+  <div class="progress-cards progress-makan">
+    <div class="progress-card" data-week="1" data-type="makan">
+      <div class="icon">🍽️</div>
+      <div class="title">Pola Makan - Minggu 1</div>
+      <div class="value">0/7 Hari</div>
+      <div class="percentage">(0%)</div>
+      <div class="status">-</div>
+    </div>
+    <div class="progress-card inactive" data-week="2" data-type="makan">
+      <div class="icon">🍽️</div>
+      <div class="title">Pola Makan - Minggu 2</div>
+      <div class="value">-/- Hari</div>
+      <div class="percentage">(0%)</div>
+      <div class="status">-</div>
+    </div>
+    <div class="progress-card inactive" data-week="3" data-type="makan">
+      <div class="icon">🍽️</div>
+      <div class="title">Pola Makan - Minggu 3</div>
+      <div class="value">-/- Hari</div>
+      <div class="percentage">(0%)</div>
+      <div class="status">-</div>
+    </div>
+    <div class="progress-card inactive" data-week="4" data-type="makan">
+      <div class="icon">🍽️</div>
+      <div class="title">Pola Makan - Minggu 4</div>
+      <div class="value">-/- Hari</div>
+      <div class="percentage">(0%)</div>
+      <div class="status">-</div>
+    </div>
+  </div>
+
+  <!-- Progress Aktivitas Fisik -->
+  <div class="progress-cards progress-fisik" style="display: none;">
+    <div class="progress-card" data-week="1" data-type="fisik">
+      <div class="icon">🏃</div>
+      <div class="title">Aktivitas - Minggu 1</div>
+      <div class="value">0/7 Hari</div>
+      <div class="percentage">(0%)</div>
+      <div class="status">-</div>
+    </div>
+    <div class="progress-card inactive" data-week="2" data-type="fisik">
+      <div class="icon">🏃</div>
+      <div class="title">Aktivitas - Minggu 2</div>
+      <div class="value">-/- Hari</div>
+      <div class="percentage">(0%)</div>
+      <div class="status">-</div>
+    </div>
+    <div class="progress-card inactive" data-week="3" data-type="fisik">
+      <div class="icon">🏃</div>
+      <div class="title">Aktivitas - Minggu 3</div>
+      <div class="value">-/- Hari</div>
+      <div class="percentage">(0%)</div>
+      <div class="status">-</div>
+    </div>
+    <div class="progress-card inactive" data-week="4" data-type="fisik">
+      <div class="icon">🏃</div>
+      <div class="title">Aktivitas - Minggu 4</div>
+      <div class="value">-/- Hari</div>
+      <div class="percentage">(0%)</div>
+      <div class="status">-</div>
+    </div>
+  </div>
+</div>
+
 
       <!-- KANAN -->
       <div class="right-section">

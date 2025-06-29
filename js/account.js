@@ -73,6 +73,31 @@ function initializeEventListeners() {
       navMenu.classList.toggle("mobile-active");
     });
   }
+
+  // Tab buttons: trigger showDiary saat diklik
+  const tabButtons = document.querySelectorAll(".tab-btn");
+  tabButtons.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const type = this.textContent.includes("Fisik") ? "fisik" : "makan";
+      showDiary(type); // panggil showDiary dengan logika updateProgress
+    });
+  });
+}
+
+function updateProgressVisibility(type) {
+  const cards = document.querySelectorAll(".progress-card");
+  cards.forEach((card) => {
+    const cardType = card.getAttribute("data-type");
+    card.style.display = cardType === type ? "block" : "none";
+  });
+
+  const progressSection = document.querySelector(".progress-section h3");
+  if (progressSection) {
+    progressSection.textContent =
+      type === "makan"
+        ? "Progress Mingguan Pola Makan"
+        : "Progress Mingguan Aktivitas Fisik";
+  }
 }
 
 function saveCheckboxProgress() {
@@ -116,14 +141,13 @@ function updateAllWeeklyProgress() {
     let checkboxes;
 
     if (type === "makan") {
-      // Pilih tabel pola makan berdasarkan week
       checkboxes = document.querySelectorAll(
         `.diary-table[data-week="${week}"] input[type="checkbox"]`
       );
     } else if (type === "fisik") {
-      // Khusus untuk aktivitas fisik minggu pertama (week = 21)
-      if (week !== "21") return; // Lewati minggu selain minggu pertama
-      const fisikTable = document.querySelector("#diary-fisik .diary-table");
+      const fisikTable = document.querySelector(
+        `#diary-fisik .diary-table[data-week="${week}"]`
+      );
       checkboxes = fisikTable
         ? fisikTable.querySelectorAll("input[type='checkbox']")
         : [];
@@ -150,7 +174,6 @@ function updateAllWeeklyProgress() {
       percentageElement.textContent = `(${percentage}%)`;
     }
 
-    // Tentukan status
     let status = "-";
     if (percentage >= 85) {
       status = "Sangat Baik";
@@ -171,7 +194,6 @@ function updateAllWeeklyProgress() {
         "badge-blue"
       );
 
-      // Tambahkan warna status badge
       if (status === "Sangat Baik") {
         statusElement.classList.add("badge-green");
       } else if (status === "Baik") {
@@ -183,7 +205,6 @@ function updateAllWeeklyProgress() {
       }
     }
 
-    // Aktifkan card jika ada isian
     if (checkedCount > 0) {
       card.classList.remove("inactive");
     }
@@ -204,6 +225,8 @@ document.addEventListener("DOMContentLoaded", function () {
       updateAllWeeklyProgress();
     });
   });
+
+  showDiary("makan"); // Default aktif tab "makan"
 });
 
 function smoothScrollTo(targetElement) {
@@ -244,4 +267,6 @@ function showDiary(type) {
   } else {
     buttons[1].classList.add("active");
   }
+
+  updateProgressVisibility(type); // Tambahkan ini agar progress-card sesuai tab
 }
