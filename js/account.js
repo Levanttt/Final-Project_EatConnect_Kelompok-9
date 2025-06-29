@@ -6,6 +6,11 @@ function initializeEventListeners() {
   document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
     checkbox.addEventListener("change", function () {
       const row = this.closest("tr");
+      const parentTable = this.closest("table");
+      const week = parentTable?.getAttribute("data-week");
+      const isMakan = parentTable?.closest("#diary-makan") !== null;
+      const isFisik = parentTable?.closest("#diary-fisik") !== null;
+
       if (this.checked) {
         row.style.backgroundColor = "#e8f5e8";
         row.style.transform = "scale(1.02)";
@@ -14,6 +19,13 @@ function initializeEventListeners() {
         }, 200);
       } else {
         row.style.backgroundColor = "";
+      }
+
+      saveCheckboxProgress();
+
+      // Update progress hanya untuk week 1 dan tipe yg sesuai
+      if (week === "1") {
+        updateWeeklyProgress(isMakan ? "makan" : "fisik");
       }
     });
   });
@@ -31,7 +43,12 @@ function initializeEventListeners() {
   if (logoutButton) {
     logoutButton.addEventListener("click", function () {
       if (confirm("Apakah Anda yakin ingin keluar dari akun?")) {
-        alert("Anda telah keluar dari akun.");
+        // Optional: hapus data login lokal kalau ada
+        localStorage.removeItem("user");
+        sessionStorage.clear();
+
+        // Redirect ke halaman landing page
+        window.location.href = "landingpage.html";
       }
     });
   }
@@ -74,12 +91,11 @@ function initializeEventListeners() {
     });
   }
 
-  // Tab buttons: trigger showDiary saat diklik
   const tabButtons = document.querySelectorAll(".tab-btn");
   tabButtons.forEach((btn) => {
     btn.addEventListener("click", function () {
       const type = this.textContent.includes("Fisik") ? "fisik" : "makan";
-      showDiary(type); // panggil showDiary dengan logika updateProgress
+      showDiary(type);
     });
   });
 }
@@ -101,164 +117,163 @@ function updateProgressVisibility(type) {
 }
 
 function saveCheckboxProgress() {
-  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-  const progress = {};
-  checkboxes.forEach((checkbox) => {
-    const dayCell = checkbox.closest("tr").querySelector(".day-cell");
-    if (dayCell) {
-      const day = dayCell.textContent.trim();
-      progress[day] = checkbox.checked;
-    }
-  });
+  const progress = {
+    makan: {},
+    fisik: {},
+  };
+
+  document
+    .querySelectorAll(
+      '#diary-makan .diary-table[data-week="1"] input[type="checkbox"]'
+    )
+    .forEach((checkbox) => {
+      const dayCell = checkbox.closest("tr").querySelector(".day-cell");
+      if (dayCell) {
+        const day = dayCell.textContent.trim();
+        progress.makan[day] = checkbox.checked;
+      }
+    });
+
+  document
+    .querySelectorAll(
+      '#diary-fisik .diary-table[data-week="1"] input[type="checkbox"]'
+    )
+    .forEach((checkbox) => {
+      const dayCell = checkbox.closest("tr").querySelector(".day-cell");
+      if (dayCell) {
+        const day = dayCell.textContent.trim();
+        progress.fisik[day] = checkbox.checked;
+      }
+    });
+
   localStorage.setItem("weeklyProgress", JSON.stringify(progress));
 }
 
 function loadCheckboxProgress() {
   const savedProgress = localStorage.getItem("weeklyProgress");
-  if (savedProgress) {
-    const progress = JSON.parse(savedProgress);
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach((checkbox) => {
+  if (!savedProgress) return;
+
+  const progress = JSON.parse(savedProgress);
+
+  // Makan minggu 1
+  document
+    .querySelectorAll(
+      '#diary-makan .diary-table[data-week="1"] input[type="checkbox"]'
+    )
+    .forEach((checkbox) => {
       const dayCell = checkbox.closest("tr").querySelector(".day-cell");
       if (dayCell) {
         const day = dayCell.textContent.trim();
-        if (progress[day]) {
+        if (progress.makan && progress.makan[day]) {
           checkbox.checked = true;
           checkbox.closest("tr").style.backgroundColor = "#e8f5e8";
         }
       }
     });
+
+  // Fisik minggu 1
+  document
+    .querySelectorAll(
+      '#diary-fisik .diary-table[data-week="1"] input[type="checkbox"]'
+    )
+    .forEach((checkbox) => {
+      const dayCell = checkbox.closest("tr").querySelector(".day-cell");
+      if (dayCell) {
+        const day = dayCell.textContent.trim();
+        if (progress.fisik && progress.fisik[day]) {
+          checkbox.checked = true;
+          checkbox.closest("tr").style.backgroundColor = "#e8f5e8";
+        }
+      }
+    });
+}
+
+function updateWeeklyProgress(type) {
+  const card = document.querySelector(
+    `.progress-card[data-week="1"][data-type="${type}"]`
+  );
+
+  if (!card) return;
+
+  const checkboxes = document.querySelectorAll(
+    `#diary-${type} .diary-table[data-week="1"] input[type="checkbox"]`
+  );
+
+  const checkedCount = Array.from(checkboxes).filter((cb) => cb.checked).length;
+  const totalCount = checkboxes.length;
+  const percentage =
+    totalCount === 0 ? 0 : Math.round((checkedCount / totalCount) * 100);
+
+  const valueElement = card.querySelector(".value");
+  const percentageElement = card.querySelector(".percentage");
+  const statusElement = card.querySelector(".status");
+
+  if (valueElement) {
+    valueElement.textContent = `${checkedCount}/${totalCount} Hari`;
+  }
+
+  if (percentageElement) {
+    percentageElement.textContent = `(${percentage}%)`;
+  }
+
+  let status = "-";
+  if (percentage >= 85) {
+    status = "Sangat Baik";
+  } else if (percentage >= 70) {
+    status = "Baik";
+  } else if (percentage >= 50) {
+    status = "Cukup";
+  } else if (percentage > 0) {
+    status = "Kurang";
+  }
+
+  if (statusElement) {
+    statusElement.textContent = status;
+    statusElement.classList.remove(
+      "badge-green",
+      "badge-orange",
+      "badge-red",
+      "badge-blue"
+    );
+
+    if (status === "Sangat Baik") {
+      statusElement.classList.add("badge-green");
+    } else if (status === "Baik") {
+      statusElement.classList.add("badge-orange");
+    } else if (status === "Cukup") {
+      statusElement.classList.add("badge-blue");
+    } else if (status === "Kurang") {
+      statusElement.classList.add("badge-red");
+    }
+  }
+
+  if (checkedCount > 0) {
+    card.classList.remove("inactive");
   }
 }
 
 function updateAllWeeklyProgress() {
-  const progressCards = document.querySelectorAll(".progress-card");
-
-  progressCards.forEach((card) => {
-    const week = card.getAttribute("data-week");
-    const type = card.getAttribute("data-type");
-
-    let checkboxes;
-
-    if (type === "makan") {
-      checkboxes = document.querySelectorAll(
-        `.diary-table[data-week="${week}"] input[type="checkbox"]`
-      );
-    } else if (type === "fisik") {
-      const fisikTable = document.querySelector(
-        `#diary-fisik .diary-table[data-week="${week}"]`
-      );
-      checkboxes = fisikTable
-        ? fisikTable.querySelectorAll("input[type='checkbox']")
-        : [];
-    }
-
-    if (!checkboxes || checkboxes.length === 0) return;
-
-    const checkedCount = Array.from(checkboxes).filter(
-      (cb) => cb.checked
-    ).length;
-    const totalCount = checkboxes.length;
-    const percentage =
-      totalCount === 0 ? 0 : Math.round((checkedCount / totalCount) * 100);
-
-    const valueElement = card.querySelector(".value");
-    const percentageElement = card.querySelector(".percentage");
-    const statusElement = card.querySelector(".status");
-
-    if (valueElement) {
-      valueElement.textContent = `${checkedCount}/${totalCount} Hari`;
-    }
-
-    if (percentageElement) {
-      percentageElement.textContent = `(${percentage}%)`;
-    }
-
-    let status = "-";
-    if (percentage >= 85) {
-      status = "Sangat Baik";
-    } else if (percentage >= 70) {
-      status = "Baik";
-    } else if (percentage >= 50) {
-      status = "Cukup";
-    } else if (percentage > 0) {
-      status = "Kurang";
-    }
-
-    if (statusElement) {
-      statusElement.textContent = status;
-      statusElement.classList.remove(
-        "badge-green",
-        "badge-orange",
-        "badge-red",
-        "badge-blue"
-      );
-
-      if (status === "Sangat Baik") {
-        statusElement.classList.add("badge-green");
-      } else if (status === "Baik") {
-        statusElement.classList.add("badge-orange");
-      } else if (status === "Cukup") {
-        statusElement.classList.add("badge-blue");
-      } else if (status === "Kurang") {
-        statusElement.classList.add("badge-red");
-      }
-    }
-
-    if (checkedCount > 0) {
-      card.classList.remove("inactive");
-    }
-  });
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  initializeEventListeners();
-  if (typeof loadProgressData === "function") {
-    loadProgressData();
-  }
-  loadCheckboxProgress();
-  updateAllWeeklyProgress();
-
-  document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
-    checkbox.addEventListener("change", function () {
-      saveCheckboxProgress();
-      updateAllWeeklyProgress();
-    });
-  });
-
-  showDiary("makan"); // Default aktif tab "makan"
-});
-
-function smoothScrollTo(targetElement) {
-  if (targetElement) {
-    targetElement.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }
-}
-
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = {
-    goBack,
-    initializeEventListeners,
-    saveCheckboxProgress,
-    loadCheckboxProgress,
-    updateAllWeeklyProgress,
-  };
+  updateWeeklyProgress("makan");
+  updateWeeklyProgress("fisik");
 }
 
 function showDiary(type) {
   const makan = document.getElementById("diary-makan");
   const fisik = document.getElementById("diary-fisik");
+  const progressMakan = document.querySelector(".progress-makan");
+  const progressFisik = document.querySelector(".progress-fisik");
   const buttons = document.querySelectorAll(".tab-btn");
 
   if (type === "makan") {
     makan.style.display = "block";
     fisik.style.display = "none";
+    progressMakan.classList.add("active");
+    progressFisik.classList.remove("active");
   } else {
     makan.style.display = "none";
     fisik.style.display = "block";
+    progressMakan.classList.remove("active");
+    progressFisik.classList.add("active");
   }
 
   buttons.forEach((btn) => btn.classList.remove("active"));
@@ -268,5 +283,12 @@ function showDiary(type) {
     buttons[1].classList.add("active");
   }
 
-  updateProgressVisibility(type); // Tambahkan ini agar progress-card sesuai tab
+  updateProgressVisibility(type);
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  initializeEventListeners();
+  loadCheckboxProgress();
+  updateAllWeeklyProgress();
+  showDiary("makan");
+});
