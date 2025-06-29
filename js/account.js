@@ -79,8 +79,11 @@ function saveCheckboxProgress() {
   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
   const progress = {};
   checkboxes.forEach((checkbox) => {
-    const day = checkbox.closest("tr").querySelector(".day-cell").textContent;
-    progress[day] = checkbox.checked;
+    const dayCell = checkbox.closest("tr").querySelector(".day-cell");
+    if (dayCell) {
+      const day = dayCell.textContent.trim();
+      progress[day] = checkbox.checked;
+    }
   });
   localStorage.setItem("weeklyProgress", JSON.stringify(progress));
 }
@@ -91,50 +94,114 @@ function loadCheckboxProgress() {
     const progress = JSON.parse(savedProgress);
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach((checkbox) => {
-      const day = checkbox.closest("tr").querySelector(".day-cell").textContent;
-      if (progress[day]) {
-        checkbox.checked = true;
-        checkbox.closest("tr").style.backgroundColor = "#e8f5e8";
+      const dayCell = checkbox.closest("tr").querySelector(".day-cell");
+      if (dayCell) {
+        const day = dayCell.textContent.trim();
+        if (progress[day]) {
+          checkbox.checked = true;
+          checkbox.closest("tr").style.backgroundColor = "#e8f5e8";
+        }
       }
     });
   }
 }
 
-function updateWeeklyProgress() {
-  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-  const checkedCount = Array.from(checkboxes).filter((cb) => cb.checked).length;
-  const totalCount = checkboxes.length;
-  const percentage = Math.round((checkedCount / totalCount) * 100);
-  const firstProgressCard = document.querySelector(".progress-card");
-  if (firstProgressCard) {
-    const valueElement = firstProgressCard.querySelector(".value");
-    const percentageElement = firstProgressCard.querySelector(".percentage");
-    const statusElement = firstProgressCard.querySelector(".status");
-    if (valueElement)
-      valueElement.textContent = `${checkedCount}/${totalCount} Hari`;
-    if (percentageElement) percentageElement.textContent = `(${percentage}%)`;
-    let status = "";
-    if (percentage >= 85) status = "Sangat Baik";
-    else if (percentage >= 70) status = "Baik";
-    else if (percentage >= 50) status = "Cukup";
-    else if (percentage > 0) status = "Kurang";
-    else status = "-";
-    if (statusElement) statusElement.textContent = status;
-    if (checkedCount > 0) {
-      firstProgressCard.classList.remove("inactive");
+function updateAllWeeklyProgress() {
+  const progressCards = document.querySelectorAll(".progress-card");
+
+  progressCards.forEach((card) => {
+    const week = card.getAttribute("data-week");
+    const type = card.getAttribute("data-type");
+
+    let checkboxes;
+
+    if (type === "makan") {
+      // Pilih tabel pola makan berdasarkan week
+      checkboxes = document.querySelectorAll(
+        `.diary-table[data-week="${week}"] input[type="checkbox"]`
+      );
+    } else if (type === "fisik") {
+      // Khusus untuk aktivitas fisik minggu pertama (week = 21)
+      if (week !== "21") return; // Lewati minggu selain minggu pertama
+      const fisikTable = document.querySelector("#diary-fisik .diary-table");
+      checkboxes = fisikTable
+        ? fisikTable.querySelectorAll("input[type='checkbox']")
+        : [];
     }
-  }
+
+    if (!checkboxes || checkboxes.length === 0) return;
+
+    const checkedCount = Array.from(checkboxes).filter(
+      (cb) => cb.checked
+    ).length;
+    const totalCount = checkboxes.length;
+    const percentage =
+      totalCount === 0 ? 0 : Math.round((checkedCount / totalCount) * 100);
+
+    const valueElement = card.querySelector(".value");
+    const percentageElement = card.querySelector(".percentage");
+    const statusElement = card.querySelector(".status");
+
+    if (valueElement) {
+      valueElement.textContent = `${checkedCount}/${totalCount} Hari`;
+    }
+
+    if (percentageElement) {
+      percentageElement.textContent = `(${percentage}%)`;
+    }
+
+    // Tentukan status
+    let status = "-";
+    if (percentage >= 85) {
+      status = "Sangat Baik";
+    } else if (percentage >= 70) {
+      status = "Baik";
+    } else if (percentage >= 50) {
+      status = "Cukup";
+    } else if (percentage > 0) {
+      status = "Kurang";
+    }
+
+    if (statusElement) {
+      statusElement.textContent = status;
+      statusElement.classList.remove(
+        "badge-green",
+        "badge-orange",
+        "badge-red",
+        "badge-blue"
+      );
+
+      // Tambahkan warna status badge
+      if (status === "Sangat Baik") {
+        statusElement.classList.add("badge-green");
+      } else if (status === "Baik") {
+        statusElement.classList.add("badge-orange");
+      } else if (status === "Cukup") {
+        statusElement.classList.add("badge-blue");
+      } else if (status === "Kurang") {
+        statusElement.classList.add("badge-red");
+      }
+    }
+
+    // Aktifkan card jika ada isian
+    if (checkedCount > 0) {
+      card.classList.remove("inactive");
+    }
+  });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
   initializeEventListeners();
-  loadProgressData();
+  if (typeof loadProgressData === "function") {
+    loadProgressData();
+  }
   loadCheckboxProgress();
-  updateWeeklyProgress();
+  updateAllWeeklyProgress();
+
   document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
     checkbox.addEventListener("change", function () {
       saveCheckboxProgress();
-      updateWeeklyProgress();
+      updateAllWeeklyProgress();
     });
   });
 });
@@ -152,10 +219,9 @@ if (typeof module !== "undefined" && module.exports) {
   module.exports = {
     goBack,
     initializeEventListeners,
-    loadProgressData,
     saveCheckboxProgress,
     loadCheckboxProgress,
-    updateWeeklyProgress,
+    updateAllWeeklyProgress,
   };
 }
 

@@ -90,9 +90,17 @@ main {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 30px;
+  align-items: start;
 }
 
 .left-section {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  min-height: 100%;
+}
+
+.right-section {
   display: flex;
   flex-direction: column;
   gap: 25px;
@@ -657,6 +665,28 @@ main {
   }
 }
 
+.status {
+  padding: 4px 12px;
+  border-radius: 999px;
+  display: inline-block;
+  font-weight: 600;
+  color: white;
+  background-color: #ccc; /* Default abu-abu */
+  transition: background-color 0.3s ease;
+}
 
+.badge-green {
+  background-color: #2ecc71 !important;
+}
 
+.badge-orange {
+  background-color: #f39c12 !important;
+}
 
+.badge-red {
+  background-color: #e74c3c !important;
+}
+
+.badge-blue {
+  background-color: #3498db !important;
+}
