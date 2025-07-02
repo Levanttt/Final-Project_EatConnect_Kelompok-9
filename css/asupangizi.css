@@ -30,6 +30,7 @@ body {
   top: 0;
   z-index: 999;
   margin: -80px -20px 30px -20px;
+  width: 102%;
 }
 
 .navbar-container {
@@ -612,6 +613,126 @@ th {
 @keyframes gradient {
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
+}
+
+/* Footer */
+.footer {
+  background: #1e3a5f;
+  color: white;
+  padding: 4rem 0 2rem;
+  position: relative;
+  width: 100%;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #48c0d5;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  margin-left: 2rem;
+}
+
+.footer-brand {
+  padding-right: 2rem;
+}
+
+.footer-brand h3 {
+  font-size: 2rem;
+  color: #3498db;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.footer-brand p {
+  color: #bdc3c7;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.footer-section h4 {
+  color: #3498db;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  position: relative;
+}
+
+.footer-section h4::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: #ff6b35;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-section a {
+  color: #bdc3c7;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.footer-section a::before {
+  content: "→";
+  position: absolute;
+  left: -20px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  color: #ff6b35;
+}
+
+.footer-section a:hover {
+  color: #3498db;
+  padding-left: 20px;
+}
+
+.footer-section a:hover::before {
+  opacity: 1;
+  left: -15px;
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  color: #bdc3c7;
+  margin-right: 2rem;
+}
+
+.contact-info svg {
+  margin-right: 10px;
+  fill: #3498db;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid #34495e;
+  color: #95a5a6;
+}
+
+.footer-bottom p {
+  font-size: 0.9rem;
 }
 
 /* === RESPONSIVE DESIGN === */
