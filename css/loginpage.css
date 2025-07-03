@@ -14,8 +14,9 @@ body {
     #2c5a8c 100%
   );
   color: #fff;
-  min-height: 100vh;
+  min-height: 120vh;
   font-family: "Inter", sans-serif;
+  overflow: hidden;
 }
 
 .navbar {

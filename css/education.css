@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap");
 
-/* Reset and Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -29,7 +28,6 @@ h6 {
   padding: 0 20px;
 }
 
-/* Navbar Styles */
 /* === Navbar === */
 .navbar {
   background: linear-gradient(
