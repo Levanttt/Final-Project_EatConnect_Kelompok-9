@@ -1,96 +1,96 @@
+/* ======================================================
+   EatConnect – Frontend Logic (Pure JS, no backend)
+   ====================================================== */
+
+/* ► tombol back ke landing */
 function goBack() {
   window.location.href = "mainlandingpage.html";
 }
 
-// Analisis Nutrisi
-document.querySelector(".check-btn").addEventListener("click", function () {
-  const deskripsi = document.getElementById("deskripsiMakanan").value.trim();
+/* ---------- KAMUS GIZI MINI ---------- */
+const dbGizi = {
+  "nasi goreng ayam": {
+    kalori: 523,
+    karbo: 55,
+    protein: 21,
+    lemak: 18,
+    gula: 4,
+    serat: 2,
+    zatBesi: 3.5,
+    note: "Disarankan menambah sayuran agar lebih seimbang.",
+  },
+  "salad sayur": {
+    kalori: 320,
+    karbo: 20,
+    protein: 8,
+    lemak: 22,
+    gula: 5,
+    serat: 7,
+    zatBesi: 2.1,
+    note: "Lemak sehat dari alpukat—cocok untuk diet keto ringan.",
+  },
+  "mie instan": {
+    kalori: 380,
+    karbo: 52,
+    protein: 8,
+    lemak: 14,
+    gula: 3,
+    serat: 1,
+    zatBesi: 2,
+    note: "Tinggi sodium, konsumsi tidak lebih dari 1× per minggu.",
+  },
+};
+const cariGizi = (d) => dbGizi[d] ?? null;
+const fuzzyGizi = (d) =>
+  Object.entries(dbGizi).find(([k]) => d.includes(k))?.[1] ?? null;
 
-  const contohHasil = [
-    {
-      nama: "Nasi Goreng Ayam",
-      kalori: "523 Kkal",
-      nutrisi: {
-        karbo: "55 g",
-        protein: "21 g",
-        lemak: "18 g",
-        gula: "4 g",
-        serat: "2 g",
-        zatBesi: "3.5 mg",
-      },
-      catatan: "Disarankan untuk menambah sayuran agar lebih seimbang.",
-    },
-    {
-      nama: "Salad Sayur dengan Alpukat",
-      kalori: "320 Kkal",
-      nutrisi: {
-        karbo: "20 g",
-        protein: "8 g",
-        lemak: "22 g",
-        gula: "5 g",
-        serat: "7 g",
-        zatBesi: "2.1 mg",
-      },
-      catatan: "Lemak sehat, cocok untuk diet keto ringan.",
-    },
-    {
-      nama: "Mie Instan + Telur",
-      kalori: "450 Kkal",
-      nutrisi: {
-        karbo: "52 g",
-        protein: "12 g",
-        lemak: "16 g",
-        gula: "3 g",
-        serat: "1 g",
-        zatBesi: "1.8 mg",
-      },
-      catatan: "Tinggi sodium, konsumsi tidak lebih dari 1x/minggu.",
-    },
-  ];
+/* ---------- ANALISIS NUTRISI ---------- */
+document.querySelector(".check-btn").addEventListener("click", () => {
+  const input = document.getElementById("deskripsiMakanan").value.trim();
+  if (!input)
+    return showNotification("Harap tulis nama makanan dulu.", "error");
 
-  const hasil =
-    deskripsi.length > 0
-      ? { ...contohHasil[0], nama: deskripsi }
-      : contohHasil[Math.floor(Math.random() * contohHasil.length)];
+  const data = cariGizi(input.toLowerCase()) || fuzzyGizi(input.toLowerCase());
+  if (!data) return showNotification("Data gizi belum tersedia.", "error");
 
-  document.querySelector(".food-name").textContent = hasil.nama;
-  document.querySelector(".kcal").textContent = hasil.kalori;
+  document.querySelector(".food-name").textContent = input;
+  document.querySelector(".kcal").textContent = data.kalori + " Kkal";
 
-  const list = document.querySelectorAll(".nutrient-list li span");
-  list[0].textContent = hasil.nutrisi.karbo;
-  list[1].textContent = hasil.nutrisi.protein;
-  list[2].textContent = hasil.nutrisi.lemak;
-  list[3].textContent = hasil.nutrisi.gula;
-  list[4].textContent = hasil.nutrisi.serat;
-  list[5].textContent = hasil.nutrisi.zatBesi;
+  const span = document.querySelectorAll(".nutrient-list li span");
+  span[0].textContent = data.karbo + " g";
+  span[1].textContent = data.protein + " g";
+  span[2].textContent = data.lemak + " g";
+  span[3].textContent = data.gula + " g";
+  span[4].textContent = data.serat + " g";
+  span[5].textContent = data.zatBesi + " mg";
 
   document.querySelector(".note-box").innerHTML =
-    "<strong>Note :</strong> " + hasil.catatan;
+    "<strong>Note :</strong> " + data.note;
 });
 
-
-// Upload area preview
+/* ---------- Upload preview ---------- */
 const uploadArea = document.querySelector(".upload-area");
 const fileInput = document.getElementById("fotoUpload");
-
 uploadArea.addEventListener("click", () => fileInput.click());
 fileInput.addEventListener("change", () => {
-  if (fileInput.files.length > 0) {
-    const fileName = fileInput.files[0].name;
-    document.querySelector(".upload-sub").textContent = `Dipilih: ${fileName}`;
-  }
+  if (fileInput.files.length)
+    document.querySelector(
+      ".upload-sub"
+    ).textContent = `Dipilih: ${fileInput.files[0].name}`;
 });
 
-// Cek Menu Mingguan
+/* ---------- CEK MENU MINGGUAN ---------- */
 function cekMenuMingguan() {
   const berat = document.getElementById("beratBadan").value.trim();
   const tujuan = document.getElementById("tujuanBB").value;
   const pola = document.getElementById("polaMakan").value;
-  const pantangan = document.getElementById("pantangan").value.toLowerCase().trim();
-  
-  // Validasi input
+  const pantangan = document
+    .getElementById("pantangan")
+    .value.toLowerCase()
+    .trim();
+
   if (!berat || !tujuan || !pola) {
-    showNotification("Silakan isi semua data berat badan, tujuan, dan pola makan!", 'error');
+    showNotification("Isi berat badan, tujuan & pola makan!", "error");
     return;
   }
 
@@ -170,151 +170,197 @@ function cekMenuMingguan() {
     },
   ];
 
-  const menuMingguan = pola === "Vegetarian" ? menuVegetarian : menuNonVeg;
+  const baseMenu = pola === "Vegetarian" ? menuVegetarian : menuNonVeg;
 
-  const hari = document
-    .getElementById("menuMingguan")
-    .querySelectorAll("tr");
+  // pantangan: misalnya "ayam, telur"
+  const avoidList = pantangan
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+  const filteredMenu = baseMenu.map((menu) => ({
+    sarapan: avoidList.some((p) => menu.sarapan.toLowerCase().includes(p))
+      ? "-"
+      : menu.sarapan,
+    siang: avoidList.some((p) => menu.siang.toLowerCase().includes(p))
+      ? "-"
+      : menu.siang,
+    malam: avoidList.some((p) => menu.malam.toLowerCase().includes(p))
+      ? "-"
+      : menu.malam,
+  }));
 
-  hari.forEach((tr, i) => {
-    tr.children[1].textContent = menuMingguan[i].sarapan;
-    tr.children[2].textContent = menuMingguan[i].siang;
-    tr.children[3].textContent = menuMingguan[i].malam;
+  // isi ulang baris tabel
+  const rows = document.querySelectorAll("#menuMingguan tr");
+  filteredMenu.forEach((menu, i) => {
+    if (rows[i]) {
+      rows[i].children[1].textContent = menu.sarapan;
+      rows[i].children[2].textContent = menu.siang;
+      rows[i].children[3].textContent = menu.malam;
+    }
   });
-  // Notifikasi sukses
-  showNotification("Menu mingguan berhasil ditampilkan!", 'success');
+
+  showNotification("Menu mingguan berhasil ditampilkan!", "success");
 }
 
-// Tambahin fungsi notification
-function showNotification(message, type = 'warning') {
-    // Hapus notification lama jika ada
-    const existingNotif = document.getElementById('modernNotification');
-    if (existingNotif) {
-        existingNotif.remove();
-    }
-
-    // Buat notification baru
-    const notificationHTML = `
-        <div class="notification-overlay" id="modernNotification">
-            <div class="notification-card">
-                <button class="close-btn" onclick="closeNotification()">&times;</button>
-                <div class="notification-icon">${type === 'error' ? '⚠️' : type === 'success' ? '✅' : '❗'}</div>
-                <div class="notification-title">${type === 'error' ? 'Perhatian' : type === 'success' ? 'Berhasil' : 'Informasi'}</div>
-                <div class="notification-message">${message}</div>
-                <button class="notification-btn" onclick="closeNotification()">OK</button>
-            </div>
-        </div>
-    `;
-
-    // Tambahin ke body
-    document.body.insertAdjacentHTML('beforeend', notificationHTML);
-    
-    // Show dengan delay kecil untuk smooth animation
-    setTimeout(() => {
-        document.getElementById('modernNotification').classList.add('show');
-    }, 10);
-}
-
-function closeNotification() {
-    const notification = document.getElementById('modernNotification');
-    if (notification) {
-        notification.classList.remove('show');
-        setTimeout(() => {
-            notification.remove();
-        }, 300);
-    }
-}
-
-// Fungsi cekAktivitasFisik 
+/* ---------- CEK AKTIVITAS FISIK ---------- */
 function cekAktivitasFisik() {
-    const tujuan = document.querySelector("#aktivitas-fisik select:nth-of-type(1)").value;
-    const kondisi = document.querySelector("#aktivitas-fisik input[type='text']").value.trim();
-    const tingkat = document.querySelector("#aktivitas-fisik select:nth-of-type(2)").value;
+  const tujuan = document.querySelector(
+    "#aktivitas-fisik select:nth-of-type(1)"
+  ).value;
+  const kondisi = document
+    .querySelector("#aktivitas-fisik input[type='text']")
+    .value.trim();
+  const tingkat = document.querySelector(
+    "#aktivitas-fisik select:nth-of-type(2)"
+  ).value;
 
-    // Validasi form
-    if (!tujuan || tujuan === "Tujuan" || !tingkat || tingkat === "Tingkat Aktivitas") {
-        showNotification("Silakan pilih semua opsi pada form terlebih dahulu.", 'error');
-        return;
-    }
+  if (
+    !tujuan ||
+    tujuan === "Tujuan" ||
+    !tingkat ||
+    tingkat === "Tingkat Aktivitas"
+  )
+    return showNotification("Silakan lengkapi semua opsi.", "error");
 
-    const jadwalOlahraga = {
-        "Menurunkan Berat Badan": {
-            jenis: ["Jogging", "HIIT", "Yoga", "Bersepeda", "Senam Aerobik", "Lompat Tali", "Renang"],
-            durasi: "30-45 menit",
-        },
-        "Membentuk Otot Tubuh": {
-            jenis: ["Angkat Beban", "Push Up", "Plank", "Pull Up", "Bodyweight Training", "Squat", "Resistance Band"],
-            durasi: "40-60 menit",
-        },
-        "Menjaga Kesehatan": {
-            jenis: ["Jalan Kaki", "Stretching", "Yoga Ringan", "Senam Pagi", "Tai Chi", "Naik Turun Tangga", "Bersepeda Santai"],
-            durasi: "20-30 menit",
-        },
-    };
+  const jadwal = {
+    "Menurunkan Berat Badan": {
+      jenis: [
+        "Jogging",
+        "HIIT",
+        "Yoga",
+        "Bersepeda",
+        "Senam Aerobik",
+        "Lompat Tali",
+        "Renang",
+      ],
+      durasi: "30-45 menit",
+    },
+    "Membentuk Otot Tubuh": {
+      jenis: [
+        "Angkat Beban",
+        "Push Up",
+        "Plank",
+        "Pull Up",
+        "Bodyweight Training",
+        "Squat",
+        "Resistance Band",
+      ],
+      durasi: "40-60 menit",
+    },
+    "Menjaga Kesehatan": {
+      jenis: [
+        "Jalan Kaki",
+        "Stretching",
+        "Yoga Ringan",
+        "Senam Pagi",
+        "Tai Chi",
+        "Naik Turun Tangga",
+        "Bersepeda Santai",
+      ],
+      durasi: "20-30 menit",
+    },
+  };
 
-    const data = jadwalOlahraga[tujuan];
-    const tbody = document.querySelector(".aktivitas-table tbody");
-    const hari = ["Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu", "Minggu"];
-
-    if (data) {
-        tbody.innerHTML = "";
-        for (let i = 0; i < 7; i++) {
-            const tr = document.createElement("tr");
-            const tdHari = `<td>${hari[i]}</td>`;
-            const tdJenis = `<td>${data.jenis[i]}</td>`;
-            const tdDurasi = `<td>${data.durasi}</td>`;
-            const tdTujuan = `<td>${tujuan}${kondisi ? " (" + kondisi + ")" : ""}</td>`;
-            tr.innerHTML = tdHari + tdJenis + tdDurasi + tdTujuan;
-            tbody.appendChild(tr);
-        }
-        
-        // Show success notification
-        showNotification("Jadwal aktivitas fisik berhasil dibuat!", 'success');
-    }
+  const data = jadwal[tujuan];
+  const tbody = document.querySelector(".aktivitas-table tbody");
+  const hari = [
+    "Senin",
+    "Selasa",
+    "Rabu",
+    "Kamis",
+    "Jum'at",
+    "Sabtu",
+    "Minggu",
+  ];
+  tbody.innerHTML = "";
+  hari.forEach((h, i) => {
+    tbody.insertAdjacentHTML(
+      "beforeend",
+      `<tr><td>${h}</td><td>${data.jenis[i]}</td><td>${
+        data.durasi
+      }</td><td>${tujuan}${kondisi ? " (" + kondisi + ")" : ""}</td></tr>`
+    );
+  });
+  showNotification("Jadwal aktivitas fisik berhasil dibuat!", "success");
 }
 
-// Event listener untuk close notification dengan ESC
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        closeNotification();
-    }
+/* ---------- Notification util ---------- */
+function showNotification(msg, type = "warning") {
+  document.getElementById("modernNotification")?.remove();
+  const icon = type === "error" ? "⚠️" : type === "success" ? "✅" : "❗";
+  const title =
+    type === "error"
+      ? "Perhatian"
+      : type === "success"
+      ? "Berhasil"
+      : "Informasi";
+  document.body.insertAdjacentHTML(
+    "beforeend",
+    `<div class="notification-overlay" id="modernNotification">
+       <div class="notification-card">
+         <button class="close-btn" onclick="closeNotification()">&times;</button>
+         <div class="notification-icon">${icon}</div>
+         <div class="notification-title">${title}</div>
+         <div class="notification-message">${msg}</div>
+         <button class="notification-btn" onclick="closeNotification()">OK</button>
+       </div></div>`
+  );
+  setTimeout(
+    () => document.getElementById("modernNotification").classList.add("show"),
+    10
+  );
+}
+function closeNotification() {
+  const n = document.getElementById("modernNotification");
+  if (n) {
+    n.classList.remove("show");
+    setTimeout(() => n.remove(), 300);
+  }
+}
+document.addEventListener(
+  "keydown",
+  (e) => e.key === "Escape" && closeNotification()
+);
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("notification-overlay")) closeNotification();
 });
 
-// Close notification ketika klik overlay
-document.addEventListener('click', function(e) {
-    if (e.target && e.target.classList.contains('notification-overlay')) {
-        closeNotification();
-    }
-});
-
-// Save My Diary untuk Menu Makan
-document.querySelectorAll('.menu-table + .orange-btn').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    const tbody = document.getElementById('menuMingguan');
-    // Cek apakah ada minimal satu baris yang sudah terisi (selain nama hari)
-    const hasData = Array.from(tbody.rows).some(tr =>
-      Array.from(tr.cells).slice(1).some(td => td.textContent.trim() !== "")
-    );
-    if (!hasData) {
-      showNotification("Belum ada data menu yang bisa disimpan!", 'error');
-    } else {
-      showNotification("Diary makanan berhasil disimpan!", 'success');
-    }
+/* ---------- SAVE DIARY – MENU makan ---------- */
+document.querySelectorAll(".menu-table + .orange-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const rows = [...document.querySelectorAll("#menuMingguan tr")].slice(1);
+    const data = rows.map((r) => ({
+      hari: r.cells[0].textContent,
+      sarapan: r.cells[1].textContent,
+      siang: r.cells[2].textContent,
+      malam: r.cells[3].textContent,
+    }));
+    if (!data.some((d) => d.sarapan || d.siang || d.malam))
+      return showNotification(
+        "Belum ada data menu yang bisa disimpan!",
+        "error"
+      );
+    localStorage.setItem("diaryMakan", JSON.stringify(data));
+    showNotification("Diary makanan berhasil disimpan!", "success");
   });
 });
 
-// Save My Diary untuk Aktivitas Fisik
-document.querySelectorAll('.aktivitas-table + .orange-btn').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    const tbody = document.getElementById('tabelAktivitas');
-    // Cek apakah ada minimal satu baris yang sudah terisi (selain nama hari)
-    const hasData = Array.from(tbody.rows).some(tr =>
-      Array.from(tr.cells).slice(1).some(td => td.textContent.trim() !== "")
-    );
-    if (!hasData) {
-      showNotification("Belum ada data aktivitas yang bisa disimpan!", 'error');
-    } else {
-      showNotification("Diary aktivitas berhasil disimpan!", 'success');
-    }
+/* ---------- SAVE DIARY – Aktivitas fisik ---------- */
+document.querySelectorAll(".aktivitas-table + .orange-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const rows = [...document.querySelectorAll("#tabelAktivitas tr")].slice(1);
+    const data = rows.map((r) => ({
+      hari: r.cells[0].textContent,
+      jenis: r.cells[1].textContent,
+      durasi: r.cells[2].textContent,
+      tujuan: r.cells[3].textContent,
+    }));
+    if (!data.some((d) => d.jenis || d.durasi))
+      return showNotification(
+        "Belum ada data aktivitas yang bisa disimpan!",
+        "error"
+      );
+    localStorage.setItem("diaryAktivitas", JSON.stringify(data));
+    showNotification("Diary aktivitas berhasil disimpan!", "success");
   });
 });
