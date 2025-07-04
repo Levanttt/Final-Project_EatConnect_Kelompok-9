@@ -73,10 +73,15 @@ const uploadArea = document.querySelector(".upload-area");
 const fileInput = document.getElementById("fotoUpload");
 uploadArea.addEventListener("click", () => fileInput.click());
 fileInput.addEventListener("change", () => {
-  if (fileInput.files.length)
+  if (fileInput.files.length) {
+    const fileName = fileInput.files[0].name
+      .replace(/\.[^/.]+$/, "")
+      .replace(/[_-]/g, " ");
     document.querySelector(
       ".upload-sub"
     ).textContent = `Dipilih: ${fileInput.files[0].name}`;
+    document.getElementById("deskripsiMakanan").value = fileName;
+  }
 });
 
 /* ---------- CEK MENU MINGGUAN ---------- */
