@@ -10,6 +10,19 @@ document.addEventListener("DOMContentLoaded", function () {
   setupFormValidation();
 });
 
+function handleNext(event) {
+  event.preventDefault();
+
+  localStorage.setItem("nama-restoran", document.getElementById("nama-restoran").value);
+  localStorage.setItem("jenis-usaha", document.getElementById("jenis-usaha").value);
+  localStorage.setItem("alamat", document.getElementById("alamat").value);
+  localStorage.setItem("jumlah-porsi", document.getElementById("jumlah-porsi").value);
+  localStorage.setItem("jadwal", document.getElementById("jadwal").value);
+  localStorage.setItem("jenis-makanan", document.getElementById("jenis-makanan").value);
+
+  window.location.href = "verifikasi.html";
+}
+
 function goBack() {
   window.location.href = "mainlandingpage.html";
 }
