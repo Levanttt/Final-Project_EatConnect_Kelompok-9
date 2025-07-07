@@ -1,8 +1,10 @@
 function goBack() {
-        window.history.back();
-        } 
+  window.history.back();
+}
 
-document.getElementById("verifikasi-form").addEventListener("submit", function(e) {
-  e.preventDefault();
-  window.location.href = "selesaidonatur.html";
-});
+document
+  .getElementById("verifikasi-form")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
+    window.location.href = "selesaidonatur.html";
+  });

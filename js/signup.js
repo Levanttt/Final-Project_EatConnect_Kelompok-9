@@ -1,8 +1,8 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const registerForm = document.getElementById('registerForm');
-  const popup = document.getElementById('popup-berhasil');
+document.addEventListener("DOMContentLoaded", function () {
+  const registerForm = document.getElementById("registerForm");
+  const popup = document.getElementById("popup-berhasil");
   if (registerForm) {
-    registerForm.addEventListener('submit', function(e) {
+    registerForm.addEventListener("submit", function (e) {
       e.preventDefault();
 
       const password = document.getElementById("password").value;
@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
 
-      popup.classList.add('active');
+      popup.classList.add("active");
 
-      setTimeout(function() {
-        window.location.href = 'login.html';
+      setTimeout(function () {
+        window.location.href = "login.html";
       }, 2000);
     });
   }

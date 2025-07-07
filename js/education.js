@@ -2,15 +2,14 @@ function goBack() {
   window.location.href = "mainlandingpage.html";
 }
 
-document.querySelectorAll('.clickable-forum').forEach(card => {
+document.querySelectorAll(".clickable-forum").forEach((card) => {
   card.style.cursor = "pointer";
-  card.addEventListener('click', function() {
-    const url = card.getAttribute('data-url');
+  card.addEventListener("click", function () {
+    const url = card.getAttribute("data-url");
     if (url) window.location.href = url;
   });
 });
 
-// Slider functionality
 class Slider {
   constructor(sliderId, prevBtnId, nextBtnId) {
     this.slider = document.getElementById(sliderId);
@@ -20,7 +19,6 @@ class Slider {
     this.cardWidth = 0;
     this.visibleCards = 0;
     this.totalCards = 0;
-
     this.init();
   }
 
@@ -28,8 +26,6 @@ class Slider {
     this.calculateDimensions();
     this.updateButtons();
     this.addEventListeners();
-
-    // Recalculate on window resize
     window.addEventListener("resize", () => {
       this.calculateDimensions();
       this.updateSlider();
@@ -43,13 +39,9 @@ class Slider {
     this.totalCards = cards.length;
     const firstCard = cards[0];
     const containerWidth = this.slider.parentElement.offsetWidth;
-
-    // Get card width including margin
     const cardStyle = window.getComputedStyle(firstCard);
     this.cardWidth =
       firstCard.offsetWidth + parseInt(cardStyle.marginRight) || 30;
-
-    // Calculate how many cards are visible
     this.visibleCards = Math.floor(containerWidth / this.cardWidth);
     this.maxPosition = Math.max(0, this.totalCards - this.visibleCards);
   }
@@ -85,7 +77,6 @@ class Slider {
   }
 }
 
-// Initialize sliders when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
   const articlesSlider = new Slider(
     "articles-slider",
@@ -99,7 +90,6 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 });
 
-// Touch/swipe support for mobile
 let startX = 0;
 let currentSlider = null;
 
@@ -117,9 +107,7 @@ document.addEventListener("touchend", function (e) {
   const endX = e.changedTouches[0].clientX;
   const diffX = startX - endX;
 
-  // Determine which slider and trigger appropriate action
   if (Math.abs(diffX) > 50) {
-    // Minimum swipe distance
     if (currentSlider.id === "articles-slider") {
       if (diffX > 0) {
         document.getElementById("articles-next").click();
@@ -138,9 +126,7 @@ document.addEventListener("touchend", function (e) {
   currentSlider = null;
 });
 
-// Video popup logic
 const videoData = [
-  // Urut sesuai urutan .video-card di HTML
   {
     src: "https://youtube.com/embed/kz3oloHNgys",
     title: "Sarapan Diet Untuk Seminggu",
@@ -179,7 +165,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const data = videoData[idx];
       if (data) {
         let src = data.src;
-        // Tambahkan autoplay=1 dengan benar
         src += src.includes("?") ? "&autoplay=1" : "?autoplay=1";
         modalPlayer.innerHTML = `<iframe width="100%" height="100%" src="${src}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
         modal.style.display = "flex";
@@ -192,7 +177,6 @@ document.addEventListener("DOMContentLoaded", function () {
     modalPlayer.innerHTML = "";
   });
 
-  // Close modal on outside click
   modal.addEventListener("click", function (e) {
     if (e.target === modal) {
       modal.style.display = "none";

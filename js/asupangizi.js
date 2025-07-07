@@ -1,13 +1,7 @@
-/* ======================================================
-   EatConnect – Frontend Logic (Pure JS, no backend)
-   ====================================================== */
-
-/* ► tombol back ke landing */
 function goBack() {
   window.location.href = "mainlandingpage.html";
 }
 
-/* ---------- KAMUS GIZI MINI ---------- */
 const dbGizi = {
   "nasi goreng ayam": {
     kalori: 523,
@@ -44,7 +38,7 @@ const cariGizi = (d) => dbGizi[d] ?? null;
 const fuzzyGizi = (d) =>
   Object.entries(dbGizi).find(([k]) => d.includes(k))?.[1] ?? null;
 
-/* ---------- ANALISIS NUTRISI ---------- */
+/*  ANALISIS NUTRISI */
 document.querySelector(".check-btn").addEventListener("click", () => {
   const input = document.getElementById("deskripsiMakanan").value.trim();
   if (!input)
@@ -68,7 +62,7 @@ document.querySelector(".check-btn").addEventListener("click", () => {
     "<strong>Note :</strong> " + data.note;
 });
 
-/* ---------- Upload preview ---------- */
+/*Upload preview*/
 const uploadArea = document.querySelector(".upload-area");
 const fileInput = document.getElementById("fotoUpload");
 uploadArea.addEventListener("click", () => fileInput.click());
@@ -84,7 +78,7 @@ fileInput.addEventListener("change", () => {
   }
 });
 
-/* ---------- CEK MENU MINGGUAN ---------- */
+/*CEK MENU MINGGUAN */
 function cekMenuMingguan() {
   const berat = document.getElementById("beratBadan").value.trim();
   const tujuan = document.getElementById("tujuanBB").value;
@@ -177,7 +171,6 @@ function cekMenuMingguan() {
 
   const baseMenu = pola === "Vegetarian" ? menuVegetarian : menuNonVeg;
 
-  // pantangan: misalnya "ayam, telur"
   const avoidList = pantangan
     .split(",")
     .map((item) => item.trim())
@@ -194,7 +187,6 @@ function cekMenuMingguan() {
       : menu.malam,
   }));
 
-  // isi ulang baris tabel
   const rows = document.querySelectorAll("#menuMingguan tr");
   filteredMenu.forEach((menu, i) => {
     if (rows[i]) {
@@ -207,7 +199,7 @@ function cekMenuMingguan() {
   showNotification("Menu mingguan berhasil ditampilkan!", "success");
 }
 
-/* ---------- CEK AKTIVITAS FISIK ---------- */
+/*CEK AKTIVITAS FISIK */
 function cekAktivitasFisik() {
   const tujuan = document.querySelector(
     "#aktivitas-fisik select:nth-of-type(1)"
@@ -289,7 +281,7 @@ function cekAktivitasFisik() {
   showNotification("Jadwal aktivitas fisik berhasil dibuat!", "success");
 }
 
-/* ---------- Notification util ---------- */
+/*Notification util */
 function showNotification(msg, type = "warning") {
   document.getElementById("modernNotification")?.remove();
   const icon = type === "error" ? "⚠️" : type === "success" ? "✅" : "❗";
@@ -330,7 +322,7 @@ document.addEventListener("click", (e) => {
   if (e.target.classList.contains("notification-overlay")) closeNotification();
 });
 
-/* ---------- SAVE DIARY – MENU makan ---------- */
+/*SAVE DIARY – MENU makan*/
 document.querySelectorAll(".menu-table + .orange-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
     const rows = [...document.querySelectorAll("#menuMingguan tr")].slice(1);
@@ -350,7 +342,7 @@ document.querySelectorAll(".menu-table + .orange-btn").forEach((btn) => {
   });
 });
 
-/* ---------- SAVE DIARY – Aktivitas fisik ---------- */
+/*SAVE DIARY – Aktivitas fisik*/
 document.querySelectorAll(".aktivitas-table + .orange-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
     const rows = [...document.querySelectorAll("#tabelAktivitas tr")].slice(1);

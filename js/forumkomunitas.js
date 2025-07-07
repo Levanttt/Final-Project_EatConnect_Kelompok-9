@@ -1,7 +1,3 @@
-// ===========================
-// CHAT KONSULTASI
-// ===========================
-
 const popup = document.getElementById("popup-chat");
 const popupTitle = document.getElementById("popup-title");
 const sendBtn = document.querySelector(".chat-input .send-btn");
@@ -45,9 +41,9 @@ document.querySelectorAll(".consult-btn").forEach((btn) => {
 document.querySelectorAll(".consult-btn").forEach((btn) => {
   btn.addEventListener("click", function (e) {
     e.stopPropagation();
-    // Hapus class active dari semua tombol
-    document.querySelectorAll(".consult-btn").forEach(b => b.classList.remove("active"));
-    // Tambahkan class active ke tombol yang diklik
+    document
+      .querySelectorAll(".consult-btn")
+      .forEach((b) => b.classList.remove("active"));
     this.classList.add("active");
     const selected = this.textContent.trim();
     showChat(selected);
@@ -76,15 +72,10 @@ function autoGrow(textarea) {
 document.addEventListener("click", function (e) {
   const isClickInsidePopup = popup.contains(e.target);
   const isConsultBtn = e.target.classList.contains("consult-btn");
-
   if (!isClickInsidePopup && !isConsultBtn) {
     popup.style.display = "none";
   }
 });
-
-// ===========================
-// POSTINGAN TIMELINE
-// ===========================
 
 const postBtn = document.getElementById("post-submit");
 const postTextarea = document.querySelector(".post-box textarea");
@@ -100,7 +91,6 @@ function getRelativeTime() {
 function renderPost(post) {
   const postCard = document.createElement("div");
   postCard.classList.add("post-card");
-
   postCard.innerHTML = `
     <p class="post-user">
       👤 <strong>${post.username}</strong>
@@ -113,26 +103,21 @@ function renderPost(post) {
       <span class="repost-btn">🔁 <span>${post.reposts}</span></span>
     </div>
   `;
-
   const likeBtn = postCard.querySelector(".like-btn");
   const commentBtn = postCard.querySelector(".comment-btn");
   const repostBtn = postCard.querySelector(".repost-btn");
-
   likeBtn.addEventListener("click", () => {
     post.likes++;
     likeBtn.querySelector("span").textContent = post.likes;
   });
-
   commentBtn.addEventListener("click", () => {
     post.comments++;
     commentBtn.querySelector("span").textContent = post.comments;
   });
-
   repostBtn.addEventListener("click", () => {
     post.reposts++;
     repostBtn.querySelector("span").textContent = post.reposts;
   });
-
   timelineTitle.insertAdjacentElement("afterend", postCard);
 }
 
@@ -163,28 +148,19 @@ document.getElementById("link-post").addEventListener("click", () => {
   alert("Fitur upload tautan belum tersedia");
 });
 
-// ===========================
-// NAVIGASI & FOKUS AREA
-// ===========================
-
 const navButtons = document.querySelectorAll(".nav-btn");
 const timelineWrapper = document.getElementById("timeline-container");
 const konsultasiSection = document.querySelector(".consultation");
 
 navButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
-    // Reset semua tombol
     navButtons.forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
-
     const label = btn.textContent.trim();
-
-    // Hapus dan reset animasi sebelumnya
     timelineWrapper.classList.remove("highlighted");
     konsultasiSection.classList.remove("highlighted");
     void timelineWrapper.offsetWidth;
     void konsultasiSection.offsetWidth;
-
     if (label === "Beranda") {
       timelineWrapper.classList.add("highlighted");
       konsultasiSection.classList.add("highlighted");

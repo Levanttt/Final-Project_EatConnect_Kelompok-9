@@ -25,14 +25,12 @@ document.querySelectorAll(".orange-btn").forEach((btn) => {
   }
 });
 
-// === TAMPILKAN DATA DI PROFIL (HALAMAN PROFIL) ===
 document.addEventListener("DOMContentLoaded", () => {
   const diaryTable = document.querySelector("#diary-makan .diary-table tbody");
 
   if (diaryTable) {
     const diaryData = JSON.parse(localStorage.getItem("diaryPolaMakan")) || [];
 
-    // Kosongkan isi tbody sebelum render ulang
     diaryTable.innerHTML = "";
 
     diaryData.forEach((item) => {

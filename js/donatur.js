@@ -1,10 +1,8 @@
-// DOM Elements
 const form = document.getElementById("donatur-form");
 const fileInput = document.getElementById("bukti-donasi");
 const fileUploadText = document.querySelector(".file-upload-text");
 const fileUploadBtn = document.querySelector(".file-upload-btn");
 
-// Initialize when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
   setupFileUpload();
   setupFormValidation();
@@ -14,11 +12,9 @@ function goBack() {
   window.location.href = "mainlandingpage.html";
 }
 
-// Setup file upload functionality
 function setupFileUpload() {
   const fileUploadDisplay = document.querySelector(".file-upload-display");
 
-  // Handle file input change
   fileInput.addEventListener("change", function (e) {
     const file = e.target.files[0];
 
@@ -32,7 +28,6 @@ function setupFileUpload() {
     }
   });
 
-  // Handle drag and drop
   fileUploadDisplay.addEventListener("dragover", function (e) {
     e.preventDefault();
     this.style.borderColor = "#4a6fa5";
@@ -58,7 +53,6 @@ function setupFileUpload() {
   });
 }
 
-// Reset file upload display
 function resetFileUpload() {
   fileUploadText.textContent = "No File Selected";
   fileUploadText.style.color = "#666";
@@ -66,9 +60,7 @@ function resetFileUpload() {
   fileUploadBtn.style.background = "#f1f5f9";
 }
 
-// Setup form validation
 function setupFormValidation() {
-  // Form submission
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -80,17 +72,14 @@ function setupFormValidation() {
   });
 }
 
-// Validate individual field
 function validateField(field) {
   const value = field.value.trim();
   let isValid = true;
 
-  // Check if required field is empty
   if (field.hasAttribute("required") && !value) {
     isValid = false;
   }
 
-  // Specific validations
   switch (field.type) {
     case "number":
       if (value && (isNaN(value) || parseInt(value) <= 0)) {
@@ -107,7 +96,6 @@ function validateField(field) {
   return isValid;
 }
 
-// Validate entire form
 function validateForm() {
   const requiredFields = form.querySelectorAll(
     "input[required], select[required], textarea[required]"
@@ -120,7 +108,6 @@ function validateForm() {
     }
   });
 
-  // Check checkboxes
   const termsCheckbox = document.getElementById("terms");
   if (!termsCheckbox.checked) {
     isValid = false;
@@ -130,19 +117,15 @@ function validateForm() {
   return isValid;
 }
 
-// Submit form
 function submitForm() {
   const submitBtn = document.querySelector(".submit-btn");
   const originalText = submitBtn.textContent;
 
-  // Show loading state
   submitBtn.disabled = true;
   submitBtn.textContent = "Memproses...";
   submitBtn.style.background = "#ccc";
 
-  // Simulate form submission
   setTimeout(() => {
-    // Collect form data
     const formData = new FormData(form);
     const data = {};
 
@@ -152,35 +135,28 @@ function submitForm() {
 
     console.log("Form Data:", data);
 
-    // Show success message
     showSuccess(
       "Form berhasil dikirim! Anda akan diarahkan ke halaman verifikasi."
     );
 
-    // Reset form or redirect
     setTimeout(() => {
-      // window.location.href = 'verifikasi.html';
       console.log("Redirecting to verification page...");
     }, 2000);
 
-    // Reset button
     submitBtn.disabled = false;
     submitBtn.textContent = originalText;
     submitBtn.style.background = "";
   }, 2000);
 }
 
-// Show success message
 function showSuccess(message) {
   showNotification(message, "success");
 }
 
-// Show error message
 function showError(message) {
   showNotification(message, "error");
 }
 
-// Show notification
 function showNotification(message, type) {
   // Remove existing notifications
   const existingNotif = document.querySelector(".notification");
@@ -192,7 +168,6 @@ function showNotification(message, type) {
   notification.className = `notification ${type}`;
   notification.textContent = message;
 
-  // Styling
   Object.assign(notification.style, {
     position: "fixed",
     top: "20px",
@@ -217,12 +192,10 @@ function showNotification(message, type) {
 
   document.body.appendChild(notification);
 
-  // Animate in
   setTimeout(() => {
     notification.style.transform = "translateX(0)";
   }, 100);
 
-  // Auto remove
   setTimeout(() => {
     notification.style.transform = "translateX(100%)";
     setTimeout(() => {
@@ -233,29 +206,24 @@ function showNotification(message, type) {
   }, 5000);
 }
 
-// Progress animation (if needed for future steps)
 function updateProgress(step) {
   const progressAfter = document.querySelector(".progress-steps::after");
   const steps = document.querySelectorAll(".step");
 
-  // Remove active class from all steps
   steps.forEach((s) => s.classList.remove("active"));
 
-  // Add active class to current and previous steps
   for (let i = 0; i <= step; i++) {
     if (steps[i]) {
       steps[i].classList.add("active");
     }
   }
 
-  // Update progress bar width
   const progressWidth = ((step + 1) / steps.length) * 100;
   if (progressAfter) {
     progressAfter.style.width = `${Math.min(progressWidth, 100)}%`;
   }
 }
 
-// Utility: Smooth scroll to element
 function scrollToElement(element) {
   element.scrollIntoView({
     behavior: "smooth",
@@ -263,7 +231,6 @@ function scrollToElement(element) {
   });
 }
 
-// Add error styling to CSS dynamically
 const style = document.createElement("style");
 style.textContent = `
     .error {
@@ -281,18 +248,15 @@ style.textContent = `
 document.head.appendChild(style);
 
 function handleNext(event) {
-  event.preventDefault(); // Mencegah reload halaman
-  // Validasi sederhana (opsional jika sudah ada HTML5 validation)
+  event.preventDefault();
   const form = document.getElementById("donatur-form");
   if (form.checkValidity()) {
-    // Arahkan ke halaman verifikasi
-    window.location.href = "verifikasidonatur.html"; // sesuaikan nama file jika berbeda
+    window.location.href = "verifikasidonatur.html";
   } else {
-    form.reportValidity(); // Menampilkan pesan kesalahan bawaan browser
+    form.reportValidity();
   }
 }
 
-// Optional: tampilkan nama file di upload display
 document
   .getElementById("bukti-donasi")
   .addEventListener("change", function (e) {

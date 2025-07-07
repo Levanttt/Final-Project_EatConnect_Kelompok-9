@@ -1,7 +1,5 @@
-// === SIMPAN DATA AKTIVITAS FISIK KE LOCAL STORAGE ===
 document.querySelectorAll(".orange-btn").forEach((btn) => {
   if (btn.textContent.trim() === "Save My Diary") {
-    // Cek jika tombol ini berada di section Aktivitas Fisik
     const parentSection = btn.closest("section");
     const isAktivitasFisikSection =
       parentSection && parentSection.id === "aktivitas-fisik";
@@ -36,7 +34,6 @@ document.querySelectorAll(".orange-btn").forEach((btn) => {
   }
 });
 
-// === TAMPILKAN DATA DI HALAMAN PROFIL ===
 document.addEventListener("DOMContentLoaded", () => {
   const diaryTable = document.querySelector("#diary-fisik .diary-table tbody");
 
@@ -44,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const aktivitasData =
       JSON.parse(localStorage.getItem("diaryAktivitasFisik")) || [];
 
-    // Kosongkan isi tbody sebelum render ulang
     diaryTable.innerHTML = "";
 
     aktivitasData.forEach((item) => {
