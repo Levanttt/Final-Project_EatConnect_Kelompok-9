@@ -35,7 +35,7 @@ document.getElementById("ketersediaan-form").addEventListener("submit", function
     .then((res) => res.json())
     .then((data) => {
       alert("✅ Data relawan berhasil dikirim ke WhatsApp!");
-      window.location.href = "relawanselesai.html";
+      window.location.href = "selesairelawan.html";
     })
     .catch((err) => {
       alert("❌ Gagal mengirim data ke WhatsApp.");
