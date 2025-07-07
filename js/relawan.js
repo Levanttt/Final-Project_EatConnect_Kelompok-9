@@ -1,16 +1,13 @@
 document.getElementById("relawan-form").addEventListener("submit", function (e) {
-e.preventDefault();
-const nama = document.getElementById("nama").value.trim();
-const nik = document.getElementById("nik").value.trim();
-const email = document.getElementById("email").value.trim();
-const telepon = document.getElementById("telepon").value.trim();
-const alamat = document.getElementById("alamat").value.trim();
-if (!nama || !nik || !email || !telepon || !alamat) {
-    alert("Harap isi semua kolom yang wajib diisi!");
-} else {
-    localStorage.setItem("relawanData", JSON.stringify({ nama, nik, email, telepon, alamat }));
-    window.location.href = "ketersedianrelawan.html";
-}
+  e.preventDefault();
+
+  localStorage.setItem("relawan-nama", document.getElementById("nama").value);
+  localStorage.setItem("relawan-nik", document.getElementById("nik").value);
+  localStorage.setItem("relawan-email", document.getElementById("email").value);
+  localStorage.setItem("relawan-telepon", document.getElementById("telepon").value);
+  localStorage.setItem("relawan-alamat", document.getElementById("alamat").value);
+
+  window.location.href = "ketersedianrelawan.html";
 });
 
 function goBack() {
