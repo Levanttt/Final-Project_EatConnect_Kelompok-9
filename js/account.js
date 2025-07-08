@@ -23,6 +23,7 @@ function initializeEventListeners() {
 
       saveCheckboxProgress();
 
+      // Update progress hanya untuk week 1 dan tipe yg sesuai
       if (week === "1") {
         updateWeeklyProgress(isMakan ? "makan" : "fisik");
       }
@@ -42,9 +43,11 @@ function initializeEventListeners() {
   if (logoutButton) {
     logoutButton.addEventListener("click", function () {
       if (confirm("Apakah Anda yakin ingin keluar dari akun?")) {
+        // Optional: hapus data login lokal kalau ada
         localStorage.removeItem("user");
         sessionStorage.clear();
 
+        // Redirect ke halaman landing page
         window.location.href = "landingpage.html";
       }
     });
