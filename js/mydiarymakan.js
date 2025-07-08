@@ -1,37 +1,10 @@
-document.querySelectorAll(".orange-btn").forEach((btn) => {
-  if (btn.textContent.trim() === "Save My Diary") {
-    btn.addEventListener("click", () => {
-      const tableBody = document.querySelector(".menu-table tbody");
-      if (!tableBody) return;
-
-      const rows = tableBody.querySelectorAll("tr");
-      const diaryData = [];
-
-      rows.forEach((row) => {
-        const cells = row.querySelectorAll("td");
-        if (cells.length === 4) {
-          const hari = cells[0].textContent.trim();
-          const sarapan = cells[1].textContent.trim();
-          const makanSiang = cells[2].textContent.trim();
-          const makanMalam = cells[3].textContent.trim();
-
-          diaryData.push({ hari, sarapan, makanSiang, makanMalam });
-        }
-      });
-
-      localStorage.setItem("diaryPolaMakan", JSON.stringify(diaryData));
-      alert("Diary berhasil disimpan!");
-    });
-  }
-});
-
 document.addEventListener("DOMContentLoaded", () => {
   const diaryTable = document.querySelector("#diary-makan .diary-table tbody");
   const resetButton = document.createElement("button");
 
   if (!diaryTable) return;
 
-    diaryTable.innerHTML = "";
+  const diaryData = JSON.parse(localStorage.getItem("diaryPolaMakan")) || [];
 
   // Kosongkan tabel dan render data jika ada
   diaryTable.innerHTML = "";
