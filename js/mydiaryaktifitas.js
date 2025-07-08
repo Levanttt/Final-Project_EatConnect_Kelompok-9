@@ -1,3 +1,4 @@
+// === SIMPAN DATA AKTIVITAS FISIK KE LOCAL STORAGE ===
 document.querySelectorAll(".orange-btn").forEach((btn) => {
   if (btn.textContent.trim() === "Save My Diary") {
     const parentSection = btn.closest("section");
@@ -44,13 +45,35 @@ document.querySelectorAll(".orange-btn").forEach((btn) => {
   }
 });
 
+// === RENDER DEFAULT (JIKA BELUM ADA DATA) ===
+function renderDefaultAktivitasFisik() {
+  const diaryTable = document.querySelector("#diary-fisik .diary-table tbody");
+  if (!diaryTable) return;
+
+  const hariList = ["Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu", "Minggu"];
+  diaryTable.innerHTML = "";
+
+  hariList.forEach((hari) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${hari}</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td><input type="checkbox" /></td>
+    `;
+    diaryTable.appendChild(tr);
+  });
+}
+
+// === TAMPILKAN DATA DI HALAMAN PROFIL ===
 document.addEventListener("DOMContentLoaded", () => {
   const diaryTable = document.querySelector("#diary-fisik .diary-table tbody");
 
   if (diaryTable) {
     const aktivitasData = JSON.parse(localStorage.getItem("diaryAktivitasFisik")) || [];
 
-    diaryTable.innerHTML = "";
+    diaryTable.innerHTML = ""; // Kosongkan isi tbody
 
     if (aktivitasData.length === 0) {
       renderDefaultAktivitasFisik();
