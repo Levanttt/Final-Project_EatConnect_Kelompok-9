@@ -303,18 +303,33 @@ document.querySelectorAll('.menu-table + .orange-btn').forEach(function(btn) {
   });
 });
 
-// Save My Diary untuk Aktivitas Fisik
-document.querySelectorAll('.aktivitas-table + .orange-btn').forEach(function(btn) {
+// Save My Diary untuk Menu Makan
+document.querySelectorAll('.menu-table + .orange-btn').forEach(function(btn) {
   btn.addEventListener('click', function() {
-    const tbody = document.getElementById('tabelAktivitas');
-    // Cek apakah ada minimal satu baris yang sudah terisi (selain nama hari)
+    const tbody = document.getElementById('menuMingguan');
+    
     const hasData = Array.from(tbody.rows).some(tr =>
       Array.from(tr.cells).slice(1).some(td => td.textContent.trim() !== "")
     );
+    
     if (!hasData) {
-      showNotification("Belum ada data aktivitas yang bisa disimpan!", 'error');
+      showNotification("Belum ada data menu yang bisa disimpan!", 'error');
     } else {
-      showNotification("Diary aktivitas berhasil disimpan!", 'success');
+      // === Simpan ke localStorage ===
+      const diaryData = [];
+      Array.from(tbody.rows).forEach((tr) => {
+        const hari = tr.cells[0].textContent.trim();
+        const sarapan = tr.cells[1].textContent.trim();
+        const makanSiang = tr.cells[2].textContent.trim();
+        const makanMalam = tr.cells[3].textContent.trim();
+
+        diaryData.push({ hari, sarapan, makanSiang, makanMalam });
+      });
+
+      localStorage.setItem("diaryPolaMakan", JSON.stringify(diaryData));
+      localStorage.setItem("diaryPolaMakanSavedAt", new Date().toISOString());
+
+      showNotification("Diary makanan berhasil disimpan!", 'success');
     }
   });
 });
