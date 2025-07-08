@@ -725,7 +725,7 @@ body {
 
   .fitur-image {
     flex: none;
-    order: -1; /* Gambar selalu di atas di mobile */
+    order: -1; 
   }
 
   .fitur-content h3 {
