@@ -69,15 +69,13 @@ document.querySelector(".check-btn").addEventListener("click", function () {
 });
 
 
-// Upload area preview
-const uploadArea = document.querySelector(".upload-area");
-const fileInput = document.getElementById("fotoUpload");
-
-uploadArea.addEventListener("click", () => fileInput.click());
-fileInput.addEventListener("change", () => {
-  if (fileInput.files.length > 0) {
-    const fileName = fileInput.files[0].name;
-    document.querySelector(".upload-sub").textContent = `Dipilih: ${fileName}`;
+// === UPLOAD AREA ===
+document.querySelector(".upload-area")?.addEventListener("click", () => {
+  document.getElementById("fotoUpload").click();
+});
+document.getElementById("fotoUpload")?.addEventListener("change", function () {
+  if (this.files.length > 0) {
+    document.querySelector(".upload-sub").textContent = `Dipilih: ${this.files[0].name}`;
   }
 });
 
@@ -185,45 +183,43 @@ function cekMenuMingguan() {
   showNotification("Menu mingguan berhasil ditampilkan!", 'success');
 }
 
-// Tambahin fungsi notification
+// === NOTIFICATION MODERN ===
 function showNotification(message, type = 'warning') {
-    // Hapus notification lama jika ada
-    const existingNotif = document.getElementById('modernNotification');
-    if (existingNotif) {
-        existingNotif.remove();
-    }
+  const existingNotif = document.getElementById('modernNotification');
+  if (existingNotif) existingNotif.remove();
 
-    // Buat notification baru
-    const notificationHTML = `
-        <div class="notification-overlay" id="modernNotification">
-            <div class="notification-card">
-                <button class="close-btn" onclick="closeNotification()">&times;</button>
-                <div class="notification-icon">${type === 'error' ? '⚠️' : type === 'success' ? '✅' : '❗'}</div>
-                <div class="notification-title">${type === 'error' ? 'Perhatian' : type === 'success' ? 'Berhasil' : 'Informasi'}</div>
-                <div class="notification-message">${message}</div>
-                <button class="notification-btn" onclick="closeNotification()">OK</button>
-            </div>
-        </div>
-    `;
-
-    // Tambahin ke body
-    document.body.insertAdjacentHTML('beforeend', notificationHTML);
-    
-    // Show dengan delay kecil untuk smooth animation
-    setTimeout(() => {
-        document.getElementById('modernNotification').classList.add('show');
-    }, 10);
+  const notificationHTML = `
+    <div class="notification-overlay" id="modernNotification">
+      <div class="notification-card">
+        <button class="close-btn" onclick="closeNotification()">&times;</button>
+        <div class="notification-icon">${type === 'error' ? '⚠️' : type === 'success' ? '✅' : '❗'}</div>
+        <div class="notification-title">${type === 'error' ? 'Perhatian' : type === 'success' ? 'Berhasil' : 'Informasi'}</div>
+        <div class="notification-message">${message}</div>
+        <button class="notification-btn" onclick="closeNotification()">OK</button>
+      </div>
+    </div>
+  `;
+  document.body.insertAdjacentHTML('beforeend', notificationHTML);
+  setTimeout(() => {
+    document.getElementById('modernNotification')?.classList.add('show');
+  }, 10);
 }
 
 function closeNotification() {
-    const notification = document.getElementById('modernNotification');
-    if (notification) {
-        notification.classList.remove('show');
-        setTimeout(() => {
-            notification.remove();
-        }, 300);
-    }
+  const notification = document.getElementById('modernNotification');
+  if (notification) {
+    notification.classList.remove('show');
+    setTimeout(() => notification.remove(), 300);
+  }
 }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeNotification();
+});
+document.addEventListener('click', e => {
+  if (e.target?.classList.contains('notification-overlay')) closeNotification();
+});
+
 
 // Fungsi cekAktivitasFisik 
 function cekAktivitasFisik() {
@@ -273,13 +269,6 @@ function cekAktivitasFisik() {
     }
 }
 
-// Event listener untuk close notification dengan ESC
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        closeNotification();
-    }
-});
-
 // Close notification ketika klik overlay
 document.addEventListener('click', function(e) {
     if (e.target && e.target.classList.contains('notification-overlay')) {
@@ -287,20 +276,34 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Save My Diary untuk Menu Makan
-document.querySelectorAll('.menu-table + .orange-btn').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    const tbody = document.getElementById('menuMingguan');
-    // Cek apakah ada minimal satu baris yang sudah terisi (selain nama hari)
-    const hasData = Array.from(tbody.rows).some(tr =>
-      Array.from(tr.cells).slice(1).some(td => td.textContent.trim() !== "")
-    );
-    if (!hasData) {
-      showNotification("Belum ada data menu yang bisa disimpan!", 'error');
-    } else {
-      showNotification("Diary makanan berhasil disimpan!", 'success');
-    }
-  });
+// === SIMPAN DIARY AKTIVITAS FISIK ===
+document.querySelectorAll(".orange-btn").forEach((btn) => {
+  if (btn.closest("section")?.id === "aktivitas-fisik") {
+    btn.addEventListener("click", () => {
+      const tbody = document.querySelector(".aktivitas-table tbody");
+      const aktivitasData = [];
+
+      tbody.querySelectorAll("tr").forEach(tr => {
+        const cells = tr.querySelectorAll("td");
+        if (cells.length === 4) {
+          const hari = cells[0].textContent.trim();
+          const olahraga = cells[1].textContent.trim();
+          const durasi = cells[2].textContent.trim();
+          const tujuan = cells[3].textContent.trim();
+          aktivitasData.push({ hari, olahraga: olahraga || "-", durasi: durasi || "-", tujuan: tujuan || "-" });
+        }
+      });
+
+      if (!aktivitasData.length) {
+        showNotification("Belum ada data aktivitas yang bisa disimpan!", "error");
+        return;
+      }
+
+      localStorage.setItem("diaryAktivitasFisik", JSON.stringify(aktivitasData));
+      localStorage.setItem("diaryAktivitasFisikSavedAt", new Date().toISOString());
+      showNotification("Diary aktivitas fisik berhasil disimpan!", "success");
+    });
+  }
 });
 
 // Save My Diary untuk Menu Makan
@@ -332,4 +335,73 @@ document.querySelectorAll('.menu-table + .orange-btn').forEach(function(btn) {
       showNotification("Diary makanan berhasil disimpan!", 'success');
     }
   });
+});
+
+// === HALAMAN PROFIL ===
+document.addEventListener("DOMContentLoaded", () => {
+  const hariList = ["Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu", "Minggu"];
+
+  // POLA MAKAN
+  const diaryMakan = JSON.parse(localStorage.getItem("diaryPolaMakan")) || [];
+  const checkedMakan = JSON.parse(localStorage.getItem("checkedMakanHari")) || [];
+  const tableMakan = document.querySelector("#diary-makan .diary-table tbody");
+  if (tableMakan) {
+    tableMakan.innerHTML = "";
+    (diaryMakan.length ? diaryMakan : hariList.map(h => ({ hari: h, sarapan: "-", makanSiang: "-", makanMalam: "-" }))).forEach(item => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${item.hari}</td>
+        <td>${item.sarapan}</td>
+        <td>${item.makanSiang}</td>
+        <td>${item.makanMalam}</td>
+        <td><input type="checkbox" data-hari="${item.hari}" ${checkedMakan.includes(item.hari) ? 'checked' : ''}></td>
+      `;
+      tr.querySelector("input").addEventListener("change", () => {
+        const checked = Array.from(tableMakan.querySelectorAll("input:checked")).map(cb => cb.dataset.hari);
+        localStorage.setItem("checkedMakanHari", JSON.stringify(checked));
+      });
+      tableMakan.appendChild(tr);
+    });
+
+    document.getElementById("reset-makan")?.addEventListener("click", () => {
+      if (confirm("Apakah kamu yakin ingin mereset diary pola makan?")) {
+        localStorage.removeItem("diaryPolaMakan");
+        localStorage.removeItem("diaryPolaMakanSavedAt");
+        localStorage.removeItem("checkedMakanHari");
+        location.reload();
+      }
+    });
+  }
+
+  // AKTIVITAS FISIK
+  const diaryFisik = JSON.parse(localStorage.getItem("diaryAktivitasFisik")) || [];
+  const checkedFisik = JSON.parse(localStorage.getItem("checkedFisikHari")) || [];
+  const tableFisik = document.querySelector("#diary-fisik .diary-table tbody");
+  if (tableFisik) {
+    tableFisik.innerHTML = "";
+    (diaryFisik.length ? diaryFisik : hariList.map(h => ({ hari: h, olahraga: "-", durasi: "-", tujuan: "-" }))).forEach(item => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${item.hari}</td>
+        <td>${item.olahraga}</td>
+        <td>${item.durasi}</td>
+        <td>${item.tujuan}</td>
+        <td><input type="checkbox" data-hari="${item.hari}" ${checkedFisik.includes(item.hari) ? 'checked' : ''}></td>
+      `;
+      tr.querySelector("input").addEventListener("change", () => {
+        const checked = Array.from(tableFisik.querySelectorAll("input:checked")).map(cb => cb.dataset.hari);
+        localStorage.setItem("checkedFisikHari", JSON.stringify(checked));
+      });
+      tableFisik.appendChild(tr);
+    });
+
+    document.getElementById("reset-fisik")?.addEventListener("click", () => {
+      if (confirm("Apakah kamu yakin ingin mereset diary aktivitas fisik?")) {
+        localStorage.removeItem("diaryAktivitasFisik");
+        localStorage.removeItem("diaryAktivitasFisikSavedAt");
+        localStorage.removeItem("checkedFisikHari");
+        location.reload();
+      }
+    });
+  }
 });
