@@ -1,98 +1,68 @@
-// === SIMPAN DATA AKTIVITAS FISIK KE LOCAL STORAGE ===
-document.querySelectorAll(".orange-btn").forEach((btn) => {
-  if (btn.textContent.trim() === "Save My Diary") {
-    const parentSection = btn.closest("section");
-    const isAktivitasFisikSection = parentSection && parentSection.id === "aktivitas-fisik";
-
-    if (isAktivitasFisikSection) {
-      btn.addEventListener("click", () => {
-        const tableBody = document.querySelector(".aktivitas-table tbody");
-        if (!tableBody) return;
-
-        const rows = tableBody.querySelectorAll("tr");
-        const aktivitasData = [];
-
-        rows.forEach((row) => {
-          const cells = row.querySelectorAll("td");
-          if (cells.length === 4) {
-            const hari = cells[0].textContent.trim();
-            const olahraga = cells[1].textContent.trim();
-            const durasi = cells[2].textContent.trim();
-            const tujuan = cells[3].textContent.trim();
-
-            if (olahraga || durasi || tujuan) {
-              aktivitasData.push({
-                hari,
-                olahraga: olahraga || "-",
-                durasi: durasi || "-",
-                tujuan: tujuan || "-"
-              });
-            }
-          }
-        });
-
-        if (aktivitasData.length === 0) {
-          showNotification("Belum ada data aktivitas yang bisa disimpan!", "error");
-          return;
-        }
-
-        localStorage.setItem("diaryAktivitasFisik", JSON.stringify(aktivitasData));
-        localStorage.setItem("diaryAktivitasFisikSavedAt", new Date().toISOString());
-
-        showNotification("Diary aktivitas fisik berhasil disimpan!", "success");
-      });
-    }
-  }
-});
-
-// === RENDER DEFAULT (JIKA BELUM ADA DATA) ===
-function renderDefaultAktivitasFisik() {
-  const diaryTable = document.querySelector("#diary-fisik .diary-table tbody");
-  if (!diaryTable) return;
-
-  const hariList = ["Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu", "Minggu"];
-  diaryTable.innerHTML = "";
-
-  hariList.forEach((hari) => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${hari}</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td><input type="checkbox" /></td>
-    `;
-    diaryTable.appendChild(tr);
-  });
-}
-
-// === TAMPILKAN DATA DI HALAMAN PROFIL ===
 document.addEventListener("DOMContentLoaded", () => {
   const diaryTable = document.querySelector("#diary-fisik .diary-table tbody");
+  const aktivitasData = JSON.parse(localStorage.getItem("diaryAktivitasFisik")) || [];
+  const checklistData = JSON.parse(localStorage.getItem("checkedFisikHari")) || [];
 
-  if (diaryTable) {
-    const aktivitasData = JSON.parse(localStorage.getItem("diaryAktivitasFisik")) || [];
+  if (!diaryTable) return;
 
-    diaryTable.innerHTML = ""; // Kosongkan isi tbody
+  const renderTable = (data, checklist) => {
+    diaryTable.innerHTML = "";
+    const hariList = ["Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu", "Minggu"];
 
-    if (aktivitasData.length === 0) {
-      renderDefaultAktivitasFisik();
-    } else {
-      aktivitasData.forEach((item) => {
+    // Jika ada data, render sesuai
+    if (data.length > 0) {
+      data.forEach((item) => {
         const tr = document.createElement("tr");
-
         tr.innerHTML = `
           <td>${item.hari}</td>
           <td>${item.olahraga || "-"}</td>
           <td>${item.durasi || "-"}</td>
           <td>${item.tujuan || "-"}</td>
-          <td><input type="checkbox" /></td>
+          <td><input type="checkbox" data-hari="${item.hari}" /></td>
         `;
+        const checkbox = tr.querySelector("input[type='checkbox']");
+        checkbox.checked = checklist.includes(item.hari);
+
+        checkbox.addEventListener("change", () => {
+          const checkedItems = Array.from(
+            diaryTable.querySelectorAll("input[type='checkbox']")
+          )
+            .filter((cb) => cb.checked)
+            .map((cb) => cb.dataset.hari);
+
+          localStorage.setItem("checkedFisikHari", JSON.stringify(checkedItems));
+        });
+
+        diaryTable.appendChild(tr);
+      });
+    } else {
+      // Jika tidak ada data, render default kosong
+      hariList.forEach((hari) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${hari}</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td><input type="checkbox" data-hari="${hari}" /></td>
+        `;
+        const checkbox = tr.querySelector("input[type='checkbox']");
+        checkbox.addEventListener("change", () => {
+          const checkedItems = Array.from(
+            diaryTable.querySelectorAll("input[type='checkbox']")
+          )
+            .filter((cb) => cb.checked)
+            .map((cb) => cb.dataset.hari);
+
+          localStorage.setItem("checkedFisikHari", JSON.stringify(checkedItems));
+        });
 
         diaryTable.appendChild(tr);
       });
     }
-  }
+  };
+
+  renderTable(aktivitasData, checklistData);
 
   // === RESET Diary Aktivitas Fisik ===
   const resetBtn = document.getElementById("reset-fisik");
@@ -102,7 +72,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (confirmReset) {
         localStorage.removeItem("diaryAktivitasFisik");
         localStorage.removeItem("diaryAktivitasFisikSavedAt");
-        renderDefaultAktivitasFisik(); // Tampilkan kembali default kosong
+        localStorage.removeItem("checkedFisikHari");
+
+        renderTable([], []); // Render ulang tabel kosong TANPA ceklis
         showNotification("Diary aktivitas fisik berhasil direset.", "success");
       }
     });
