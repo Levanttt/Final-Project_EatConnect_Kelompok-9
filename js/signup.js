@@ -23,5 +23,5 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function goBack() {
-  window.location.href = "login.html";
+  window.history.back();
 }

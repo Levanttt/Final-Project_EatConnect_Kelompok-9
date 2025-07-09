@@ -34,8 +34,7 @@ body {
 }
 
 .navbar-container {
-  max-width: 1400px;
-  margin: 0 auto;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -504,6 +503,50 @@ main {
   color: white;
 }
 
+status {
+  padding: 4px 12px;
+  border-radius: 999px;
+  display: inline-block;
+  font-weight: 600;
+  color: white;
+  background-color: #ccc; /* Default abu-abu */
+  transition: background-color 0.3s ease;
+}
+
+.badge-green {
+  background-color: #2ecc71 !important;
+}
+
+.badge-orange {
+  background-color: #f39c12 !important;
+}
+
+.badge-red {
+  background-color: #e74c3c !important;
+}
+
+.badge-blue {
+  background-color: #3498db !important;
+}
+
+.progress-makan,
+.progress-fisik {
+  display: none;
+}
+
+.progress-makan {
+  display: grid;
+}
+
+.progress-makan .progress-card,
+.progress-fisik .progress-card {
+  transition: all 0.3s ease;
+}
+
+.progress-fisik .progress-card .icon {
+  color: #ffc107;
+}
+
 /* Responsive Styles */
 /* Untuk layar 4K (≥ 1920px) */
 @media (min-width: 1920px) {
@@ -611,20 +654,20 @@ main {
   }
 }
 
-/* Untuk layar <= 768px */
 @media (max-width: 768px) {
-  body {
-    padding: 8px;
-  }
   .navbar-container {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0 10px;
-    gap: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
   }
   .logo {
-    margin-left: 0;
-    font-size: 18px;
+    font-size: 16px;
+  }
+  .back-button {
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 15px;
   }
   .progress-cards {
     grid-template-columns: 1fr;
@@ -646,7 +689,40 @@ main {
     flex-direction: column;
     gap: 6px;
   }
-}
+  .progress-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .progress-makan,
+  .progress-fisik {
+    display: none;
+  }
+
+  .progress-makan.active,
+  .progress-fisik.active {
+    display: grid;
+  }
+
+  .progress-card {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+  }
+
+  .progress-card .value {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .progress-card .percentage {
+    font-size: 12px;
+  }
+
+  .progress-card .status {
+    font-size: 12px;
+    font-weight: 500;
+  };
 
 /* Untuk layar <= 480px (HP) */
 @media (max-width: 480px) {
@@ -688,84 +764,4 @@ main {
     font-size: 12px;
   }
 }
-
-.status {
-  padding: 4px 12px;
-  border-radius: 999px;
-  display: inline-block;
-  font-weight: 600;
-  color: white;
-  background-color: #ccc; /* Default abu-abu */
-  transition: background-color 0.3s ease;
-}
-
-.badge-green {
-  background-color: #2ecc71 !important;
-}
-
-.badge-orange {
-  background-color: #f39c12 !important;
-}
-
-.badge-red {
-  background-color: #e74c3c !important;
-}
-
-.badge-blue {
-  background-color: #3498db !important;
-}
-
-/* === Tambahan untuk kontrol visibilitas progress makan/fisik === */
-.progress-makan,
-.progress-fisik {
-  display: none;
-}
-
-.progress-makan {
-  display: grid;
-}
-
-.progress-makan .progress-card,
-.progress-fisik .progress-card {
-  transition: all 0.3s ease;
-}
-
-.progress-fisik .progress-card .icon {
-  color: #ffc107;
-}
-
-@media (max-width: 768px) {
-  .progress-cards {
-    grid-template-columns: 1fr;
-  }
-}
-.progress-makan,
-.progress-fisik {
-  display: none;
-}
-
-.progress-makan.active,
-.progress-fisik.active {
-  display: grid;
-}
-
-.progress-card {
-  font-family: "Poppins", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: white;
-}
-
-.progress-card .value {
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.progress-card .percentage {
-  font-size: 12px;
-}
-
-.progress-card .status {
-  font-size: 12px;
-  font-weight: 500;
 }

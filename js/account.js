@@ -1,5 +1,5 @@
 function goBack() {
-  window.location.href = "mainlandingpage.html";
+  window.history.back();
 }
 
 function initializeEventListeners() {
@@ -23,7 +23,6 @@ function initializeEventListeners() {
 
       saveCheckboxProgress();
 
-      // Update progress hanya untuk week 1 dan tipe yg sesuai
       if (week === "1") {
         updateWeeklyProgress(isMakan ? "makan" : "fisik");
       }

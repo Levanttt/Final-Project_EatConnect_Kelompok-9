@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function goBack() {
-  window.location.href = "mainlandingpage.html";
+  window.history.back();
 }
 
 function setupFileUpload() {

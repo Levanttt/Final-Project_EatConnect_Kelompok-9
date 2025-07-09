@@ -1,5 +1,5 @@
 function goBack() {
-  window.location.href = "mainlandingpage.html";
+  window.history.back();
 }
 
 // Analisis Nutrisi

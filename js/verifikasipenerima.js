@@ -55,5 +55,5 @@ document.getElementById("verifikasi-form").addEventListener("submit", function (
 });
 
 function goBack() {
-  window.location.href = "penerima.html";
+  window.history.back();
 }

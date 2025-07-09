@@ -11,5 +11,5 @@ document.getElementById("relawan-form").addEventListener("submit", function (e) 
 });
 
 function goBack() {
-  window.location.href = "mainlandingpage.html";
+  window.history.back();
 }

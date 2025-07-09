@@ -34,7 +34,7 @@ body {
 }
 
 .navbar-container {
-  max-width: 1400px;
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -44,18 +44,12 @@ body {
 
 .logo {
   color: white;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 1px;
+  font-size: 1.5rem;
+  font-weight: bold;
   text-decoration: none;
   display: flex;
   align-items: center;
-  margin-left: 2rem;
-}
-
-.nav-menu a:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
+  margin-right: -2rem;
 }
 
 .user-icon {
