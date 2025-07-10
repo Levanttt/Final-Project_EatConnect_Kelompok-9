@@ -281,30 +281,41 @@ document.querySelectorAll(".orange-btn").forEach((btn) => {
   if (btn.closest("section")?.id === "aktivitas-fisik") {
     btn.addEventListener("click", () => {
       const tbody = document.querySelector(".aktivitas-table tbody");
-      const aktivitasData = [];
 
-      tbody.querySelectorAll("tr").forEach(tr => {
-        const cells = tr.querySelectorAll("td");
-        if (cells.length === 4) {
-          const hari = cells[0].textContent.trim();
-          const olahraga = cells[1].textContent.trim();
-          const durasi = cells[2].textContent.trim();
-          const tujuan = cells[3].textContent.trim();
-          aktivitasData.push({ hari, olahraga: olahraga || "-", durasi: durasi || "-", tujuan: tujuan || "-" });
-        }
-      });
+      // === Cek apakah ada minimal satu baris terisi ===
+      const hasData = Array.from(tbody.rows).some(tr =>
+        Array.from(tr.cells).slice(1).some(td => td.textContent.trim() !== "")
+      );
 
-      if (!aktivitasData.length) {
+      if (!hasData) {
         showNotification("Belum ada data aktivitas yang bisa disimpan!", "error");
         return;
       }
 
+      // === Simpan ke localStorage ===
+      const aktivitasData = [];
+      Array.from(tbody.rows).forEach((tr) => {
+        const hari = tr.cells[0].textContent.trim();
+        const olahraga = tr.cells[1].textContent.trim();
+        const durasi = tr.cells[2].textContent.trim();
+        const tujuan = tr.cells[3].textContent.trim();
+
+        aktivitasData.push({
+          hari,
+          olahraga: olahraga || "-",
+          durasi: durasi || "-",
+          tujuan: tujuan || "-"
+        });
+      });
+
       localStorage.setItem("diaryAktivitasFisik", JSON.stringify(aktivitasData));
       localStorage.setItem("diaryAktivitasFisikSavedAt", new Date().toISOString());
+
       showNotification("Diary aktivitas fisik berhasil disimpan!", "success");
     });
   }
 });
+
 
 // Save My Diary untuk Menu Makan
 document.querySelectorAll('.menu-table + .orange-btn').forEach(function(btn) {
