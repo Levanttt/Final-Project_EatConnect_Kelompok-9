@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.removeItem("diaryAktivitasFisikSavedAt");
         localStorage.removeItem("checkedFisikHari");
 
-        renderTable([], []); // Render ulang tabel kosong TANPA ceklis
+        renderTable([], []); 
         showNotification("Diary aktivitas fisik berhasil direset.", "success");
       }
     });

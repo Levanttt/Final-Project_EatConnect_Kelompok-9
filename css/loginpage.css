@@ -218,7 +218,7 @@ form input[type="password"] {
 }
 
 .register-text a {
-  color: #ff6b35; /* Warna orange yang sama dengan button */
+  color: #ff6b35; 
   text-decoration: none;
 }
 

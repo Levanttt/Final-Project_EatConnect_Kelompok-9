@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.removeItem("diaryPolaMakanSavedAt");
         localStorage.removeItem("checkedMakanHari");
 
-        renderTable([], []); // Render tabel kosong
+        renderTable([], []); 
         showNotification("Diary pola makan berhasil direset.", "success");
       }
     });

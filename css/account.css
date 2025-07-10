@@ -503,7 +503,7 @@ main {
   color: white;
 }
 
-status {
+.status {
   padding: 4px 12px;
   border-radius: 999px;
   display: inline-block;
@@ -534,7 +534,8 @@ status {
   display: none;
 }
 
-.progress-makan {
+.progress-makan.active,
+.progress-fisik.active {
   display: grid;
 }
 
