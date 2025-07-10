@@ -22,7 +22,7 @@ body {
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: #e8e6f7;
   color: #1a1a1a;
   font-size: 18px;
@@ -251,7 +251,6 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Section */
 .section-light {
   background: linear-gradient(to bottom right, #eaf4fa, #dfeef5);
   padding: 80px;
@@ -278,7 +277,6 @@ body {
   margin-bottom: 40px;
 }
 
-/* Upload & Result */
 .container-double {
   display: flex;
   justify-content: center;
@@ -411,7 +409,6 @@ body {
   margin-top: 16px;
 }
 
-/* === Pola Makan & Aktivitas === */
 .container-single,
 .container-aktivitas {
   background: linear-gradient(to bottom right, #fefeff, #f2f7fb);
@@ -493,7 +490,6 @@ th {
   color: white;
 }
 
-/* === Modern Notification Styles === */
 .notification-overlay {
   position: fixed;
   top: 0;
@@ -643,7 +639,6 @@ th {
   }
 }
 
-/* Footer */
 .footer {
   background: #1e3a5f;
   color: white;
@@ -763,9 +758,6 @@ th {
   font-size: 0.9rem;
 }
 
-/* === RESPONSIVE DESIGN === */
-
-/* Large screens (desktops) */
 @media (min-width: 1200px) {
   .navbar-container {
     max-width: 1400px;
@@ -782,7 +774,6 @@ th {
   }
 }
 
-/* Medium screens (tablets) */
 @media (max-width: 1024px) {
   body {
     font-size: 16px;
@@ -850,7 +841,6 @@ th {
   }
 }
 
-/* Small screens (mobile landscape) */
 @media (max-width: 768px) {
   body {
     font-size: 16px;
@@ -1043,7 +1033,6 @@ th {
   }
 }
 
-/* Extra small screens (mobile portrait) */
 @media (max-width: 480px) {
   body {
     font-size: 15px;
@@ -1212,7 +1201,6 @@ th {
   }
 }
 
-/* Landscape orientation adjustments */
 @media (max-height: 600px) and (orientation: landscape) {
   .hero {
     padding: 30px 40px;
@@ -1229,7 +1217,6 @@ th {
   }
 }
 
-/* High resolution screens */
 @media (min-resolution: 2dppx) {
   .upload-icon {
     transform: scale(0.9);

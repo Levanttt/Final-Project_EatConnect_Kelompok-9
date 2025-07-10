@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Inter", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -15,7 +15,7 @@ body {
   );
   color: #fff;
   min-height: 120vh;
-  font-family: "Inter", sans-serif;
+  font-family: "Poppins", sans-serif;
   overflow-x: hidden;
 }
 
@@ -194,7 +194,7 @@ form input[type="password"] {
 
 .btn-google {
   width: 100%;
-  padding: 12px; /* Kurangi dari 14px ke 12px */
+  padding: 12px; 
   background-color: #ffffff;
   color: rgb(7, 7, 7);
   border: none;
@@ -226,7 +226,6 @@ form input[type="password"] {
   text-decoration: underline;
 }
 
-/* Responsive untuk layar kecil */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
@@ -272,7 +271,6 @@ form input[type="password"] {
   }
 }
 
-/* Responsive untuk layar sangat kecil */
 @media (max-width: 400px) {
   .right h1 {
     font-size: 18px;
@@ -335,7 +333,7 @@ form input[type="password"] {
     max-width: 500px;
     height: auto;
     margin-left: 3rem;
-    transform: scale(1.35); /* Lebih besar */
+    transform: scale(1.35); 
     transform-origin: left top;
   }
 
@@ -344,7 +342,7 @@ form input[type="password"] {
     padding: 40px 35px;
     transform: scale(1.35);
     transform-origin: right top;
-    margin-top: 40px; /* TURUNKAN dari sebelumnya -40px */
+    margin-top: 40px; 
   }
 
   .right h1 {

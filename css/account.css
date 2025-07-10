@@ -16,7 +16,6 @@ body {
   margin: 0 auto;
 }
 
-/* === Navbar === */
 .navbar {
   background: linear-gradient(
     135deg,
@@ -509,7 +508,7 @@ main {
   display: inline-block;
   font-weight: 600;
   color: white;
-  background-color: #ccc; /* Default abu-abu */
+  background-color: #ccc; 
   transition: background-color 0.3s ease;
 }
 
@@ -548,8 +547,6 @@ main {
   color: #ffc107;
 }
 
-/* Responsive Styles */
-/* Untuk layar 4K (≥ 1920px) */
 @media (min-width: 1920px) {
   .container {
     max-width: 1800px;
@@ -588,7 +585,6 @@ main {
   }
 }
 
-/* Untuk layar ultrawide (≥ 2560px) */
 @media (min-width: 2560px) {
   .container,
   .navbar-container {
@@ -624,7 +620,7 @@ main {
     padding: 22px 16px;
   }
 }
-/* Untuk layar <= 1200px */
+
 @media (max-width: 1200px) {
   main {
     grid-template-columns: 1fr;
@@ -638,7 +634,6 @@ main {
   }
 }
 
-/* Untuk layar <= 900px */
 @media (max-width: 900px) {
   .container {
     padding: 0 10px;
@@ -725,7 +720,6 @@ main {
     font-weight: 500;
   };
 
-/* Untuk layar <= 480px (HP) */
 @media (max-width: 480px) {
   .container {
     padding: 0 4px;

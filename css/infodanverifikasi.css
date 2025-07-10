@@ -1,4 +1,3 @@
-/* Reset dan Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -79,14 +78,12 @@ body {
   letter-spacing: 1px;
 }
 
-/* Main Content */
 .main-content {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* Title Section */
 .title-section {
   text-align: center;
   margin: 40px 0;
@@ -108,7 +105,6 @@ body {
   line-height: 1.7;
 }
 
-/* Progress Steps */
 .progress-container {
   margin: 50px 0;
   position: relative;
@@ -123,7 +119,6 @@ body {
   margin: 0 auto;
 }
 
-/* Progress Line */
 .progress-steps::before {
   content: "";
   position: absolute;
@@ -136,7 +131,6 @@ body {
   border-radius: 2px;
 }
 
-/* Default untuk halaman verifikasi (step 2) */
 .progress-steps::after {
   content: "";
   position: absolute;
@@ -150,9 +144,8 @@ body {
   transition: width 0.3s ease;
 }
 
-/* Override untuk halaman step-1 (informasi dasar) */
 body.step-1 .progress-steps::after {
-  width: calc(30% - 25px); /* Ujung garis di tengah antara step 1 dan 2 */
+  width: calc(30% - 25px);
 }
 
 .step {
@@ -207,7 +200,6 @@ body.step-1 .progress-steps::after {
   font-weight: 600;
 }
 
-/* Form Container */
 .form-container {
   background: white;
   border-radius: 16px;
@@ -216,7 +208,6 @@ body.step-1 .progress-steps::after {
   margin-bottom: 40px;
 }
 
-/* Form Sections */
 .form-section {
   margin-bottom: 35px;
   padding: 25px;
@@ -233,7 +224,6 @@ body.step-1 .progress-steps::after {
   padding-bottom: 8px;
 }
 
-/* Input Groups */
 .input-group {
   margin-bottom: 20px;
 }
@@ -256,7 +246,6 @@ body.step-1 .progress-steps::after {
   color: #e74c3c;
 }
 
-/* Form Controls */
 input[type="text"],
 input[type="number"],
 input[type="tel"],
@@ -313,7 +302,6 @@ select {
   cursor: pointer;
 }
 
-/* File Upload */
 .file-upload {
   position: relative;
 }
@@ -363,7 +351,6 @@ select {
   color: #666;
 }
 
-/* Agreement Section */
 .agreement-section {
   margin: 30px 0;
   padding: 20px;
@@ -407,7 +394,6 @@ select {
   text-decoration: underline;
 }
 
-/* Submit Button */
 .submit-btn {
   width: 100%;
   background: linear-gradient(#ff8c42 0%, #ff6b35 100%);
@@ -431,7 +417,81 @@ select {
   transform: translateY(0);
 }
 
-/* Responsive Design */
+.custom-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.custom-modal-overlay .modal {
+  background-color: white;
+  border-radius: 16px;
+  padding: 30px 40px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  font-family: "Poppins", sans-serif;
+  animation: zoomIn 0.3s ease-out;
+}
+
+.custom-modal-overlay .modal h2 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.custom-modal-overlay .modal p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.custom-modal-overlay .modal button {
+  background: linear-gradient(to right, #ff8c42, #ff6b35);
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-modal-overlay .modal button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 @media (max-width: 768px) {
   .main-content {
     padding: 0 15px;
@@ -500,79 +560,4 @@ select {
   }
 }
 
-/* === Popup Notifikasi Modal === */
-.custom-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  animation: fadeIn 0.3s ease-out;
-}
 
-.custom-modal-overlay .modal {
-  background-color: white;
-  border-radius: 16px;
-  padding: 30px 40px;
-  max-width: 400px;
-  width: 90%;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  font-family: "Poppins", sans-serif;
-  animation: zoomIn 0.3s ease-out;
-}
-
-.custom-modal-overlay .modal h2 {
-  font-size: 22px;
-  color: #333;
-  margin-bottom: 8px;
-}
-
-.custom-modal-overlay .modal p {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 25px;
-}
-
-.custom-modal-overlay .modal button {
-  background: linear-gradient(to right, #ff8c42, #ff6b35);
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 25px;
-  font-weight: 600;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.custom-modal-overlay .modal button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes zoomIn {
-  from {
-    transform: scale(0.85);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
