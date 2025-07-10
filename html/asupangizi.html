@@ -11,6 +11,7 @@
     />
   </head>
   <body>
+    <div class="main-wrapper">
     <!-- Sidebar Profil -->
     <div id="profileSidebar" class="profile-sidebar">
       <div class="profile-content">
@@ -46,44 +47,59 @@
 
     <!--Navbar-->
     <nav class="navbar">
-  <a href="mainlandingpage.html" class="logo">EatConnect</a>
-  <a href="account.html" class="account-icon" title="Akun Saya">
-    <img src="../Image/Icon-Akun.png" alt="Akun Saya" class="user-icon" />
-  </a>
-</nav>
+      <a href="mainlandingpage.html" class="logo">EatConnect</a>
+      <a href="account.html" class="account-icon" title="Akun Saya">
+        <img src="../Image/Icon-Akun.png" alt="Akun Saya" class="user-icon" />
+      </a>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <div class="hero">
       <div class="hero-text">
         <h2>Pantau Asupan Gizi & Pola Makan Lebih Cerdas Bersama EatConnect</h2>
       </div>
 
-      <div class="feature-cards">
-        <a href="#analisis-nutrisi" class="card">
-          <img src="../Image/analisiskandungan.png" alt="AI Gizi" />
-          <h3>Analisis Kandungan Nutrisi Otomatis AI</h3>
-          <p>
-            Upload foto makanan atau input bahan makanan, AI akan memeriksa
-            takaran gizi dalam makanan Anda.
-          </p>
-        </a>
-        <a href="#pola-makan" class="card">
-          <img src="../Image/tracker.png" alt="Food Tracker" />
-          <h3>
-            Food Tracker (Smart Diary Makanan)<br />Rekomendasi Pola Makan Sehat
-          </h3>
-          <p>
-            Kalender harian untuk merekam makanan yang dikonsumsi dan
-            rekomendasi pola makan sehat.
-          </p>
-        </a>
-        <a href="#aktivitas-fisik" class="card">
-          <img src="../Image/aktifitasfisik.png" alt="Aktivitas Fisik" />
-          <h3>Rekomendasi Aktivitas Fisik Harian</h3>
-          <p>Olahraga ringan dan ringan untuk mendukung pola makan seimbang.</p>
-        </a>
-      </div>
-    </section>
+     <div class="feature-cards">
+  <a href="#analisis-nutrisi" class="card">
+    <div class="card-img-wrapper">
+      <img src="../Image/analisiskandungan.png" alt="AI Gizi" />
+    </div>
+    <div class="card-text">
+      <h3>Analisis Kandungan Nutrisi Otomatis AI</h3>
+      <p>
+        Upload foto makanan atau input bahan makanan, AI akan memeriksa
+        takaran gizi dalam makanan Anda.
+      </p>
+    </div>
+  </a>
+
+  <a href="#pola-makan" class="card">
+    <div class="card-img-wrapper">
+      <img src="../Image/tracker.png" alt="Food Tracker" />
+    </div>
+    <div class="card-text">
+      <h3>
+        Food Tracker (Smart Diary Makanan)<br />
+        Rekomendasi Pola Makan Sehat
+      </h3>
+      <p>
+        Kalender harian untuk merekam makanan yang dikonsumsi dan
+        rekomendasi pola makan sehat.
+      </p>
+    </div>
+  </a>
+
+  <a href="#aktivitas-fisik" class="card">
+    <div class="card-img-wrapper">
+      <img src="../Image/aktifitasfisik.png" alt="Aktivitas Fisik" />
+    </div>
+    <div class="card-text">
+      <h3>Rekomendasi Aktivitas Fisik Harian</h3>
+      <p>Olahraga ringan dan ringan untuk mendukung pola makan seimbang.</p>
+    </div>
+  </a>
+</div>
+
 
     <!-- Analisis Nutrisi -->
     <section id="analisis-nutrisi" class="section-light">
@@ -326,7 +342,7 @@
 
       <button class="orange-btn">Save My Diary</button>
     </section>
-
+  </div>
     <!-- Footer -->
     <footer class="footer">
       <div class="container">

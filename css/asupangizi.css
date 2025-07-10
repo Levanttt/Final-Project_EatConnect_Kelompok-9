@@ -1,3 +1,20 @@
+/* 1. Setup body & html untuk flex layout */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 2. Main wrapper fleksibel agar dorong footer ke bawah */
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -39,7 +56,7 @@ body {
   text-decoration: none;
   display: flex;
   align-items: center;
-  margin: 0; 
+  margin: 0;
 }
 
 .account-icon .user-icon {
@@ -170,7 +187,7 @@ body {
   background: linear-gradient(180deg, #ffffff, #f5f9fc);
   border-radius: 20px;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
-  padding: 30px;
+  padding: 0;
   flex: 1 1 30%;
   min-width: 320px;
   text-align: center;
@@ -179,15 +196,36 @@ body {
   transition: transform 0.2s ease;
 }
 
+.card-text {
+  padding: 20px 30px 30px 30px;
+}
+
 .card:hover {
   transform: scale(1.03);
 }
 
 .card img {
   width: 100%;
-  max-width: 250px;
-  height: auto;
+  height: 150px; /* atau 50% tergantung proporsi kontainernya */
+  object-fit: cover;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   margin-bottom: 20px;
+}
+
+.card-img-wrapper {
+  height: 160px;
+  width: 100%;
+  overflow: hidden;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .card h3 {
@@ -457,142 +495,152 @@ th {
 
 /* === Modern Notification Styles === */
 .notification-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(5px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
 }
 
 .notification-overlay.show {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
 
 .notification-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    max-width: 400px;
-    width: 90%;
-    text-align: center;
-    transform: scale(0.7) translateY(50px);
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    position: relative;
-    overflow: hidden;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  transform: scale(0.7) translateY(50px);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
+  overflow: hidden;
 }
 
 .notification-overlay.show .notification-card {
-    transform: scale(1) translateY(0);
+  transform: scale(1) translateY(0);
 }
 
 .notification-icon {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto 20px;
-    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    color: white;
-    animation: pulse 2s infinite;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+  animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .notification-title {
-    font-size: 20px;
-    font-weight: 700;
-    color: #2d3748;
-    margin-bottom: 10px;
-    background-color: #2c5a82;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  font-size: 20px;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 10px;
+  background-color: #2c5a82;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .notification-message {
-    font-size: 14px;
-    color: #2c5a82;
-    line-height: 1.6;
-    margin-bottom: 25px;
+  font-size: 14px;
+  color: #2c5a82;
+  line-height: 1.6;
+  margin-bottom: 25px;
 }
 
 .notification-btn {
-    width: 100%;
-    padding: 12px; 
-    background-color: #ff6b35;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-bottom: 4px; 
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(196, 61, 7, 0.4);
+  width: 100%;
+  padding: 12px;
+  background-color: #ff6b35;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(196, 61, 7, 0.4);
 }
 
 .notification-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(235, 92, 10, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(235, 92, 10, 0.6);
 }
 
 .close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 20px;
-    color: #a0aec0;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #a0aec0;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
 }
 
 .close-btn:hover {
-    background: rgba(0, 0, 0, 0.1);
-    color: #2d3748;
+  background: rgba(0, 0, 0, 0.1);
+  color: #2d3748;
 }
 
 .notification-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
-    background-size: 300% 300%;
-    animation: gradient 3s ease infinite;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+  background-size: 300% 300%;
+  animation: gradient 3s ease infinite;
 }
 
 @keyframes gradient {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 /* Footer */
@@ -723,11 +771,11 @@ th {
     max-width: 1400px;
     padding: 0 40px;
   }
-  
+
   .hero {
     padding: 80px 100px;
   }
-  
+
   .section-light,
   .section-white {
     padding: 100px 40px;
@@ -739,62 +787,62 @@ th {
   body {
     font-size: 16px;
   }
-  
+
   .navbar-container {
     padding: 0 20px;
   }
-  
+
   .logo {
     font-size: 18px;
     margin-left: 1rem;
   }
-  
+
   .hero {
     padding: 50px 40px;
   }
-  
+
   .hero-text h2 {
     font-size: 30px;
     margin-bottom: 30px;
   }
-  
+
   .section-light,
   .section-white {
     padding: 60px 40px;
   }
-  
+
   .section-title {
     font-size: 28px;
   }
-  
+
   .section-subtitle {
     font-size: 16px;
   }
-  
+
   .feature-cards {
     gap: 30px;
   }
-  
+
   .card {
     flex: 1 1 45%;
     min-width: 280px;
   }
-  
+
   .container-double {
     gap: 30px;
   }
-  
+
   .upload-box,
   .result-box {
     max-width: 450px;
   }
-  
+
   .container-single,
   .container-aktivitas {
     max-width: 700px;
     padding: 25px;
   }
-  
+
   .menu-table,
   .aktivitas-table {
     max-width: 800px;
@@ -807,143 +855,143 @@ th {
   body {
     font-size: 16px;
   }
-  
+
   .navbar {
     padding: 12px 0;
     margin: -15px -15px 25px -15px;
   }
-  
+
   .navbar-container {
     padding: 0 15px;
     flex-wrap: wrap;
     gap: 10px;
   }
-  
+
   .logo {
     font-size: 16px;
     margin-left: 0;
   }
-  
+
   .back-button {
     padding: 6px 12px;
     font-size: 12px;
   }
-  
+
   .header {
     padding: 12px 20px;
     font-size: 18px;
   }
-  
+
   .hero {
     padding: 40px 20px;
   }
-  
+
   .hero-text h2 {
     font-size: 24px;
     margin-bottom: 25px;
     line-height: 1.4;
   }
-  
+
   .section-light,
   .section-white {
     padding: 40px 20px;
   }
-  
+
   .section-title {
     font-size: 24px;
     margin-bottom: 8px;
   }
-  
+
   .section-subtitle {
     font-size: 15px;
     margin-bottom: 30px;
   }
-  
+
   .feature-cards {
     flex-direction: column;
     align-items: center;
     gap: 20px;
   }
-  
+
   .card {
     min-width: 100%;
     max-width: 100%;
     padding: 25px;
   }
-  
+
   .card h3 {
     font-size: 18px;
   }
-  
+
   .card p {
     font-size: 15px;
   }
-  
+
   .container-double {
     flex-direction: column;
     align-items: center;
     gap: 25px;
   }
-  
+
   .upload-box,
   .result-box {
     max-width: 100%;
     padding: 25px;
   }
-  
+
   .upload-area {
     padding: 30px 15px;
   }
-  
+
   .upload-icon {
     font-size: 32px;
   }
-  
+
   .upload-text {
     font-size: 16px;
   }
-  
+
   .upload-sub {
     font-size: 14px;
   }
-  
+
   .upload-box textarea {
     height: 80px;
     font-size: 15px;
   }
-  
+
   .check-btn {
     font-size: 16px;
     padding: 14px;
   }
-  
+
   .food-name {
     font-size: 20px;
     padding: 12px;
   }
-  
+
   .calorie {
     padding: 10px 14px;
   }
-  
+
   .kcal {
     font-size: 16px;
   }
-  
+
   .label {
     font-size: 15px;
   }
-  
+
   .nutrient-list li {
     padding: 10px 12px;
     font-size: 15px;
   }
-  
+
   .note-box {
     padding: 12px;
     font-size: 15px;
   }
-  
+
   .container-single,
   .container-aktivitas {
     max-width: 100%;
@@ -951,7 +999,7 @@ th {
     padding: 20px;
     gap: 15px;
   }
-  
+
   .container-single input,
   .container-single select,
   .container-aktivitas input,
@@ -959,35 +1007,35 @@ th {
     padding: 10px;
     font-size: 15px;
   }
-  
+
   .form-title,
   .form-title-row {
     font-size: 16px;
   }
-  
+
   .orange-btn {
     padding: 12px 25px;
     font-size: 15px;
     margin: 15px auto;
   }
-  
+
   .menu-table,
   .aktivitas-table {
     max-width: 100%;
     padding: 15px;
     overflow-x: auto;
   }
-  
+
   .menu-table h3,
   .aktivitas-table h3 {
     font-size: 18px;
     margin-bottom: 12px;
   }
-  
+
   table {
     min-width: 500px;
   }
-  
+
   th,
   td {
     padding: 8px;
@@ -1000,129 +1048,129 @@ th {
   body {
     font-size: 15px;
   }
-  
+
   .navbar {
     margin: -10px -10px 20px -10px;
   }
-  
+
   .navbar-container {
     padding: 0 10px;
   }
-  
+
   .logo {
     font-size: 15px;
   }
-  
+
   .back-button {
     padding: 5px 10px;
     font-size: 11px;
     gap: 5px;
   }
-  
+
   .header {
     padding: 10px 15px;
     font-size: 16px;
   }
-  
+
   .hero {
     padding: 30px 15px;
   }
-  
+
   .hero-text h2 {
     font-size: 22px;
     margin-bottom: 20px;
   }
-  
+
   .section-light,
   .section-white {
     padding: 30px 15px;
   }
-  
+
   .section-title {
     font-size: 22px;
   }
-  
+
   .section-subtitle {
     font-size: 14px;
   }
-  
+
   .card {
     padding: 20px;
   }
-  
+
   .card h3 {
     font-size: 17px;
   }
-  
+
   .card p {
     font-size: 14px;
   }
-  
+
   .upload-box,
   .result-box {
     padding: 20px;
   }
-  
+
   .upload-area {
     padding: 25px 10px;
   }
-  
+
   .upload-icon {
     font-size: 28px;
   }
-  
+
   .upload-text {
     font-size: 15px;
   }
-  
+
   .upload-sub {
     font-size: 13px;
   }
-  
+
   .upload-box textarea {
     height: 70px;
     font-size: 14px;
     padding: 10px;
   }
-  
+
   .check-btn {
     font-size: 15px;
     padding: 12px;
   }
-  
+
   .food-name {
     font-size: 18px;
     padding: 10px;
   }
-  
+
   .calorie {
     padding: 8px 12px;
   }
-  
+
   .kcal {
     font-size: 15px;
   }
-  
+
   .label {
     font-size: 14px;
   }
-  
+
   .nutrient-list li {
     padding: 8px 10px;
     font-size: 14px;
   }
-  
+
   .note-box {
     padding: 10px;
     font-size: 14px;
   }
-  
+
   .container-single,
   .container-aktivitas {
     padding: 15px;
     gap: 12px;
   }
-  
+
   .container-single input,
   .container-single select,
   .container-aktivitas input,
@@ -1130,33 +1178,33 @@ th {
     padding: 8px;
     font-size: 14px;
   }
-  
+
   .form-title,
   .form-title-row {
     font-size: 15px;
   }
-  
+
   .orange-btn {
     padding: 10px 20px;
     font-size: 14px;
     margin: 12px auto;
   }
-  
+
   .menu-table,
   .aktivitas-table {
     padding: 12px;
   }
-  
+
   .menu-table h3,
   .aktivitas-table h3 {
     font-size: 16px;
     margin-bottom: 10px;
   }
-  
+
   table {
     min-width: 450px;
   }
-  
+
   th,
   td {
     padding: 6px;
@@ -1169,12 +1217,12 @@ th {
   .hero {
     padding: 30px 40px;
   }
-  
+
   .hero-text h2 {
     font-size: 28px;
     margin-bottom: 20px;
   }
-  
+
   .section-light,
   .section-white {
     padding: 40px;
@@ -1186,7 +1234,7 @@ th {
   .upload-icon {
     transform: scale(0.9);
   }
-  
+
   .card img {
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
