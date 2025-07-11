@@ -12,8 +12,8 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  text-align: center;
   padding: 20px;
+  text-align: center;
 }
 
 .container {
@@ -33,25 +33,25 @@ body {
 
 .btn-home {
   display: inline-block;
+  padding: 12px 24px;
   background: wheat;
   color: #2c3e50;
-  padding: 12px 24px;
   border-radius: 30px;
   text-decoration: none;
   font-weight: 600;
-  transition: 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .btn-home:hover {
-  background: #f1f1f1;
+  background: #e0e0e0;
   transform: translateY(-3px);
 }
 
-/* Responsive */
 @media (max-width: 480px) {
   .error-code {
     font-size: 4rem;
   }
+
   .message {
     font-size: 1.2rem;
   }

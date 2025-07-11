@@ -79,8 +79,7 @@ body {
 
 .title-section {
   text-align: center;
-  margin: 40px 0;
-  margin-top: -1rem;
+  margin: 40px 0 -1rem 0;
 }
 
 .title-section h1 {
@@ -99,7 +98,6 @@ body {
   line-height: 1.7;
 }
 
-/* Progress Steps */
 .progress-container {
   margin: 50px 0;
   position: relative;
@@ -114,7 +112,6 @@ body {
   margin: 0 auto;
 }
 
-/* Progress Line */
 .progress-steps::before {
   content: "";
   position: absolute;
@@ -127,7 +124,6 @@ body {
   border-radius: 2px;
 }
 
-/* Default untuk halaman verifikasi (step 2) */
 .progress-steps::after {
   content: "";
   position: absolute;
@@ -141,9 +137,8 @@ body {
   transition: width 0.3s ease;
 }
 
-
 body.step-1 .progress-steps::after {
-  width: calc(30% - 25px); /
+  width: calc(30% - 25px);
 }
 
 .step {
@@ -169,20 +164,11 @@ body.step-1 .progress-steps::after {
   transition: all 0.3s ease;
 }
 
-.step.active .step-circle {
-  background: linear-gradient(135deg, #4a6fa5, #2c5aa0);
-  box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
-}
-
+.step.active .step-circle,
 .step.completed .step-circle {
   background: linear-gradient(135deg, #4a6fa5, #2c5aa0);
-  color: white;
   box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
-}
-
-.step.completed .step-label {
-  color: #4a6fa5;
-  font-weight: 600;
+  color: white;
 }
 
 .step-label {
@@ -193,12 +179,12 @@ body.step-1 .progress-steps::after {
   min-width: 100px;
 }
 
-.step.active .step-label {
+.step.active .step-label,
+.step.completed .step-label {
   color: #4a6fa5;
   font-weight: 600;
 }
 
-/* === Form Container === */
 .form-container {
   background: #fff;
   border-radius: 12px;
@@ -218,7 +204,6 @@ body.step-1 .progress-steps::after {
   margin-bottom: 20px;
 }
 
-/* === Input Group === */
 .input-group {
   margin-bottom: 20px;
 }
@@ -237,16 +222,6 @@ body.step-1 .progress-steps::after {
 }
 
 input[type="text"],
-select {
-  width: 100%;
-  padding: 12px 14px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 14px;
-  background: white;
-  transition: all 0.3s ease;
-}
-
 input[type="tel"],
 select,
 textarea {
@@ -271,7 +246,6 @@ select:focus {
   box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.1);
 }
 
-/* === Button === */
 .submit-btn {
   width: 100%;
   background: linear-gradient(#ff8c42, #ff6b35);
@@ -289,32 +263,6 @@ select:focus {
 .submit-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(255, 122, 0, 0.4);
-}
-
-/* === Responsive === */
-@media (max-width: 768px) {
-  .main-content {
-    padding: 20px;
-  }
-
-  .step-circle {
-    width: 40px;
-    height: 40px;
-    font-size: 16px;
-  }
-
-  .step-label {
-    font-size: 11px;
-  }
-
-  .form-container {
-    padding: 20px;
-  }
-
-  .progress-steps::before {
-    left: 35px;
-    right: 35px;
-  }
 }
 
 input[type="file"] {
@@ -341,7 +289,6 @@ input[type="file"] {
   text-decoration: underline;
 }
 
-/* === Popup Notifikasi Modal === */
 .custom-modal-overlay {
   position: fixed;
   top: 0;
@@ -397,7 +344,31 @@ input[type="file"] {
   box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
 }
 
-/* Animations */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 20px;
+  }
+
+  .step-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .step-label {
+    font-size: 11px;
+  }
+
+  .form-container {
+    padding: 20px;
+  }
+
+  .progress-steps::before {
+    left: 35px;
+    right: 35px;
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

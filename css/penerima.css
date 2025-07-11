@@ -11,7 +11,6 @@ body {
   line-height: 1.6;
 }
 
-/* === Navbar === */
 .navbar {
   background: linear-gradient(
     135deg,
@@ -38,8 +37,9 @@ body {
 
 .logo {
   color: white;
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -52,6 +52,9 @@ body {
 }
 
 .back-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
@@ -62,9 +65,6 @@ body {
   font-weight: 500;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
 .back-button:hover {
@@ -72,25 +72,15 @@ body {
   transform: translateY(-2px);
 }
 
-.logo {
-  color: white;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-/* === Main === */
 .main-content {
   max-width: 850px;
   margin: 0 auto;
   padding: 40px 20px;
 }
 
-/* === Title Section === */
 .title-section {
   text-align: center;
-  margin: 40px 0;
-  margin-top: -1rem;
+  margin: 40px 0 -1rem 0;
 }
 
 .title-section h1 {
@@ -109,7 +99,6 @@ body {
   line-height: 1.7;
 }
 
-/* === Progress Bar === */
 .progress-container {
   margin: 50px 0;
   position: relative;
@@ -119,12 +108,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
   max-width: 500px;
   margin: 0 auto;
+  position: relative;
 }
 
-/* Progress Line */
 .progress-steps::before {
   content: "";
   position: absolute;
@@ -133,8 +121,8 @@ body {
   right: 25px;
   height: 4px;
   background: #d0d0d0;
-  z-index: 1;
   border-radius: 2px;
+  z-index: 1;
 }
 
 .progress-steps::after {
@@ -145,20 +133,19 @@ body {
   width: 25%;
   height: 4px;
   background: linear-gradient(90deg, #4a6fa5, #2c5aa0);
-  z-index: 2;
   border-radius: 2px;
   transition: width 0.3s ease;
+  z-index: 2;
 }
 
 body.step-1 .progress-steps::after {
-  width: calc(30% - 25px); 
+  width: calc(30% - 25px);
 }
 
 .step {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
   z-index: 3;
 }
 
@@ -177,20 +164,10 @@ body.step-1 .progress-steps::after {
   transition: all 0.3s ease;
 }
 
-.step.active .step-circle {
-  background: linear-gradient(135deg, #4a6fa5, #2c5aa0);
-  box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
-}
-
+.step.active .step-circle,
 .step.completed .step-circle {
   background: linear-gradient(135deg, #4a6fa5, #2c5aa0);
-  color: white;
   box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
-}
-
-.step.completed .step-label {
-  color: #4a6fa5;
-  font-weight: 600;
 }
 
 .step-label {
@@ -201,12 +178,12 @@ body.step-1 .progress-steps::after {
   min-width: 100px;
 }
 
-.step.active .step-label {
+.step.active .step-label,
+.step.completed .step-label {
   color: #4a6fa5;
   font-weight: 600;
 }
 
-/* === Form Container === */
 .form-container {
   background: #fff;
   border-radius: 12px;
@@ -226,7 +203,6 @@ body.step-1 .progress-steps::after {
   margin-bottom: 20px;
 }
 
-/* === Input Group === */
 .input-group {
   margin-bottom: 20px;
 }
@@ -245,16 +221,6 @@ body.step-1 .progress-steps::after {
 }
 
 input[type="text"],
-select {
-  width: 100%;
-  padding: 12px 14px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 14px;
-  background: white;
-  transition: all 0.3s ease;
-}
-
 input[type="tel"],
 select,
 textarea {
@@ -273,13 +239,13 @@ textarea {
 }
 
 input:focus,
-select:focus {
+select:focus,
+textarea:focus {
   outline: none;
   border-color: #1e3a5f;
   box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.1);
 }
 
-/* === Button === */
 .submit-btn {
   width: 100%;
   background: linear-gradient(#ff8c42, #ff6b35);
@@ -299,7 +265,6 @@ select:focus {
   box-shadow: 0 8px 24px rgba(255, 122, 0, 0.4);
 }
 
-/* === Responsive === */
 @media (max-width: 768px) {
   .main-content {
     padding: 20px;

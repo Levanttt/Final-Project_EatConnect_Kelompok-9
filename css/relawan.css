@@ -1,4 +1,3 @@
-/* === Reset & Base === */
 * {
   margin: 0;
   padding: 0;
@@ -37,13 +36,13 @@ body {
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  margin-left: 2rem;
   color: white;
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  margin-left: 2rem;
 }
 
 .nav-menu a:hover {
@@ -52,6 +51,9 @@ body {
 }
 
 .back-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
@@ -60,11 +62,8 @@ body {
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
-  transition: all 0.3s ease;
   backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  transition: all 0.3s ease;
 }
 
 .back-button:hover {
@@ -72,7 +71,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* === Main === */
 .main-content {
   max-width: 800px;
   margin: 0 auto;
@@ -81,8 +79,7 @@ body {
 
 .title-section {
   text-align: center;
-  margin: 40px 0;
-  margin-top: -2rem;
+  margin: 40px 0 -2rem 0;
 }
 
 .title-section h1 {
@@ -101,9 +98,9 @@ body {
   line-height: 1.7;
 }
 
-/* Progress Steps */
 .progress-container {
-  margin: 50px 0;  position: relative;
+  margin: 50px 0;
+  position: relative;
 }
 
 .progress-steps {
@@ -114,7 +111,7 @@ body {
   max-width: 500px;
   margin: 0 auto;
 }
-/* Progress Line */
+
 .progress-steps::before {
   content: "";
   position: absolute;
@@ -123,11 +120,10 @@ body {
   right: 25px;
   height: 4px;
   background: #d0d0d0;
-  z-index: 1;
   border-radius: 2px;
+  z-index: 1;
 }
 
-/* Default untuk halaman verifikasi (step 2) */
 .progress-steps::after {
   content: "";
   position: absolute;
@@ -136,13 +132,13 @@ body {
   width: 25%;
   height: 4px;
   background: linear-gradient(90deg, #4a6fa5, #2c5aa0);
-  z-index: 2;
   border-radius: 2px;
   transition: width 0.3s ease;
+  z-index: 2;
 }
 
 body.step-1 .progress-steps::after {
-  width: calc(30% - 25px); 
+  width: calc(30% - 25px);
 }
 
 .step {
@@ -168,20 +164,10 @@ body.step-1 .progress-steps::after {
   transition: all 0.3s ease;
 }
 
-.step.active .step-circle {
-  background: linear-gradient(135deg, #4a6fa5, #2c5aa0);
-  box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
-}
-
+.step.active .step-circle,
 .step.completed .step-circle {
   background: linear-gradient(135deg, #4a6fa5, #2c5aa0);
-  color: white;
   box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
-}
-
-.step.completed .step-label {
-  color: #4a6fa5;
-  font-weight: 600;
 }
 
 .step-label {
@@ -192,12 +178,12 @@ body.step-1 .progress-steps::after {
   min-width: 100px;
 }
 
-.step.active .step-label {
+.step.active .step-label,
+.step.completed .step-label {
   color: #4a6fa5;
   font-weight: 600;
 }
 
-/* === Form Container === */
 .form-container {
   background: #fff;
   border-radius: 12px;
@@ -216,7 +202,6 @@ body.step-1 .progress-steps::after {
   margin-bottom: 20px;
 }
 
-/* === Input === */
 .input-group {
   margin-bottom: 20px;
 }
@@ -236,7 +221,9 @@ body.step-1 .progress-steps::after {
 
 input[type="text"],
 input[type="email"],
-input[type="tel"] {
+input[type="tel"],
+textarea,
+select {
   width: 100%;
   padding: 12px 14px;
   border: 1px solid #ccc;
@@ -246,22 +233,31 @@ input[type="tel"] {
   transition: all 0.3s ease;
 }
 
-input:focus {
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
   outline: none;
   border-color: #1e3a5f;
   box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.1);
 }
 
-/* === Button === */
 .submit-btn {
+  display: inline-block;
   width: 100%;
+  padding: 14px 0;
+  border: none;
+  border-radius: 25px;
   background: linear-gradient(#ff8c42, #ff6b35);
   color: white;
-  border: none;
-  padding: 14px 0;
   font-size: 16px;
   font-weight: 600;
-  border-radius: 25px;
+  text-align: center;
+  text-decoration: none;
   cursor: pointer;
   box-shadow: 0 6px 20px rgba(255, 122, 0, 0.3);
   transition: all 0.3s ease;
@@ -272,7 +268,6 @@ input:focus {
   box-shadow: 0 8px 24px rgba(255, 122, 0, 0.4);
 }
 
-/* === Responsive === */
 @media (max-width: 768px) {
   .main-content {
     padding: 20px;
@@ -296,9 +291,4 @@ input:focus {
     left: 10px;
     right: 10px;
   }
-}
-.submit-btn {
-  display: inline-block;
-  text-align: center;
-  text-decoration: none; /* hilangkan underline pada <a> */
 }
