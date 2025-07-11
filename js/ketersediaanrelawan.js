@@ -1,9 +1,7 @@
 function showModalNotification(title, message, type = "success") {
-  // Hapus modal sebelumnya jika ada
   const old = document.querySelector(".custom-modal-overlay");
   if (old) old.remove();
 
-  // Buat overlay
   const overlay = document.createElement("div");
   overlay.className = "custom-modal-overlay";
   Object.assign(overlay.style, {
@@ -18,7 +16,6 @@ function showModalNotification(title, message, type = "success") {
     animation: "fadeIn 0.3s ease-out",
   });
 
-  // Modal box
   const modal = document.createElement("div");
   Object.assign(modal.style, {
     background: "#fff",
@@ -33,7 +30,6 @@ function showModalNotification(title, message, type = "success") {
     fontFamily: "Poppins, sans-serif",
   });
 
-  // Tombol close ❌
   const closeBtn = document.createElement("button");
   closeBtn.innerHTML = "&times;";
   Object.assign(closeBtn.style, {
@@ -48,14 +44,12 @@ function showModalNotification(title, message, type = "success") {
   });
   closeBtn.onclick = () => overlay.remove();
 
-  // Ikon status ✔ atau ✖
   const icon = document.createElement("div");
   icon.innerHTML =
     type === "success"
       ? '<div style="width: 70px; height: 70px; background: #2ecc71; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;"><span style="font-size: 34px; color: white;">✔</span></div>'
       : '<div style="width: 70px; height: 70px; background: #e74c3c; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;"><span style="font-size: 34px; color: white;">✖</span></div>';
 
-  // Judul
   const heading = document.createElement("h2");
   heading.textContent = title;
   Object.assign(heading.style, {
@@ -64,7 +58,6 @@ function showModalNotification(title, message, type = "success") {
     fontSize: "20px",
   });
 
-  // Pesan
   const desc = document.createElement("p");
   desc.textContent = message;
   Object.assign(desc.style, {
@@ -74,7 +67,6 @@ function showModalNotification(title, message, type = "success") {
     lineHeight: "1.5",
   });
 
-  // Tombol OK
   const okBtn = document.createElement("button");
   okBtn.textContent = "OK";
   Object.assign(okBtn.style, {
@@ -98,7 +90,6 @@ function showModalNotification(title, message, type = "success") {
     }
   };
 
-  // Gabungkan elemen
   modal.appendChild(closeBtn);
   modal.appendChild(icon);
   modal.appendChild(heading);

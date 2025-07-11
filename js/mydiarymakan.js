@@ -64,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderTable(diaryData, checklistData);
 
-  // RESET Diary Pola Makan
   const resetBtn = document.getElementById("reset-makan");
   if (resetBtn) {
     resetBtn.addEventListener("click", () => {

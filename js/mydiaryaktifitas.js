@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
     diaryTable.innerHTML = "";
     const hariList = ["Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu", "Minggu"];
 
-    // Jika ada data, render sesuai
     if (data.length > 0) {
       data.forEach((item) => {
         const tr = document.createElement("tr");
@@ -36,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
         diaryTable.appendChild(tr);
       });
     } else {
-      // Jika tidak ada data, render default kosong
       hariList.forEach((hari) => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
@@ -64,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderTable(aktivitasData, checklistData);
 
-  // === RESET Diary Aktivitas Fisik ===
   const resetBtn = document.getElementById("reset-fisik");
   if (resetBtn) {
     resetBtn.addEventListener("click", () => {

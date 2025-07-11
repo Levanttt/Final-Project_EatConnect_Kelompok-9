@@ -4,7 +4,6 @@ document.getElementById("penerima-form").addEventListener("submit", function (e)
   const form = e.target;
 
   if (form.checkValidity()) {
-    // Simpan data ke localStorage
     localStorage.setItem("penerima-nama", document.getElementById("nama").value);
     localStorage.setItem("penerima-jenis", document.getElementById("jenis").value);
     localStorage.setItem("penerima-penanggung", document.getElementById("penanggung").value);
@@ -12,7 +11,6 @@ document.getElementById("penerima-form").addEventListener("submit", function (e)
     localStorage.setItem("penerima-alamat", document.getElementById("alamat").value);
     localStorage.setItem("penerima-penghuni", document.getElementById("penghuni").value);
 
-    // Ambil semua select tambahan
     const selects = form.querySelectorAll("select:not([id='jenis']):not([id='penghuni'])");
     selects.forEach((select, index) => {
       localStorage.setItem(`penerima-select-${index}`, select.value);

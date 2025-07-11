@@ -48,14 +48,12 @@ function showModalNotification(title, message, type = "success") {
   });
   closeBtn.onclick = () => overlay.remove();
 
-  // Ikon status ✔ atau ✖
   const icon = document.createElement("div");
   icon.innerHTML =
     type === "success"
       ? '<div style="width: 70px; height: 70px; background: #2ecc71; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;"><span style="font-size: 34px; color: white;">✔</span></div>'
       : '<div style="width: 70px; height: 70px; background: #e74c3c; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;"><span style="font-size: 34px; color: white;">✖</span></div>';
 
-  // Judul
   const heading = document.createElement("h2");
   heading.textContent = title;
   Object.assign(heading.style, {
@@ -64,7 +62,6 @@ function showModalNotification(title, message, type = "success") {
     fontSize: "20px",
   });
 
-  // Pesan
   const desc = document.createElement("p");
   desc.textContent = message;
   Object.assign(desc.style, {
@@ -74,7 +71,6 @@ function showModalNotification(title, message, type = "success") {
     lineHeight: "1.5",
   });
 
-  // Tombol OK
   const okBtn = document.createElement("button");
   okBtn.textContent = "OK";
   Object.assign(okBtn.style, {
@@ -98,7 +94,6 @@ function showModalNotification(title, message, type = "success") {
     }
   };
 
-  // Gabungkan elemen
   modal.appendChild(closeBtn);
   modal.appendChild(icon);
   modal.appendChild(heading);
@@ -108,7 +103,6 @@ function showModalNotification(title, message, type = "success") {
   document.body.appendChild(overlay);
 }
 
-// Kirim data
 document
   .getElementById("verifikasi-form")
   .addEventListener("submit", function (e) {

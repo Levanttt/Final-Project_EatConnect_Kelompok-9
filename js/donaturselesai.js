@@ -1,4 +1,3 @@
-// DOM Content Loaded Event
 document.addEventListener("DOMContentLoaded", function () {
   const backButton = document.getElementById("backToHome");
 

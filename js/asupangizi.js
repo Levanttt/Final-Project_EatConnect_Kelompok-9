@@ -2,7 +2,6 @@ function goBack() {
   window.history.back();
 }
 
-// Analisis Nutrisi
 document.querySelector(".check-btn").addEventListener("click", function () {
   const deskripsi = document.getElementById("deskripsiMakanan").value.trim();
 
@@ -68,8 +67,6 @@ document.querySelector(".check-btn").addEventListener("click", function () {
     "<strong>Note :</strong> " + hasil.catatan;
 });
 
-
-// === UPLOAD AREA ===
 document.querySelector(".upload-area")?.addEventListener("click", () => {
   document.getElementById("fotoUpload").click();
 });
@@ -79,14 +76,12 @@ document.getElementById("fotoUpload")?.addEventListener("change", function () {
   }
 });
 
-// Cek Menu Mingguan
 function cekMenuMingguan() {
   const berat = document.getElementById("beratBadan").value.trim();
   const tujuan = document.getElementById("tujuanBB").value;
   const pola = document.getElementById("polaMakan").value;
   const pantangan = document.getElementById("pantangan").value.toLowerCase().trim();
   
-  // Validasi input
   if (!berat || !tujuan || !pola) {
     showNotification("Silakan isi semua data berat badan, tujuan, dan pola makan!", 'error');
     return;
@@ -179,11 +174,10 @@ function cekMenuMingguan() {
     tr.children[2].textContent = menuMingguan[i].siang;
     tr.children[3].textContent = menuMingguan[i].malam;
   });
-  // Notifikasi sukses
+
   showNotification("Menu mingguan berhasil ditampilkan!", 'success');
 }
 
-// === NOTIFICATION MODERN ===
 function showNotification(message, type = 'warning') {
   const existingNotif = document.getElementById('modernNotification');
   if (existingNotif) existingNotif.remove();
@@ -220,14 +214,11 @@ document.addEventListener('click', e => {
   if (e.target?.classList.contains('notification-overlay')) closeNotification();
 });
 
-
-// Fungsi cekAktivitasFisik 
 function cekAktivitasFisik() {
     const tujuan = document.querySelector("#aktivitas-fisik select:nth-of-type(1)").value;
     const kondisi = document.querySelector("#aktivitas-fisik input[type='text']").value.trim();
     const tingkat = document.querySelector("#aktivitas-fisik select:nth-of-type(2)").value;
 
-    // Validasi form
     if (!tujuan || tujuan === "Tujuan" || !tingkat || tingkat === "Tingkat Aktivitas") {
         showNotification("Silakan pilih semua opsi pada form terlebih dahulu.", 'error');
         return;
@@ -264,25 +255,21 @@ function cekAktivitasFisik() {
             tbody.appendChild(tr);
         }
         
-        // Show success notification
         showNotification("Jadwal aktivitas fisik berhasil dibuat!", 'success');
     }
 }
 
-// Close notification ketika klik overlay
 document.addEventListener('click', function(e) {
     if (e.target && e.target.classList.contains('notification-overlay')) {
         closeNotification();
     }
 });
 
-// === SIMPAN DIARY AKTIVITAS FISIK ===
 document.querySelectorAll(".orange-btn").forEach((btn) => {
   if (btn.closest("section")?.id === "aktivitas-fisik") {
     btn.addEventListener("click", () => {
       const tbody = document.querySelector(".aktivitas-table tbody");
 
-      // === Cek apakah ada minimal satu baris terisi ===
       const hasData = Array.from(tbody.rows).some(tr =>
         Array.from(tr.cells).slice(1).some(td => td.textContent.trim() !== "")
       );
@@ -292,7 +279,6 @@ document.querySelectorAll(".orange-btn").forEach((btn) => {
         return;
       }
 
-      // === Simpan ke localStorage ===
       const aktivitasData = [];
       Array.from(tbody.rows).forEach((tr) => {
         const hari = tr.cells[0].textContent.trim();
@@ -316,8 +302,6 @@ document.querySelectorAll(".orange-btn").forEach((btn) => {
   }
 });
 
-
-// Save My Diary untuk Menu Makan
 document.querySelectorAll('.menu-table + .orange-btn').forEach(function(btn) {
   btn.addEventListener('click', function() {
     const tbody = document.getElementById('menuMingguan');
@@ -329,7 +313,6 @@ document.querySelectorAll('.menu-table + .orange-btn').forEach(function(btn) {
     if (!hasData) {
       showNotification("Belum ada data menu yang bisa disimpan!", 'error');
     } else {
-      // === Simpan ke localStorage ===
       const diaryData = [];
       Array.from(tbody.rows).forEach((tr) => {
         const hari = tr.cells[0].textContent.trim();
@@ -348,11 +331,9 @@ document.querySelectorAll('.menu-table + .orange-btn').forEach(function(btn) {
   });
 });
 
-// === HALAMAN PROFIL ===
 document.addEventListener("DOMContentLoaded", () => {
   const hariList = ["Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu", "Minggu"];
 
-  // POLA MAKAN
   const diaryMakan = JSON.parse(localStorage.getItem("diaryPolaMakan")) || [];
   const checkedMakan = JSON.parse(localStorage.getItem("checkedMakanHari")) || [];
   const tableMakan = document.querySelector("#diary-makan .diary-table tbody");
@@ -384,7 +365,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // AKTIVITAS FISIK
   const diaryFisik = JSON.parse(localStorage.getItem("diaryAktivitasFisik")) || [];
   const checkedFisik = JSON.parse(localStorage.getItem("checkedFisikHari")) || [];
   const tableFisik = document.querySelector("#diary-fisik .diary-table tbody");
